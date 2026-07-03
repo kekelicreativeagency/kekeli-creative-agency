@@ -240,7 +240,7 @@ const BOOKS = [
     description:
       "De l'identité artistique à la monétisation — tout ce qu'un artiste sénégalais doit maîtriser pour percer : branding, réseaux sociaux, distribution, droits BSDA, booking et bien plus.",
     chips: ["Branding", "TikTok & Instagram", "Distribution", "Droits d'auteur", "Monétisation"],
-    image: "/images/Du talent au sommet.png",
+    image: "/images/Du-talent-cover.png",
     accentColor: GOLD,
     chapters: [
       "Construire une identité artistique forte",
