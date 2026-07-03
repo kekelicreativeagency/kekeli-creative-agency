@@ -143,12 +143,12 @@ export function Divider({ color }: { color: string }) {
 
 /** Cover page */
 export function CoverPage({
-  accent, title, titleHighlight, subtitle, badge, chips, stats, guideLabel,
+  accent, title, titleHighlight, subtitle, badge, chips, stats, guideLabel, author,
 }: {
   accent: string; title: string; titleHighlight?: string; subtitle: string;
   badge: string; chips: { label: string; color: string }[];
   stats: { value: string; label: string }[];
-  guideLabel: string;
+  guideLabel: string; author?: string;
 }) {
   return (
     <div className="ebook-page" style={{
@@ -194,6 +194,12 @@ export function CoverPage({
           </h1>
 
           <div style={{ width: "48px", height: "2px", background: `linear-gradient(90deg, ${GOLD}, transparent)`, margin: "20px 0" }} />
+
+          {author && (
+            <p style={{ fontFamily: F, fontSize: "13px", fontWeight: 700, color: GOLD, margin: "0 0 8px", letterSpacing: "0.04em" }}>
+              {author}
+            </p>
+          )}
 
           <p style={{ fontFamily: F, fontSize: "12px", color: "rgba(255,255,255,0.45)", maxWidth: "360px", lineHeight: 1.8, margin: "0 0 24px" }}>{subtitle}</p>
 

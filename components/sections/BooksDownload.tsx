@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { X, Mail, User, ShoppingCart, Loader2, BookOpen, Lock, Eye, CheckCircle2 } from "lucide-react";
+import { X, ShoppingCart, BookOpen, Eye, CheckCircle2, ExternalLink } from "lucide-react";
 import FadeIn, { FadeInStagger, FadeInItem } from "@/components/animations/FadeIn";
 
 const GOLD = "#C8A84B";
@@ -34,9 +34,13 @@ function BookCover({ src, alt, hovered }: { src: string; alt: string; hovered: b
   );
 }
 
-/* ── Purchase modal (PayTech) ────────────────────────────────── */
-type ModalState = "idle" | "loading" | "error";
+/* ── Liens Chariow ───────────────────────────────────────────── */
+const CHARIOW_LINKS: Record<"artiste" | "entreprise", string> = {
+  artiste:    "https://chariow.com/#LIEN_A_REMPLACER",
+  entreprise: "https://chariow.com/#LIEN_A_REMPLACER",
+};
 
+/* ── Purchase modal (Chariow) ────────────────────────────────── */
 function PurchaseModal({
   book,
   onClose,
@@ -44,34 +48,6 @@ function PurchaseModal({
   book: { type: "artiste" | "entreprise"; title: string; price: string; accentColor: string };
   onClose: () => void;
 }) {
-  const [name, setName]     = useState("");
-  const [email, setEmail]   = useState("");
-  const [state, setState]   = useState<ModalState>("idle");
-  const [errMsg, setErrMsg] = useState("");
-
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (!name.trim() || !email.trim()) return;
-    setState("loading");
-    setErrMsg("");
-    try {
-      const res = await fetch("/api/guide/payment", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, type: book.type }),
-      });
-      const data = await res.json();
-      if (!res.ok || !data.redirect_url) {
-        throw new Error(data.error ?? "Erreur serveur.");
-      }
-      // Redirect to PayTech payment page
-      window.location.href = data.redirect_url;
-    } catch (err) {
-      setState("error");
-      setErrMsg(err instanceof Error ? err.message : "Erreur. Réessayez.");
-    }
-  }
-
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
@@ -97,16 +73,10 @@ function PurchaseModal({
           <div className="mb-6">
             <div className="flex items-center gap-3 mb-3">
               <span className="font-body text-2xl font-bold" style={{ color: GOLD }}>{book.price}</span>
-              <span
-                className="inline-flex items-center gap-1.5 font-body text-xs px-2.5 py-1 rounded-full"
-                style={{ background: "rgba(200,168,75,0.12)", color: GOLD, border: "1px solid rgba(200,168,75,0.25)" }}
-              >
-                <Lock size={9} /> Paiement sécurisé
-              </span>
             </div>
             <h3 className="font-body font-bold text-white text-lg leading-snug mb-1">{book.title}</h3>
             <p className="font-body text-sm" style={{ color: "rgba(255,255,255,0.45)" }}>
-              Entrez vos informations — vous serez redirigé vers PayTech pour payer en toute sécurité.
+              Vous allez être redirigé vers Chariow pour finaliser votre achat en toute sécurité.
             </p>
           </div>
 
@@ -127,56 +97,20 @@ function PurchaseModal({
             </span>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-3">
-            <div className="relative">
-              <User size={14} className="absolute left-4 top-1/2 -translate-y-1/2" style={{ color: "rgba(255,255,255,0.35)" }} />
-              <input
-                type="text"
-                placeholder="Votre prénom"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-                className="w-full pl-10 pr-4 py-3.5 rounded-xl font-body text-sm text-white placeholder-white/30 outline-none transition-all"
-                style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.10)" }}
-                onFocus={(e) => (e.target.style.borderColor = `${book.accentColor}60`)}
-                onBlur={(e) => (e.target.style.borderColor = "rgba(255,255,255,0.10)")}
-              />
-            </div>
-            <div className="relative">
-              <Mail size={14} className="absolute left-4 top-1/2 -translate-y-1/2" style={{ color: "rgba(255,255,255,0.35)" }} />
-              <input
-                type="email"
-                placeholder="Votre adresse email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="w-full pl-10 pr-4 py-3.5 rounded-xl font-body text-sm text-white placeholder-white/30 outline-none transition-all"
-                style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.10)" }}
-                onFocus={(e) => (e.target.style.borderColor = `${book.accentColor}60`)}
-                onBlur={(e) => (e.target.style.borderColor = "rgba(255,255,255,0.10)")}
-              />
-            </div>
-
-            {state === "error" && (
-              <p className="font-body text-xs text-red-400">{errMsg}</p>
-            )}
-
-            <button
-              type="submit"
-              disabled={state === "loading"}
-              className="w-full flex items-center justify-center gap-2 py-4 rounded-xl font-body font-bold text-sm transition-all hover:opacity-90 active:scale-[.98] disabled:opacity-60"
-              style={{ background: GOLD, color: "#0C0B09", boxShadow: "0 4px 20px rgba(200,168,75,0.30)" }}
-            >
-              {state === "loading" ? (
-                <><Loader2 size={16} className="animate-spin" /> Redirection vers PayTech…</>
-              ) : (
-                <><ShoppingCart size={15} /> Payer {book.price} avec PayTech</>
-              )}
-            </button>
-          </form>
+          <a
+            href={CHARIOW_LINKS[book.type]}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full flex items-center justify-center gap-2 py-4 rounded-xl font-body font-bold text-sm transition-all hover:opacity-90 active:scale-[.98]"
+            style={{ background: GOLD, color: "#0C0B09", boxShadow: "0 4px 20px rgba(200,168,75,0.30)", display: "flex" }}
+          >
+            <ShoppingCart size={15} />
+            Acheter sur Chariow — {book.price}
+            <ExternalLink size={13} />
+          </a>
 
           <p className="font-body text-[10px] text-center mt-4" style={{ color: "rgba(255,255,255,0.25)" }}>
-            Paiement 100% sécurisé · Guide envoyé par email après confirmation
+            Paiement 100% sécurisé via Chariow
           </p>
         </div>
       </div>

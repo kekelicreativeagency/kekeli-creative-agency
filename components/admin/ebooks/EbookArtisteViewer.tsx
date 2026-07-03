@@ -75,6 +75,7 @@ export default function EbookArtisteViewer() {
         titleHighlight="au Sommet"
         subtitle="Le guide de l'Artiste Africain Pro — De la passion brute à la carrière professionnelle. Branding, distribution, réseaux sociaux, booking, droits, monétisation & ascension."
         badge="Édition 2026 · KEKELI Creative Agency · Dakar, Sénégal"
+        author="ASSOU Mensa Mawugnon Seth (Amset)"
         guideLabel={LABEL}
         chips={[
           { label: "Mindset Pro", color: ACC },
@@ -114,7 +115,7 @@ export default function EbookArtisteViewer() {
 
             {/* Bloc copyright */}
             <div style={{ padding: "14px 16px", borderRadius: "8px", background: "#F5F0E8", border: "1px solid #E5DFD0", marginBottom: "16px" }}>
-              <p style={{ fontFamily: F, fontSize: "10px", fontWeight: 700, color: DARK, margin: "0 0 8px" }}>© 2026 Amset — KEKELI Creative Agency</p>
+              <p style={{ fontFamily: F, fontSize: "10px", fontWeight: 700, color: DARK, margin: "0 0 8px" }}>© 2026 ASSOU Mensa Mawugnon Seth (Amset) — KEKELI Creative Agency</p>
               <p style={{ fontFamily: F, fontSize: "9px", color: "#6B5B45", lineHeight: 1.65, margin: 0 }}>
                 Tous droits réservés. Aucune partie de cet ouvrage ne peut être reproduite, stockée dans un système de récupération, ou transmise sous quelque forme ou par quelque moyen que ce soit — électronique, mécanique, photocopie, enregistrement ou autre — sans l'autorisation écrite préalable de l'auteur et de l'éditeur, sauf dans les cas prévus par la loi sénégalaise sur la propriété intellectuelle.
               </p>
@@ -123,7 +124,7 @@ export default function EbookArtisteViewer() {
             {/* Contacts éditeur */}
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px", marginBottom: "16px" }}>
               {[
-                { label: "Auteur", value: "Amset" },
+                { label: "Auteur", value: "ASSOU Mensa Mawugnon Seth (Amset)" },
                 { label: "Éditeur", value: "KEKELI Creative Agency" },
                 { label: "Site web", value: "kekelicreativeagency.com" },
                 { label: "Contact", value: "contact@kekelicreativeagency.com" },
