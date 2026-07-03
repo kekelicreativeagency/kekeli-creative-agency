@@ -75,7 +75,7 @@ export default function EbookArtisteViewer() {
       }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/images/Du talent au sommet.png"
+          src="/images/Du-talent-au-sommet.png"
           alt="Du Talent au Sommet — Couverture"
           style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", position: "absolute", inset: 0 }}
         />
