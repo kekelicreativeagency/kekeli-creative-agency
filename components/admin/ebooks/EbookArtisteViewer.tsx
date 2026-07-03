@@ -69,30 +69,17 @@ export default function EbookArtisteViewer() {
       {/* ══════════════════════════════════════════════════ */}
       {/* P1 — COVER                                        */}
       {/* ══════════════════════════════════════════════════ */}
-      <CoverPage
-        accent={ACC}
-        title="Du Talent"
-        titleHighlight="au Sommet"
-        subtitle="Le guide de l'Artiste Africain Pro — De la passion brute à la carrière professionnelle. Branding, distribution, réseaux sociaux, booking, droits, monétisation & ascension."
-        badge="Édition 2026 · KEKELI Creative Agency · Dakar, Sénégal"
-        author="ASSOU Mensa Mawugnon Seth (Amset)"
-        guideLabel={LABEL}
-        chips={[
-          { label: "Mindset Pro", color: ACC },
-          { label: "Branding & Direction Artistique", color: SEC },
-          { label: "Distribution & Droits", color: BLU },
-          { label: "TikTok · Instagram · YouTube", color: SEC },
-          { label: "Booking & Festivals", color: AMB },
-          { label: "Monétisation 1M FCFA/mois", color: GRN },
-          { label: "Équipe & Contrats Pro", color: GOLD },
-        ]}
-        stats={[
-          { value: "210+", label: "pages" },
-          { value: "31", label: "modules Pro" },
-          { value: "80+", label: "outils pratiques" },
-          { value: "5 ans", label: "plan de carrière" },
-        ]}
-      />
+      <div className="ebook-page" style={{
+        width: "210mm", minHeight: "297mm", background: "#1a1208",
+        display: "flex", position: "relative", overflow: "hidden", pageBreakAfter: "always",
+      }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/images/Du talent au sommet.png"
+          alt="Du Talent au Sommet — Couverture"
+          style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", position: "absolute", inset: 0 }}
+        />
+      </div>
 
       {/* ══════════════════════════════════════════════════ */}
       {/* P2 — PAGE LÉGALE / COPYRIGHT                      */}
