@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
       email,
       first_name:   firstName,
       last_name:    lastName,
-      redirect_url: "https://kekelicreativeagency.com?achat=succes",
+      redirect_url: "https://kekelicreativeagency.com/?achat=succes",
     };
 
     if (phone) {
