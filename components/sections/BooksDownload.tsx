@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { X, ShoppingCart, BookOpen, Eye, CheckCircle2, ExternalLink } from "lucide-react";
+import { X, ShoppingCart, BookOpen, Eye, CheckCircle2, Loader2 } from "lucide-react";
 import FadeIn, { FadeInStagger, FadeInItem } from "@/components/animations/FadeIn";
 
 const GOLD = "#C8A84B";
@@ -34,13 +34,9 @@ function BookCover({ src, alt, hovered }: { src: string; alt: string; hovered: b
   );
 }
 
-/* ── Liens Chariow ───────────────────────────────────────────── */
-const CHARIOW_LINKS: Record<"artiste" | "entreprise", string> = {
-  artiste:    "https://chariow.com/#LIEN_A_REMPLACER",
-  entreprise: "https://chariow.com/#LIEN_A_REMPLACER",
-};
+/* ── Purchase modal (Chariow intégré) ───────────────────────── */
+type ModalState = "idle" | "loading" | "error";
 
-/* ── Purchase modal (Chariow) ────────────────────────────────── */
 function PurchaseModal({
   book,
   onClose,
@@ -48,6 +44,39 @@ function PurchaseModal({
   book: { type: "artiste" | "entreprise"; title: string; price: string; accentColor: string };
   onClose: () => void;
 }) {
+  const [firstName, setFirstName] = useState("");
+  const [lastName,  setLastName]  = useState("");
+  const [email,     setEmail]     = useState("");
+  const [phone,     setPhone]     = useState("");
+  const [state,     setState]     = useState<ModalState>("idle");
+  const [errMsg,    setErrMsg]    = useState("");
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!firstName.trim() || !lastName.trim() || !email.trim()) return;
+    setState("loading");
+    setErrMsg("");
+    try {
+      const res = await fetch("/api/guide/chariow", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ type: book.type, email, firstName, lastName, phone: phone || undefined }),
+      });
+      const data = await res.json() as { checkout_url?: string; error?: string };
+      if (!res.ok || !data.checkout_url) throw new Error(data.error ?? "Erreur serveur.");
+      window.location.href = data.checkout_url;
+    } catch (err) {
+      setState("error");
+      setErrMsg(err instanceof Error ? err.message : "Erreur. Réessayez.");
+    }
+  }
+
+  const inputStyle = {
+    background: "rgba(255,255,255,0.06)",
+    border: "1px solid rgba(255,255,255,0.10)",
+  };
+  const focusColor = `${book.accentColor}60`;
+
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
@@ -69,18 +98,16 @@ function PurchaseModal({
             <X size={18} />
           </button>
 
-          {/* Price + title */}
-          <div className="mb-6">
-            <div className="flex items-center gap-3 mb-3">
-              <span className="font-body text-2xl font-bold" style={{ color: GOLD }}>{book.price}</span>
-            </div>
-            <h3 className="font-body font-bold text-white text-lg leading-snug mb-1">{book.title}</h3>
+          {/* Prix + titre */}
+          <div className="mb-5">
+            <span className="font-body text-2xl font-bold" style={{ color: GOLD }}>{book.price}</span>
+            <h3 className="font-body font-bold text-white text-lg leading-snug mt-1 mb-1">{book.title}</h3>
             <p className="font-body text-sm" style={{ color: "rgba(255,255,255,0.45)" }}>
-              Vous allez être redirigé vers Chariow pour finaliser votre achat en toute sécurité.
+              Entrez vos informations — vous serez redirigé vers Chariow pour payer en toute sécurité.
             </p>
           </div>
 
-          {/* Payment methods */}
+          {/* Logos paiement */}
           <div
             className="flex flex-wrap items-center gap-2 px-4 py-3 rounded-xl mb-5"
             style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}
@@ -89,28 +116,67 @@ function PurchaseModal({
             <Image src="/images/logo-wave.png" alt="Wave" width={48} height={20} className="object-contain" style={{ height: 20, width: "auto" }} />
             <Image src="/images/logo-orange-money.png" alt="Orange Money" width={72} height={20} className="object-contain" style={{ height: 20, width: "auto" }} />
             <Image src="/images/logo_paypal.png" alt="PayPal" width={56} height={20} className="object-contain" style={{ height: 20, width: "auto" }} />
-            <span
-              className="font-body text-[10px] font-semibold px-2 py-0.5 rounded"
-              style={{ background: "rgba(200,168,75,0.10)", color: GOLD }}
-            >
-              Carte bancaire
-            </span>
           </div>
 
-          <a
-            href={CHARIOW_LINKS[book.type]}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full flex items-center justify-center gap-2 py-4 rounded-xl font-body font-bold text-sm transition-all hover:opacity-90 active:scale-[.98]"
-            style={{ background: GOLD, color: "#0C0B09", boxShadow: "0 4px 20px rgba(200,168,75,0.30)", display: "flex" }}
-          >
-            <ShoppingCart size={15} />
-            Acheter sur Chariow — {book.price}
-            <ExternalLink size={13} />
-          </a>
+          {/* Formulaire */}
+          <form onSubmit={handleSubmit} className="space-y-3">
+            <div className="grid grid-cols-2 gap-3">
+              <input
+                type="text" placeholder="Prénom *" value={firstName} required
+                onChange={(e) => setFirstName(e.target.value)}
+                className="w-full px-4 py-3 rounded-xl font-body text-sm text-white placeholder-white/30 outline-none transition-all"
+                style={inputStyle}
+                onFocus={(e) => (e.target.style.borderColor = focusColor)}
+                onBlur={(e)  => (e.target.style.borderColor = "rgba(255,255,255,0.10)")}
+              />
+              <input
+                type="text" placeholder="Nom *" value={lastName} required
+                onChange={(e) => setLastName(e.target.value)}
+                className="w-full px-4 py-3 rounded-xl font-body text-sm text-white placeholder-white/30 outline-none transition-all"
+                style={inputStyle}
+                onFocus={(e) => (e.target.style.borderColor = focusColor)}
+                onBlur={(e)  => (e.target.style.borderColor = "rgba(255,255,255,0.10)")}
+              />
+            </div>
+            <input
+              type="email" placeholder="Adresse email *" value={email} required
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full px-4 py-3 rounded-xl font-body text-sm text-white placeholder-white/30 outline-none transition-all"
+              style={inputStyle}
+              onFocus={(e) => (e.target.style.borderColor = focusColor)}
+              onBlur={(e)  => (e.target.style.borderColor = "rgba(255,255,255,0.10)")}
+            />
+            <div className="flex rounded-xl overflow-hidden" style={{ border: "1px solid rgba(255,255,255,0.10)" }}>
+              <div className="flex items-center px-3 shrink-0" style={{ background: "rgba(255,255,255,0.04)", borderRight: "1px solid rgba(255,255,255,0.10)" }}>
+                <span className="font-body text-xs" style={{ color: "rgba(255,255,255,0.50)" }}>🇸🇳 +221</span>
+              </div>
+              <input
+                type="tel" placeholder="Numéro de téléphone" value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                className="flex-1 px-3 py-3 font-body text-sm text-white placeholder-white/30 outline-none"
+                style={{ background: "transparent" }}
+              />
+            </div>
+
+            {state === "error" && (
+              <p className="font-body text-xs text-red-400">{errMsg}</p>
+            )}
+
+            <button
+              type="submit" disabled={state === "loading"}
+              className="w-full flex items-center justify-center gap-2 py-4 rounded-xl font-body font-bold text-sm transition-all hover:opacity-90 active:scale-[.98] disabled:opacity-60"
+              style={{ background: GOLD, color: "#0C0B09", boxShadow: "0 4px 20px rgba(200,168,75,0.30)" }}
+            >
+              {state === "loading" ? (
+                <><Loader2 size={16} className="animate-spin" /> Redirection…</>
+              ) : (
+                <><ShoppingCart size={15} /> Payer {book.price}</>
+              )}
+            </button>
+          </form>
 
           <p className="font-body text-[10px] text-center mt-4" style={{ color: "rgba(255,255,255,0.25)" }}>
-            Paiement 100% sécurisé via Chariow
+            Paiement 100% sécurisé · Guide PDF envoyé par email après confirmation
           </p>
         </div>
       </div>
