@@ -114,6 +114,7 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Hero />
+      <hr style={{ border: "none", borderTop: "1px solid rgba(255,255,255,0.18)", margin: 0 }} />
       <ServicesGrid />
       <KELIBanner />
       <IAToolsSection />
