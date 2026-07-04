@@ -32,11 +32,10 @@ export async function POST(req: NextRequest) {
     }
 
     const body: Record<string, unknown> = {
-      product_id:   productId,
+      product_id: productId,
       email,
-      first_name:   firstName,
-      last_name:    lastName,
-      redirect_url: "https://kekelicreativeagency.com/?achat=succes",
+      first_name: firstName,
+      last_name:  lastName,
     };
 
     if (phone) {
