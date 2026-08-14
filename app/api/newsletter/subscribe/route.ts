@@ -27,11 +27,14 @@ export async function POST(request: Request) {
     const db = getSupabase();
 
     /* ── Check si déjà abonné ── */
-    const { data: existing } = await db
+    // .limit(1) plutôt que .single() : évite une erreur si l'email existe
+    // en double dans la table (ancien test, etc.) — on prend juste la 1ère ligne.
+    const { data: existingRows } = await db
       .from("newsletter_subscribers")
       .select("id, unsubscribed_at")
       .eq("email", email)
-      .single();
+      .limit(1);
+    const existing = existingRows?.[0];
 
     if (existing) {
       if (!existing.unsubscribed_at) {
@@ -50,17 +53,23 @@ export async function POST(request: Request) {
         .insert({ email, name: name ?? null, source });
 
       if (insertErr) {
+        // Contrainte unique sur l'email (course entre le check et l'insert,
+        // ou doublon existant) — pas une vraie erreur, l'email est abonné.
+        if (insertErr.code === "23505") {
+          return NextResponse.json({ success: true, alreadySubscribed: true });
+        }
         console.error("Newsletter insert error:", insertErr.message);
         return NextResponse.json({ error: "Erreur serveur. Veuillez réessayer." }, { status: 500 });
       }
     }
 
     /* ── Récupérer le token pour le lien de désinscription ── */
-    const { data: sub } = await db
+    const { data: subRows } = await db
       .from("newsletter_subscribers")
       .select("token")
       .eq("email", email)
-      .single();
+      .limit(1);
+    const sub = subRows?.[0];
 
     const unsubscribeUrl = `${SITE_URL}/api/newsletter/unsubscribe?token=${sub?.token ?? ""}`;
 
