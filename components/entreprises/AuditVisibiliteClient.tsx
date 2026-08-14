@@ -47,7 +47,7 @@ export default function AuditVisibiliteClient() {
 
   if (step === "loading") {
     return (
-      <div className="min-h-screen bg-[#050A14] flex items-center justify-center">
+      <div className="min-h-screen bg-[#130A28] flex items-center justify-center">
         <div className="text-center">
           <Loader2 size={48} className="animate-spin mx-auto mb-6" style={{ color: "#3B82F6" }} />
           <p className="font-display text-2xl text-white mb-2">Audit de votre visibilité en cours...</p>
@@ -60,7 +60,7 @@ export default function AuditVisibiliteClient() {
   if (step === "results" && results) {
     const scoreColor = results.score_global >= 70 ? "#10B981" : results.score_global >= 40 ? "#F97316" : "#EF4444";
     return (
-      <div className="min-h-screen bg-[#050A14] py-16">
+      <div className="min-h-screen bg-[#130A28] py-16">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
             <p className="font-body text-xs uppercase tracking-widest text-white/40 mb-4">Audit Visibilité — {nom}</p>
@@ -162,7 +162,7 @@ export default function AuditVisibiliteClient() {
   }
 
   return (
-    <div className="min-h-screen bg-[#050A14] flex items-center justify-center py-16">
+    <div className="min-h-screen bg-[#130A28] flex items-center justify-center py-16">
       <div className="max-w-lg w-full mx-auto px-4 sm:px-6">
         <div className="text-center mb-10">
           <div className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5" style={{ background: "rgba(59,130,246,0.15)" }}>

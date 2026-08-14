@@ -2,23 +2,18 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import AdminSidebar from "@/components/admin/AdminSidebar";
 import EbookArtisteViewer from "@/components/admin/ebooks/EbookArtisteViewer";
+import { getSidebarCounts } from "@/lib/admin/sidebarCounts";
 
 export const metadata: Metadata = { title: "Guide Artiste Sénégal — KEKELI Admin" };
+export const dynamic = "force-dynamic";
 
-export default function EbookArtistePage() {
-  const emptyCounts = {
-    leads: 0, newLeads: 0,
-    artistes: 0, newArtistes: 0,
-    entreprises: 0, newEntreprises: 0,
-    clients: 0, pending: 0,
-    projects: 0, active: 0,
-    conversations: 0, newsletter: 0, blog: 0, guides: 0,
-  };
+export default async function EbookArtistePage() {
+  const counts = await getSidebarCounts();
 
   return (
     <>
       <Suspense fallback={<aside className="w-60 shrink-0 min-h-screen" style={{ background: "#0C0B09" }} />}>
-        <AdminSidebar counts={emptyCounts} />
+        <AdminSidebar counts={counts} />
       </Suspense>
       <EbookArtisteViewer />
     </>

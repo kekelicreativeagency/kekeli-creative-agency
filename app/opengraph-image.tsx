@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt     = "KEKELI Creative Agency — Mettre la lumière sur votre projet";
+export const alt     = "KEKELI Creative Agency — Révéler la lumière de votre vision";
 export const size    = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -61,7 +61,7 @@ export default function OGImage() {
             color: "#C8A84B", fontSize: 22, fontWeight: 400, letterSpacing: "3px",
             textTransform: "uppercase",
           }}>
-            Mettre la lumière sur votre projet
+            Révéler la lumière de votre vision
           </span>
         </div>
 

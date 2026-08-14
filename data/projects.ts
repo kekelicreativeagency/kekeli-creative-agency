@@ -103,27 +103,6 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: "shooting-artiste-dakar",
-    title: "Shooting portrait artiste",
-    subtitle: "Identité visuelle · Dakar",
-    category: ["artiste"],
-    description:
-      "Shooting photo professionnel pour la sortie d'un album. Visuels pour réseaux sociaux, presse et affichage grand format.",
-    tags: ["Photo", "Branding", "Réseaux sociaux"],
-    image: "/images/shooting-artiste.jpg",
-    imageAlt: "Shooting portrait artiste — KEKELI Creative Agency",
-    timeline: "1 journée",
-    challenge:
-      "Un artiste en plein lancement d'album avait besoin d'un visuel de couverture fort et d'un pack photo professionnel cohérent pour son image publique — Instagram, presse et affichage.",
-    solution:
-      "Shooting d'une journée en studio et en extérieur à Dakar. Direction artistique complète, retouche professionnelle et livraison d'un pack de 30+ visuels adaptés à chaque format : carré, portrait et paysage.",
-    results: [
-      { label: "Visuels livrés", value: "30+" },
-      { label: "Formats couverts", value: "6" },
-      { label: "Durée du shooting", value: "1 journée" },
-    ],
-  },
-  {
     id: "campagne-ads-o-bon-prix",
     title: "Campagne Meta Ads — O BON PRIX",
     subtitle: "Publicité digitale · Superette O BON PRIX",
@@ -243,25 +222,26 @@ export const projects: Project[] = [
 
   // ── Autres réalisations ────────────────────────────────
   {
-    id: "boutique-en-ligne",
-    title: "Boutique en ligne — Cosmétiques",
-    subtitle: "E-commerce · Sénégal",
-    category: ["ecommerce", "web"],
+    id: "aliyah-youth-academy",
+    title: "Aliyah Youth Academy",
+    subtitle: "Site vitrine · Formation médias gospel, Dakar",
+    category: ["web", "branding"],
     description:
-      "Développement d'une boutique en ligne pour une marque de cosmétiques naturels africains. Intégration Wave, Orange Money et livraison à Dakar.",
-    tags: ["E-commerce", "Wave", "Cosmétiques", "Mobile"],
-    url: "https://galsengospelurbain.com/shop/",
-    image: "/images/boutique-en-ligne.jpg",
-    imageAlt: "Boutique en ligne cosmétiques naturels africains",
-    timeline: "6 semaines",
+      "Site vitrine pour Aliyah Youth Academy, académie de formation gospel pour les 18-35 ans — médias, voix, communication, numérique. Présentation du programme et candidature en ligne.",
+    tags: ["Next.js", "Site vitrine", "Formation", "Candidature en ligne"],
+    url: "https://www.aliyahyouthacademy.com",
+    image: "/images/aliyah-youth-academy.png",
+    imageAlt: "Aliyah Youth Academy — Formation médias gospel, Dakar",
+    featured: true,
+    timeline: "3 semaines",
     challenge:
-      "Une marque de cosmétiques naturels africains vendait uniquement via Instagram DM — processus chaotique, pas de gestion de stock, paiements en espèces uniquement. Elle voulait professionnaliser ses ventes en ligne.",
+      "Aliyah Youth Academy lançait sa toute première formation à Dakar — 16 modules sur 4 semaines pour aider des jeunes de 18 à 35 ans à créer leur propre média gospel. L'académie avait besoin d'une plateforme capable de présenter le programme clairement et de gérer les candidatures pour la première vague.",
     solution:
-      "Boutique e-commerce complète avec catalogue produits, panier, intégration Wave et Orange Money, gestion de stock et système de livraison à Dakar. Interface mobile-first pensée pour l'audience locale.",
+      "Développement d'un site vitrine Next.js avec présentation du programme, des modules et des intervenants, ainsi qu'un parcours de candidature en ligne pour la première cohorte.",
     results: [
-      { label: "Ventes mois 1", value: "+180 %" },
-      { label: "Paiements mobile", value: "73 % du CA" },
-      { label: "Taux d'abandon panier", value: "28 %" },
+      { label: "Modules présentés", value: "16" },
+      { label: "Durée formation", value: "4 semaines" },
+      { label: "Délai de livraison", value: "3 semaines" },
     ],
   },
 ];

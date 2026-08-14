@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   },
 };
 
-const ACCENT = "#10B981";
+const ACCENT = "#C8A84B";
 
 const PROFILES = [
   { emoji: "🎯", title: "Coachs & Formateurs",       desc: "Positionnez-vous comme l'expert incontournable de votre domaine." },
@@ -113,11 +113,11 @@ export default function PersonnalitesPage() {
       {/* ── HERO ─────────────────────────────────────────── */}
       <section
         className="relative py-32 overflow-hidden"
-        style={{ background: "#080D0B" }}
+        style={{ background: "#0D0520" }}
       >
         <div aria-hidden className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-[170px] opacity-20" style={{ background: ACCENT }} />
-          <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full blur-[140px] opacity-15" style={{ background: "#059669" }} />
+          <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full blur-[140px] opacity-15" style={{ background: "#9A7A2E" }} />
           <div className="absolute top-1/2 left-1/3 w-64 h-64 rounded-full blur-[100px] opacity-10" style={{ background: "#C8A84B" }} />
         </div>
 
@@ -161,7 +161,7 @@ export default function PersonnalitesPage() {
                 <a
                   href="#consultation"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-body font-bold text-base text-black transition-all hover:scale-105"
-                  style={{ background: `linear-gradient(135deg, ${ACCENT} 0%, #059669 100%)`, boxShadow: `0 8px 30px ${ACCENT}40` }}
+                  style={{ background: `linear-gradient(135deg, ${ACCENT} 0%, #9A7A2E 100%)`, boxShadow: `0 8px 30px ${ACCENT}40` }}
                 >
                   Demander une consultation
                 </a>
@@ -179,7 +179,7 @@ export default function PersonnalitesPage() {
       </section>
 
       {/* ── PROFILS CIBLÉS ───────────────────────────────── */}
-      <section className="py-20" style={{ background: "#06100C" }}>
+      <section className="py-20" style={{ background: "#130A28" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn direction="up" className="text-center mb-12">
             <p className="font-body text-xs font-semibold uppercase tracking-[0.2em] mb-2" style={{ color: ACCENT }}>Fait pour vous</p>
@@ -210,10 +210,10 @@ export default function PersonnalitesPage() {
       </section>
 
       {/* ── SERVICES ─────────────────────────────────────── */}
-      <section id="services" className="py-24" style={{ background: "linear-gradient(160deg, #F0FDF4 0%, #ECFDF5 50%, #F0FDF4 100%)" }}>
+      <section id="services" className="py-24" style={{ background: "linear-gradient(160deg, #FBF6EC 0%, #F5EDD8 50%, #FBF6EC 100%)" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn direction="up" className="text-center mb-14">
-            <p className="font-body text-xs font-semibold uppercase tracking-[0.2em] mb-3" style={{ color: "#059669" }}>Nos expertises</p>
+            <p className="font-body text-xs font-semibold uppercase tracking-[0.2em] mb-3" style={{ color: "#9A7A2E" }}>Nos expertises</p>
             <h2 className="font-display text-4xl md:text-5xl text-gray-900 leading-tight">
               4 services pour{" "}
               <em className="not-italic" style={{ color: ACCENT }}>construire votre image</em>
@@ -234,7 +234,7 @@ export default function PersonnalitesPage() {
                         {s.emoji}
                       </div>
                       <div>
-                        <span className="inline-block px-2 py-0.5 rounded-full font-body text-[10px] font-semibold uppercase tracking-wide mb-1" style={{ background: `${ACCENT}15`, color: "#059669" }}>
+                        <span className="inline-block px-2 py-0.5 rounded-full font-body text-[10px] font-semibold uppercase tracking-wide mb-1" style={{ background: `${ACCENT}15`, color: "#9A7A2E" }}>
                           {s.tag}
                         </span>
                         <h3 className="font-body font-bold text-gray-900 text-base leading-snug">{s.title}</h3>
@@ -268,7 +268,7 @@ export default function PersonnalitesPage() {
       </section>
 
       {/* ── STATS ────────────────────────────────────────── */}
-      <section className="py-16" style={{ background: "#06100C" }}>
+      <section className="py-16" style={{ background: "#130A28" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeInStagger className="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
             {[
@@ -289,10 +289,10 @@ export default function PersonnalitesPage() {
       </section>
 
       {/* ── POURQUOI KEKELI ──────────────────────────────── */}
-      <section className="py-24" style={{ background: "linear-gradient(160deg, #F0FDF4 0%, #ECFDF5 50%, #F0FDF4 100%)" }}>
+      <section className="py-24" style={{ background: "linear-gradient(160deg, #FBF6EC 0%, #F5EDD8 50%, #FBF6EC 100%)" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn direction="up" className="text-center mb-14">
-            <p className="font-body text-xs font-semibold uppercase tracking-[0.2em] mb-3" style={{ color: "#059669" }}>Nos atouts</p>
+            <p className="font-body text-xs font-semibold uppercase tracking-[0.2em] mb-3" style={{ color: "#9A7A2E" }}>Nos atouts</p>
             <h2 className="font-display text-4xl md:text-5xl text-gray-900">
               Pourquoi choisir{" "}
               <em className="not-italic" style={{ color: ACCENT }}>KEKELI ?</em>
@@ -320,11 +320,11 @@ export default function PersonnalitesPage() {
       <section
         id="consultation"
         className="py-24 relative overflow-hidden"
-        style={{ background: "#080D0B" }}
+        style={{ background: "#0D0520" }}
       >
         <div aria-hidden className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 w-96 h-96 rounded-full blur-[150px] opacity-15" style={{ background: ACCENT }} />
-          <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full blur-[120px] opacity-10" style={{ background: "#059669" }} />
+          <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full blur-[120px] opacity-10" style={{ background: "#9A7A2E" }} />
         </div>
 
         <div className="relative z-10 max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">

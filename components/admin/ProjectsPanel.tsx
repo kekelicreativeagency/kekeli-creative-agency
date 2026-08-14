@@ -23,7 +23,7 @@ const STATUS_OPTIONS: { value: Project["status"]; label: string }[] = [
 
 const STATUS_COLORS: Record<Project["status"], string> = {
   en_attente: "bg-amber-100 text-amber-700",
-  en_cours:   "bg-blue-100 text-blue-700",
+  en_cours:   "bg-violet-pale text-purple",
   termine:    "bg-emerald-100 text-emerald-700",
   suspendu:   "bg-[#E7E5E4] text-[#78716C]",
 };
@@ -96,7 +96,10 @@ export default function ProjectsPanel({ projects: initialProjects, clients }: Pr
     const form = getFinancialForm(projectId, existing);
     const quoted = parseFloat(form.quoted);
     const paid   = parseFloat(form.paid);
-    if (isNaN(quoted) || isNaN(paid)) return;
+    if (isNaN(quoted) || isNaN(paid)) {
+      alert("Montants invalides — entrez des nombres.");
+      return;
+    }
     setFinancialForm(projectId, { submitting: true, saved: false });
 
     try {
@@ -120,9 +123,11 @@ export default function ProjectsPanel({ projects: initialProjects, clients }: Pr
         setTimeout(() => setFinancialForm(projectId, { saved: false }), 3000);
       } else {
         setFinancialForm(projectId, { submitting: false });
+        alert("L'enregistrement a échoué. Réessayez.");
       }
     } catch {
       setFinancialForm(projectId, { submitting: false });
+      alert("L'enregistrement a échoué. Réessayez.");
     }
   }
 
@@ -147,7 +152,11 @@ export default function ProjectsPanel({ projects: initialProjects, clients }: Pr
         setNewProject({ client_id: "", title: "", description: "", status: "en_attente", progress: 0 });
         setShowCreateForm(false);
         router.refresh();
+      } else {
+        alert("La création du projet a échoué. Réessayez.");
       }
+    } catch {
+      alert("La création du projet a échoué. Réessayez.");
     } finally {
       setCreating(false);
     }
@@ -195,9 +204,13 @@ export default function ProjectsPanel({ projects: initialProjects, clients }: Pr
         }
         setUpdateForm(projectId, { title: "", content: "", progress: "", status: "", submitting: false });
         router.refresh();
+      } else {
+        setUpdateForm(projectId, { submitting: false });
+        alert("L'ajout de la mise à jour a échoué. Réessayez.");
       }
     } catch {
       setUpdateForm(projectId, { submitting: false });
+      alert("L'ajout de la mise à jour a échoué. Réessayez.");
     }
   }
 
@@ -220,9 +233,13 @@ export default function ProjectsPanel({ projects: initialProjects, clients }: Pr
           [projectId]: [...(prev[projectId] ?? []), json.data],
         }));
         setMessageForm(projectId, { content: "", submitting: false });
+      } else {
+        setMessageForm(projectId, { submitting: false });
+        alert("L'envoi du message a échoué. Réessayez.");
       }
     } catch {
       setMessageForm(projectId, { submitting: false });
+      alert("L'envoi du message a échoué. Réessayez.");
     }
   }
 

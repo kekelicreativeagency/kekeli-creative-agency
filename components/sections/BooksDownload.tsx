@@ -302,7 +302,7 @@ const BOOKS = [
     subtitle: "Guide de l'Artiste Africain Professionnel",
     tag: "Artistes & Musiciens",
     details: "47 modules · 239 pages · Édition 2026",
-    price: "5 000 F CFA",
+    price: "20 $",
     description:
       "De l'identité artistique à la monétisation — tout ce qu'un artiste sénégalais doit maîtriser pour percer : branding, réseaux sociaux, distribution, droits BSDA, booking et bien plus.",
     chips: ["Branding", "TikTok & Instagram", "Distribution", "Droits d'auteur", "Monétisation"],
@@ -330,7 +330,7 @@ const BOOKS = [
     subtitle: "Stratégie & Communication pour PME Africaines",
     tag: "Entrepreneurs & PME",
     details: "38 modules · 195 pages · Édition 2026",
-    price: "5 000 F CFA",
+    price: "20 $",
     description:
       "Communication digitale, identité visuelle, site web, réseaux sociaux et publicité — le guide complet pour les entrepreneurs sénégalais qui veulent se développer avec impact.",
     chips: ["Identité visuelle", "Site web", "Community management", "Publicité Meta/Google", "Stratégie"],

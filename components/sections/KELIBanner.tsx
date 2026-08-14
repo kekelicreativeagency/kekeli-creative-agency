@@ -70,7 +70,7 @@ export default function KELIBanner() {
                       </span>
                     </div>
 
-                    <h2 className="font-display text-3xl md:text-4xl text-white mb-2 leading-snug">
+                    <h2 className="font-body font-extrabold text-3xl md:text-4xl text-white mb-2 leading-snug tracking-tight">
                       {tr.keli.title1}{" "}
                       <em className="not-italic" style={{ color: "#C8A84B" }}>{tr.keli.titleHighlight}</em>
                       {" "}{tr.keli.title2}

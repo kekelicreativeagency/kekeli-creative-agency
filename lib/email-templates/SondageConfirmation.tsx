@@ -202,7 +202,7 @@ export default function SondageConfirmation({ config, score, userInfo, siteUrl }
               L&apos;équipe KEKELI Creative Agency
             </Text>
             <Text style={{ color: muted, fontSize: 11, textAlign: "center", fontStyle: "italic", margin: 0 }}>
-              &ldquo;Mettre la lumière sur votre projet&rdquo; — Dakar, Sénégal
+              &ldquo;Révéler la lumière de votre vision&rdquo; — Dakar, Sénégal
             </Text>
           </Section>
         </Container>

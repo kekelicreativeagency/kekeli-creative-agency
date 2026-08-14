@@ -22,7 +22,7 @@ const services = [
   {
     icon: "▶️",
     title: "Monétisation YouTube",
-    color: "#16A34A",
+    color: "#8B5CF6",
     desc: "Activation et optimisation complète de votre chaîne YouTube pour commencer à percevoir des revenus publicitaires.",
     includes: [
       "Vérification des critères d'éligibilité",
@@ -36,7 +36,7 @@ const services = [
   {
     icon: "🎵",
     title: "Monétisation Plateformes",
-    color: "#16A34A",
+    color: "#8B5CF6",
     desc: "Activation et suivi des revenus sur toutes les plateformes : Boomplay, TikTok Creator Fund, Facebook Sound Collection.",
     includes: [
       "Activation TikTok Creator Fund",
@@ -50,7 +50,7 @@ const services = [
   {
     icon: "⚖️",
     title: "Inscription SODAV",
-    color: "#16A34A",
+    color: "#8B5CF6",
     desc: "Accompagnement complet pour votre inscription à la SODAV (Société Sénégalaise du Droit d'Auteur et des Droits Voisins).",
     includes: [
       "Constitution du dossier d'inscription",
@@ -64,7 +64,7 @@ const services = [
   {
     icon: "🌍",
     title: "Droits internationaux — SACEM & Co.",
-    color: "#16A34A",
+    color: "#8B5CF6",
     desc: "Affiliation aux sociétés de gestion collective internationales pour percevoir vos droits partout dans le monde.",
     includes: [
       "Affiliation SACEM (France / international)",
@@ -113,8 +113,8 @@ export default function MonetisationPage() {
       >
         {/* Blobs */}
         <div aria-hidden className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-[160px] opacity-22" style={{ background: "#16A34A" }} />
-          <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full blur-[130px] opacity-18" style={{ background: "#059669" }} />
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-[160px] opacity-22" style={{ background: "#8B5CF6" }} />
+          <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full blur-[130px] opacity-18" style={{ background: "#6D28D9" }} />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full blur-[100px] opacity-12" style={{ background: "#C8A84B" }} />
         </div>
 
@@ -258,7 +258,7 @@ export default function MonetisationPage() {
               <FadeInItem key={s.step}>
                 <div className="flex flex-col p-5 rounded-2xl h-full" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}>
                   <div className="flex items-center gap-2 mb-3">
-                    <span className="font-body font-bold text-[10px] tracking-[0.2em]" style={{ color: "#16A34A" }}>{s.step}</span>
+                    <span className="font-body font-bold text-[10px] tracking-[0.2em]" style={{ color: "#8B5CF6" }}>{s.step}</span>
                     <span className="text-xl">{s.icon}</span>
                   </div>
                   <h3 className="font-body font-bold text-white text-sm mb-2">{s.title}</h3>
@@ -284,7 +284,7 @@ export default function MonetisationPage() {
               <FadeInItem key={title}>
                 <div className="flex gap-4 p-5 rounded-2xl bg-white" style={{ boxShadow: "0 4px 20px rgba(180,140,20,0.08)" }}>
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: "rgba(22,163,74,0.12)" }}>
-                    <Icon size={18} style={{ color: "#16A34A" }} />
+                    <Icon size={18} style={{ color: "#8B5CF6" }} />
                   </div>
                   <div>
                     <p className="font-body font-semibold text-text-primary text-sm mb-1">{title}</p>
@@ -305,8 +305,8 @@ export default function MonetisationPage() {
       >
         {/* Blobs */}
         <div aria-hidden className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-0 w-96 h-96 rounded-full blur-[140px] opacity-18" style={{ background: "#16A34A" }} />
-          <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full blur-[120px] opacity-12" style={{ background: "#059669" }} />
+          <div className="absolute top-0 left-0 w-96 h-96 rounded-full blur-[140px] opacity-18" style={{ background: "#8B5CF6" }} />
+          <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full blur-[120px] opacity-12" style={{ background: "#6D28D9" }} />
         </div>
 
         <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">

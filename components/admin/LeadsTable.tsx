@@ -16,13 +16,13 @@ const TYPE_LABELS = {
 } as const;
 
 const TYPE_COLORS = {
-  contact:        "bg-blue-50 text-blue-700 border-blue-200",
-  brief:          "bg-amber-50 text-amber-700 border-amber-200",
-  sondage:        "bg-violet-50 text-violet-700 border-violet-200",
-  artiste:        "bg-pink-50 text-pink-700 border-pink-200",
-  entreprise:     "bg-sky-50 text-sky-700 border-sky-200",
-  projet:         "bg-teal-50 text-teal-700 border-teal-200",
-  guide_download: "bg-purple-50 text-purple-700 border-purple-200",
+  contact:        "bg-gold-pale text-gold-dark border-gold/30",
+  brief:          "bg-violet-pale text-purple border-violet/30",
+  sondage:        "bg-gold-pale text-gold-dark border-gold/30",
+  artiste:        "bg-violet-pale text-purple border-violet/30",
+  entreprise:     "bg-gold-pale text-gold-dark border-gold/30",
+  projet:         "bg-violet-pale text-purple border-violet/30",
+  guide_download: "bg-gold-pale text-gold-dark border-gold/30",
 } as const;
 
 const STATUS_COLORS = {
@@ -77,11 +77,15 @@ function LeadDrawer({ lead, onClose }: { lead: Lead; onClose: () => void }) {
   const [pending, startTransition] = useTransition();
 
   async function updateStatus(status: "read" | "archived") {
-    await fetch("/api/admin/leads", {
+    const res = await fetch("/api/admin/leads", {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id: lead.id, status }),
     });
+    if (!res.ok) {
+      alert("La mise à jour a échoué. Réessayez.");
+      return;
+    }
     startTransition(() => { router.refresh(); onClose(); });
   }
 
@@ -156,7 +160,7 @@ function LeadDrawer({ lead, onClose }: { lead: Lead; onClose: () => void }) {
                   <p className="font-body text-xs text-[#A8A29E] mb-2">Services souhaités</p>
                   <div className="flex flex-wrap gap-1.5">
                     {(d.besoins as string[]).map((b) => (
-                      <span key={b} className="px-2 py-1 rounded-full bg-pink-50 border border-pink-200 font-body text-[11px] text-pink-700">
+                      <span key={b} className="px-2 py-1 rounded-full bg-gold-pale border border-gold/30 font-body text-[11px] text-gold-dark">
                         {b}
                       </span>
                     ))}
@@ -310,7 +314,7 @@ function Field({
 }
 
 // ── Main table ────────────────────────────────────────────────────────
-const TYPES = ["all", "contact", "brief", "sondage", "artiste", "projet"] as const;
+const TYPES = ["all", "contact", "brief", "sondage", "artiste", "entreprise", "projet", "guide_download"] as const;
 const STATUSES = ["all", "new", "read", "archived"] as const;
 
 export default function LeadsTable({ leads }: { leads: Lead[] }) {
@@ -339,6 +343,8 @@ export default function LeadsTable({ leads }: { leads: Lead[] }) {
       a.click();
       a.remove();
       URL.revokeObjectURL(url);
+    } catch {
+      alert("L'export a échoué. Réessayez.");
     } finally {
       setExporting(false);
     }

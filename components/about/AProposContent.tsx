@@ -24,6 +24,16 @@ const VALUES_EN = [
   { icon: Zap,       emoji: "🚀", title: "Impact", desc: "Measurable results. Every campaign is data-driven and performance-oriented." },
 ];
 
+const TEAM_FR = [
+  { image: "/images/seth.jpg", name: "Seth Mensa M. Assou", role: "CEO & Fondateur" },
+  { image: "/images/rine.jpg", name: "Rine Wadangoye", role: "Chargée de communication & Relation client" },
+];
+
+const TEAM_EN = [
+  { image: "/images/seth.jpg", name: "Seth Mensa M. Assou", role: "CEO & Founder" },
+  { image: "/images/rine.jpg", name: "Rine Wadangoye", role: "Communications & Client Relations Manager" },
+];
+
 const STEPS_FR = [
   { number: "01", title: "Écoute", desc: "Nous prenons le temps de comprendre vos objectifs, votre audience et vos contraintes. Un brief approfondi est la base de tout projet réussi." },
   { number: "02", title: "Stratégie", desc: "Nous construisons un plan d'action sur-mesure : positionnement, canaux, calendrier et budgets — tout est planifié avant d'agir." },
@@ -44,6 +54,7 @@ export default function AProposContent() {
   const { locale } = useLanguage();
   const values = locale === "fr" ? VALUES_FR : VALUES_EN;
   const steps = locale === "fr" ? STEPS_FR : STEPS_EN;
+  const team = locale === "fr" ? TEAM_FR : TEAM_EN;
 
   return (
     <>
@@ -128,6 +139,36 @@ export default function AProposContent() {
                   <div className="text-3xl mb-4">{emoji}</div>
                   <h3 className="font-display text-2xl font-semibold text-text-primary mb-3">{title}</h3>
                   <p className="font-body text-sm text-text-muted leading-relaxed">{desc}</p>
+                </div>
+              </FadeInItem>
+            ))}
+          </FadeInStagger>
+        </div>
+      </section>
+
+      {/* SECTION 4 : TEAM */}
+      <section className="py-24 bg-bg-primary">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeIn direction="up" className="text-center mb-14">
+            <SectionHeader
+              centered
+              eyebrow={locale === "fr" ? "L'équipe" : "The team"}
+              title={
+                locale === "fr"
+                  ? <>Les visages derrière <em className="text-gold not-italic">KEKELI</em></>
+                  : <>The faces behind <em className="text-gold not-italic">KEKELI</em></>
+              }
+            />
+          </FadeIn>
+          <FadeInStagger className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-xl mx-auto">
+            {team.map(({ image, name, role }) => (
+              <FadeInItem key={name}>
+                <div className="text-center">
+                  <div className="relative aspect-[3/4] rounded-2xl overflow-hidden ring-1 ring-gold/20 mb-5 [box-shadow:var(--shadow-md)]">
+                    <Image src={image} alt={name} fill className="object-cover object-top" sizes="(max-width: 640px) 90vw, 340px" />
+                  </div>
+                  <h3 className="font-display text-xl font-semibold text-text-primary mb-1">{name}</h3>
+                  <p className="font-body text-sm text-gold-dark">{role}</p>
                 </div>
               </FadeInItem>
             ))}

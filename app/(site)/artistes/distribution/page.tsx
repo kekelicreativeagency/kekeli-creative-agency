@@ -55,7 +55,7 @@ const releaseTypes = [
   {
     type: "Album",
     emoji: "📀",
-    color: "#3B82F6",
+    color: "#C8A84B",
     tracks: "7 titres et plus",
     delay: "10–14 jours",
     desc: "Votre œuvre complète. Une sortie albumiale demande une préparation soignée et une communication forte.",
@@ -64,7 +64,7 @@ const releaseTypes = [
   {
     type: "Mixtape",
     emoji: "🎚️",
-    color: "#10B981",
+    color: "#8B5CF6",
     tracks: "Variable",
     delay: "Variable",
     desc: "Format libre, souvent gratuit, idéal pour les rappeurs et producteurs. Nécessite une vérification des droits pour les samples.",
@@ -166,7 +166,6 @@ export default function DistributionPage() {
         <div aria-hidden className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-[160px] opacity-25" style={{ background: "#6D28D9" }} />
           <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full blur-[130px] opacity-20" style={{ background: "#C8A84B" }} />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full blur-[100px] opacity-15" style={{ background: "#3B82F6" }} />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

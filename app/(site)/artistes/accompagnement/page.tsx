@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
 };
 
-const ACCENT = "#10B981";
+const ACCENT = "#8B5CF6";
 const ACCENT_LIGHT = "#6EE7B7";
 
 const services = [
@@ -115,7 +115,7 @@ export default function AccompagnementPage() {
       >
         <div aria-hidden className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-[160px] opacity-20" style={{ background: ACCENT }} />
-          <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full blur-[130px] opacity-15" style={{ background: "#059669" }} />
+          <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full blur-[130px] opacity-15" style={{ background: "#6D28D9" }} />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full blur-[100px] opacity-10" style={{ background: "#C8A84B" }} />
         </div>
 
@@ -322,7 +322,7 @@ export default function AccompagnementPage() {
       >
         <div aria-hidden className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 w-96 h-96 rounded-full blur-[140px] opacity-18" style={{ background: ACCENT }} />
-          <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full blur-[120px] opacity-12" style={{ background: "#059669" }} />
+          <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full blur-[120px] opacity-12" style={{ background: "#6D28D9" }} />
         </div>
 
         <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">

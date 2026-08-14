@@ -14,12 +14,13 @@ export default function EntreprisesHero() {
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
 
   return (
-    <section ref={ref} className="relative min-h-[92vh] flex items-center overflow-hidden bg-[#050A14]">
+    <section ref={ref} className="relative min-h-[92vh] flex items-center overflow-hidden"
+      style={{ background: "linear-gradient(135deg, #08060F 0%, #130A28 35%, #1C0A40 60%, #0A0618 100%)" }}>
       {/* Gradient blobs */}
       <motion.div style={{ y }} className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-[-10%] left-[10%] w-[600px] h-[600px] rounded-full opacity-15"
-          style={{ background: "radial-gradient(circle, #C8A84B 0%, transparent 70%)", filter: "blur(80px)" }} />
-        <div className="absolute bottom-[0%] right-[5%] w-[500px] h-[500px] rounded-full opacity-10"
+        <div className="absolute top-[-10%] left-[10%] w-[600px] h-[600px] rounded-full opacity-20"
+          style={{ background: "radial-gradient(circle, #6D28D9 0%, transparent 70%)", filter: "blur(80px)" }} />
+        <div className="absolute bottom-[0%] right-[5%] w-[500px] h-[500px] rounded-full opacity-15"
           style={{ background: "radial-gradient(circle, #C8A84B 0%, transparent 70%)", filter: "blur(80px)" }} />
         <div className="absolute top-[40%] left-[50%] w-[400px] h-[400px] rounded-full opacity-10"
           style={{ background: "radial-gradient(circle, #C8A84B 0%, transparent 70%)", filter: "blur(80px)" }} />

@@ -51,7 +51,7 @@ export default function ReseauIdealClient() {
 
   if (step === "loading") {
     return (
-      <div className="min-h-screen bg-[#050A14] flex items-center justify-center">
+      <div className="min-h-screen bg-[#130A28] flex items-center justify-center">
         <div className="text-center">
           <Loader2 size={48} className="animate-spin mx-auto mb-6" style={{ color: "#8B5CF6" }} />
           <p className="font-display text-2xl text-white mb-2">Analyse en cours...</p>
@@ -64,7 +64,7 @@ export default function ReseauIdealClient() {
   if (step === "results" && results) {
     const mainColor = RESEAU_COLORS[results.reseau_principal.nom] ?? "#8B5CF6";
     return (
-      <div className="min-h-screen bg-[#050A14] py-16">
+      <div className="min-h-screen bg-[#130A28] py-16">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-10">
             <p className="font-body text-xs uppercase tracking-widest text-white/40 mb-3">Votre réseau idéal</p>
@@ -149,7 +149,7 @@ export default function ReseauIdealClient() {
   }
 
   return (
-    <div className="min-h-screen bg-[#050A14] flex items-center justify-center py-16">
+    <div className="min-h-screen bg-[#130A28] flex items-center justify-center py-16">
       <div className="max-w-lg w-full mx-auto px-4 sm:px-6">
         <div className="text-center mb-10">
           <div className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5" style={{ background: "rgba(139,92,246,0.15)" }}>

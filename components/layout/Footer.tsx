@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -150,7 +150,7 @@ export default function Footer() {
 
           {/* Personnalités */}
           <div>
-            <h3 className="font-body font-semibold text-sm uppercase tracking-[0.15em] mb-6" style={{ color: "#10B981" }}>{f.persoCol}</h3>
+            <h3 className="font-body font-semibold text-sm uppercase tracking-[0.15em] text-gold mb-6">{f.persoCol}</h3>
             <ul className="space-y-3">
               {personnaliteLinks.map(({ label, href }) => (
                 <li key={href}>

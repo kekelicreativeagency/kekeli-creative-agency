@@ -38,6 +38,8 @@ export default function ClientsPanel({ clients: initialClients }: Props) {
       if (res.ok) {
         setClients((prev) => prev.map((c) => (c.id === id ? { ...c, status } : c)));
         router.refresh();
+      } else {
+        alert("La mise à jour a échoué. Réessayez.");
       }
     } finally {
       setLoadingId(null);

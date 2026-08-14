@@ -64,7 +64,7 @@ export default function DiagnosticClient() {
 
   if (step === "loading") {
     return (
-      <div className="min-h-screen bg-[#050A14] flex items-center justify-center">
+      <div className="min-h-screen bg-[#130A28] flex items-center justify-center">
         <div className="text-center">
           <Loader2 size={48} className="animate-spin mx-auto mb-6" style={{ color: "#10B981" }} />
           <p className="font-display text-2xl text-white mb-2">Diagnostic en cours...</p>
@@ -77,7 +77,7 @@ export default function DiagnosticClient() {
   if (step === "results" && results) {
     const matColor = results.score_maturite_digitale >= 70 ? "#10B981" : results.score_maturite_digitale >= 40 ? "#F97316" : "#EF4444";
     return (
-      <div className="min-h-screen bg-[#050A14] py-16">
+      <div className="min-h-screen bg-[#130A28] py-16">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-10">
             <p className="font-body text-xs uppercase tracking-widest text-white/40 mb-4">Diagnostic — {form.nom || "Votre entreprise"}</p>
@@ -181,7 +181,7 @@ export default function DiagnosticClient() {
   }
 
   return (
-    <div className="min-h-screen bg-[#050A14] py-16">
+    <div className="min-h-screen bg-[#130A28] py-16">
       <div className="max-w-lg w-full mx-auto px-4 sm:px-6">
         <div className="text-center mb-10">
           <div className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5" style={{ background: "rgba(16,185,129,0.15)" }}>

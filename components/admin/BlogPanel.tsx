@@ -145,6 +145,7 @@ function BlogEditor({
     if (!form.title.trim() || !form.slug.trim()) { alert("Titre et slug requis."); return; }
     setSaving(publish ? "publish" : "draft");
     try { await onSave({ ...form, published: publish }); }
+    catch { alert("L'enregistrement de l'article a échoué. Réessayez."); }
     finally { setSaving(null); }
   }
 
@@ -356,6 +357,8 @@ export default function BlogPanel({ posts: initial }: { posts: BlogPost[] }) {
     if (res.ok) {
       const updated: BlogPost = await res.json();
       setPosts((prev) => prev.map((p) => p.id === updated.id ? updated : p));
+    } else {
+      alert("Le changement de statut a échoué. Réessayez.");
     }
   }
 
@@ -368,6 +371,7 @@ export default function BlogPanel({ posts: initial }: { posts: BlogPost[] }) {
       body: JSON.stringify({ id }),
     });
     if (res.ok) setPosts((prev) => prev.filter((p) => p.id !== id));
+    else alert("La suppression a échoué. Réessayez.");
     setDeleting(null);
   }
 

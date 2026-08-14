@@ -36,7 +36,7 @@ const URGENCY_COLORS = {
 } as const;
 const STATUS_COLORS = {
   qualified: "bg-emerald-50 text-emerald-700 border-emerald-200",
-  active: "bg-blue-50 text-blue-700 border-blue-200",
+  active: "bg-violet-pale text-purple border-violet/30",
   archived: "bg-stone-100 text-stone-400 border-stone-200",
 } as const;
 const STATUS_LABELS = { qualified: "Qualifié", active: "Actif", archived: "Archivé" } as const;

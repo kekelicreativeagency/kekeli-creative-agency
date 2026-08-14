@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
 };
 
-const ACCENT = "#4C9BFF";
+const ACCENT = "#C8A84B";
 const ACCENT_LIGHT = "#93C5FD";
 
 const services = [
@@ -161,7 +161,7 @@ export default function StrategiePage() {
                 <a
                   href="#formulaire"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-body font-bold text-base text-white transition-all hover:scale-105"
-                  style={{ background: "linear-gradient(135deg, #4C9BFF 0%, #1D6FD8 100%)", boxShadow: "0 8px 30px rgba(76,155,255,0.40)" }}
+                  style={{ background: "linear-gradient(135deg, #C8A84B 0%, #1D6FD8 100%)", boxShadow: "0 8px 30px rgba(76,155,255,0.40)" }}
                 >
                   <TrendingUp size={18} />
                   Demander mon audit

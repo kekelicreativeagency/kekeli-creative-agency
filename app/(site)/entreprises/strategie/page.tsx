@@ -30,7 +30,7 @@ const process = [
 export default function StrategiePage() {
   return (
     <>
-      <section className="relative min-h-[45vh] flex items-end pb-16 overflow-hidden" style={{ background: "#050A14" }}>
+      <section className="relative min-h-[45vh] flex items-end pb-16 overflow-hidden" style={{ background: "#130A28" }}>
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full opacity-20" style={{ background: `radial-gradient(circle, ${COLOR} 0%, transparent 70%)`, filter: "blur(80px)" }} />
         </div>

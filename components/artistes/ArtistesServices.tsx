@@ -44,15 +44,15 @@ const SERVICE_TEXT_EN: ServiceText[] = [
 const SERVICE_STATIC = [
   { id: "direction",     icon: Palette,    color: "#8B5CF6", img: "photo-1493676304819-0d7a8d026dcf" },
   { id: "branding",      icon: Music2,     color: "#C8A84B", img: "photo-1558618666-fcd25c85cd64" },
-  { id: "clips",         icon: Video,      color: "#EC4899", img: "photo-1598452963314-b09f397a5c48" },
-  { id: "photo",         icon: Camera,     color: "#0891B2", img: "photo-1520523839897-bd0b52f945a0" },
-  { id: "accompagnement",icon: Users,      color: "#10B981", img: "photo-1499364615650-ec38552f4f34" },
-  { id: "strategie",     icon: TrendingUp, color: "#3B82F6", img: "photo-1611162617213-7d7a39e9b1d7" },
-  { id: "distribution",  icon: Headphones, color: "#C8A84B", img: "photo-1505740420928-5e560c06d30e" },
-  { id: "marketing",     icon: Target,     color: "#F97316", img: "photo-1611162616305-c69b3fa7fbe0" },
-  { id: "identite",      icon: Globe,      color: "#EC4899", img: "photo-1467232004584-a241de8bcf5d" },
-  { id: "evenementiel",  icon: Mic2,       color: "#9333EA", img: "photo-1470229722913-7c0e2dbbafd3" },
-  { id: "monetisation",  icon: Coins,      color: "#16A34A", img: "photo-1554224155-6726b3ff858f" },
+  { id: "clips",         icon: Video,      color: "#8B5CF6", img: "photo-1598452963314-b09f397a5c48" },
+  { id: "photo",         icon: Camera,     color: "#C8A84B", img: "photo-1520523839897-bd0b52f945a0" },
+  { id: "accompagnement",icon: Users,      color: "#8B5CF6", img: "photo-1499364615650-ec38552f4f34" },
+  { id: "strategie",     icon: TrendingUp, color: "#C8A84B", img: "photo-1611162617213-7d7a39e9b1d7" },
+  { id: "distribution",  icon: Headphones, color: "#8B5CF6", img: "photo-1505740420928-5e560c06d30e" },
+  { id: "marketing",     icon: Target,     color: "#C8A84B", img: "photo-1611162616305-c69b3fa7fbe0" },
+  { id: "identite",      icon: Globe,      color: "#8B5CF6", img: "photo-1467232004584-a241de8bcf5d" },
+  { id: "evenementiel",  icon: Mic2,       color: "#C8A84B", img: "photo-1470229722913-7c0e2dbbafd3" },
+  { id: "monetisation",  icon: Coins,      color: "#8B5CF6", img: "photo-1554224155-6726b3ff858f" },
 ];
 
 interface Service {

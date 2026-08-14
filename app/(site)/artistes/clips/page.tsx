@@ -23,7 +23,7 @@ const productionTypes = [
     type: "Clip Officiel",
     icon: Film,
     emoji: "🎬",
-    color: "#EC4899",
+    color: "#8B5CF6",
     label: "Format phare",
     desc: "Réalisation cinématique complète : storytelling, décors soignés, équipe professionnelle, étalonnage colorimétrique. Le clip qui pose votre image.",
     includes: [
@@ -55,7 +55,7 @@ const productionTypes = [
     type: "Teaser / Trailer",
     icon: Zap,
     emoji: "⚡",
-    color: "#F97316",
+    color: "#C8A84B",
     label: "Buzz & annonce",
     desc: "Vidéo courte et percutante (15 à 60 secondes) pour annoncer une sortie, un concert ou un projet. Conçue pour la viralité.",
     includes: [
@@ -120,9 +120,9 @@ export default function ClipsPage() {
       >
         {/* Blobs */}
         <div aria-hidden className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-[160px] opacity-25" style={{ background: "#EC4899" }} />
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-[160px] opacity-25" style={{ background: "#8B5CF6" }} />
           <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full blur-[130px] opacity-20" style={{ background: "#8B5CF6" }} />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full blur-[100px] opacity-12" style={{ background: "#F97316" }} />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full blur-[100px] opacity-12" style={{ background: "#C8A84B" }} />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -139,7 +139,7 @@ export default function ClipsPage() {
 
           <div className="max-w-3xl">
             <FadeIn direction="up" delay={0.05}>
-              <span className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full mb-6 font-body text-xs font-semibold uppercase tracking-[0.14em]" style={{ border: "1px solid rgba(236,72,153,0.30)", background: "rgba(236,72,153,0.08)", color: "#EC4899" }}>
+              <span className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full mb-6 font-body text-xs font-semibold uppercase tracking-[0.14em]" style={{ border: "1px solid rgba(236,72,153,0.30)", background: "rgba(236,72,153,0.08)", color: "#8B5CF6" }}>
                 <span className="w-1.5 h-1.5 rounded-full bg-pink-500" />
                 Production vidéo · KEKELI Creative Agency
               </span>
@@ -148,7 +148,7 @@ export default function ClipsPage() {
             <FadeIn direction="up" delay={0.12}>
               <h1 className="font-body font-bold text-5xl sm:text-6xl lg:text-[4rem] leading-[1.08] text-white mb-6">
                 Des clips qui font<br />
-                <span style={{ color: "#EC4899" }}>parler de vous</span>
+                <span style={{ color: "#8B5CF6" }}>parler de vous</span>
               </h1>
             </FadeIn>
 
@@ -304,7 +304,7 @@ export default function ClipsPage() {
               <FadeInItem key={title}>
                 <div className="flex gap-4 p-5 rounded-2xl" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}>
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: "rgba(236,72,153,0.15)" }}>
-                    <Icon size={18} style={{ color: "#EC4899" }} />
+                    <Icon size={18} style={{ color: "#8B5CF6" }} />
                   </div>
                   <div>
                     <p className="font-body font-semibold text-white text-sm mb-1">{title}</p>
@@ -325,13 +325,13 @@ export default function ClipsPage() {
       >
         {/* Blobs */}
         <div aria-hidden className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-0 w-96 h-96 rounded-full blur-[140px] opacity-20" style={{ background: "#EC4899" }} />
+          <div className="absolute top-0 left-0 w-96 h-96 rounded-full blur-[140px] opacity-20" style={{ background: "#8B5CF6" }} />
           <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full blur-[120px] opacity-15" style={{ background: "#8B5CF6" }} />
         </div>
 
         <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn direction="up" className="text-center mb-12">
-            <p className="font-body text-xs font-semibold uppercase tracking-[0.2em] mb-3" style={{ color: "#EC4899" }}>Votre brief vidéo</p>
+            <p className="font-body text-xs font-semibold uppercase tracking-[0.2em] mb-3" style={{ color: "#8B5CF6" }}>Votre brief vidéo</p>
             <h2 className="font-display text-4xl md:text-5xl text-white leading-tight mb-4">
               Parlons de votre <em className="text-gold not-italic">clip</em>
             </h2>

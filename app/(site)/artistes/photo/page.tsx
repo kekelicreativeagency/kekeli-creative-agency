@@ -119,7 +119,7 @@ export default function PhotoPage() {
       >
         <div aria-hidden className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-[160px] opacity-20" style={{ background: ACCENT }} />
-          <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full blur-[130px] opacity-16" style={{ background: "#0891B2" }} />
+          <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full blur-[130px] opacity-16" style={{ background: "#C8A84B" }} />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full blur-[100px] opacity-10" style={{ background: "#C8A84B" }} />
         </div>
 
@@ -162,7 +162,7 @@ export default function PhotoPage() {
                 <a
                   href="#formulaire"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-body font-bold text-base text-black transition-all hover:scale-105"
-                  style={{ background: "linear-gradient(135deg, #06B6D4 0%, #0891B2 100%)", boxShadow: "0 8px 30px rgba(6,182,212,0.40)" }}
+                  style={{ background: "linear-gradient(135deg, #06B6D4 0%, #C8A84B 100%)", boxShadow: "0 8px 30px rgba(6,182,212,0.40)" }}
                 >
                   <Camera size={18} />
                   Demander un devis
@@ -333,7 +333,7 @@ export default function PhotoPage() {
       >
         <div aria-hidden className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 w-96 h-96 rounded-full blur-[140px] opacity-18" style={{ background: ACCENT }} />
-          <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full blur-[120px] opacity-12" style={{ background: "#0891B2" }} />
+          <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full blur-[120px] opacity-12" style={{ background: "#C8A84B" }} />
         </div>
 
         <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">

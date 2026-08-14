@@ -49,7 +49,7 @@ const SERVICES: ServiceGuide[] = [
   },
   {
     name: "Photo Shooting",
-    color: "#06B6D4",
+    color: "#8B5CF6",
     icon: Camera,
     category: "artiste",
     timeline: "3 – 5 jours (prep + shoot + retouche)",
@@ -71,7 +71,7 @@ const SERVICES: ServiceGuide[] = [
   },
   {
     name: "Clips & Vidéos",
-    color: "#EC4899",
+    color: "#C8A84B",
     icon: Video,
     category: "artiste",
     timeline: "2 – 4 semaines",
@@ -95,7 +95,7 @@ const SERVICES: ServiceGuide[] = [
   },
   {
     name: "Distribution Musicale",
-    color: "#10B981",
+    color: "#8B5CF6",
     icon: Headphones,
     category: "artiste",
     timeline: "3 – 7 jours",
@@ -118,7 +118,7 @@ const SERVICES: ServiceGuide[] = [
   },
   {
     name: "Community Management",
-    color: "#7C3AED",
+    color: "#8B5CF6",
     icon: MessageSquare,
     category: "artiste",
     timeline: "Contrat mensuel récurrent",
@@ -142,7 +142,7 @@ const SERVICES: ServiceGuide[] = [
   },
   {
     name: "Stratégie Lancement",
-    color: "#F97316",
+    color: "#8B5CF6",
     icon: Zap,
     category: "artiste",
     timeline: "1 – 2 semaines (plan) + suivi",
@@ -167,7 +167,7 @@ const SERVICES: ServiceGuide[] = [
   /* ── ENTREPRISES ── */
   {
     name: "Site Web & Digitalisation",
-    color: "#0EA5E9",
+    color: "#C8A84B",
     icon: Monitor,
     category: "entreprise",
     timeline: "3 – 6 semaines",
@@ -192,7 +192,7 @@ const SERVICES: ServiceGuide[] = [
   },
   {
     name: "Applications Mobile & Web",
-    color: "#6366F1",
+    color: "#C8A84B",
     icon: Smartphone,
     category: "entreprise",
     timeline: "8 – 16 semaines selon complexité",
@@ -217,7 +217,7 @@ const SERVICES: ServiceGuide[] = [
   },
   {
     name: "Community Management Entreprise",
-    color: "#0891B2",
+    color: "#8B5CF6",
     icon: Globe,
     category: "entreprise",
     timeline: "Contrat mensuel récurrent",
@@ -240,7 +240,7 @@ const SERVICES: ServiceGuide[] = [
   },
   {
     name: "Campagnes Publicitaires",
-    color: "#F97316",
+    color: "#8B5CF6",
     icon: Megaphone,
     category: "entreprise",
     timeline: "3 – 5 jours setup + durée campagne",
@@ -265,7 +265,7 @@ const SERVICES: ServiceGuide[] = [
   },
   {
     name: "Brand Score & Audit Visibilité",
-    color: "#A855F7",
+    color: "#8B5CF6",
     icon: BarChart2,
     category: "entreprise",
     timeline: "5 – 7 jours",
@@ -287,7 +287,7 @@ const SERVICES: ServiceGuide[] = [
   },
   {
     name: "Stratégie & Croissance",
-    color: "#059669",
+    color: "#8B5CF6",
     icon: BarChart2,
     category: "entreprise",
     timeline: "2 – 3 semaines (plan) + suivi mensuel",
@@ -327,7 +327,7 @@ const ONBOARDING_STEPS = [
     num: "02",
     title: "Discovery Call / Brief détaillé",
     duration: "30 – 60 min",
-    color: "#06B6D4",
+    color: "#8B5CF6",
     desc: "Appel ou réunion pour comprendre en profondeur le projet, les attentes, les contraintes et aligner les visions.",
     actions: [
       "Poser les questions clés selon le service (voir guide ci-dessous)",
@@ -353,7 +353,7 @@ const ONBOARDING_STEPS = [
     num: "04",
     title: "Validation & Onboarding",
     duration: "1 – 2 jours",
-    color: "#10B981",
+    color: "#8B5CF6",
     desc: "Après accord du client, formaliser la mission et lancer le projet en bonne et due forme.",
     actions: [
       "Faire signer le bon de commande ou contrat",
@@ -367,7 +367,7 @@ const ONBOARDING_STEPS = [
     num: "05",
     title: "Livraison & Suivi post-projet",
     duration: "Selon projet",
-    color: "#EC4899",
+    color: "#C8A84B",
     desc: "Livrer les fichiers finaux, recueillir le feedback, clôturer proprement et préparer la fidélisation.",
     actions: [
       "Livrer les fichiers via Drive ou espace client",
@@ -385,7 +385,7 @@ const METHODS = [
     name: "Méthode Cascade",
     subtitle: "Waterfall — Pour projets bien définis",
     icon: Layers,
-    color: "#0EA5E9",
+    color: "#C8A84B",
     ideal: ["Site web vitrine", "Application avec specs complètes", "Branding / identité visuelle", "Clip vidéo", "Shooting photo", "Distribution musicale"],
     phases: [
       { name: "Analyse & Brief", duration: "J1 – J3", desc: "Collecte de toutes les infos, validation du brief complet" },
@@ -402,7 +402,7 @@ const METHODS = [
     name: "Méthode Agile",
     subtitle: "Itératif — Pour projets évolutifs",
     icon: RefreshCw,
-    color: "#10B981",
+    color: "#8B5CF6",
     ideal: ["Community Management", "Campagnes publicitaires", "Stratégie digitale", "Applications complexes", "Contrat de maintenance", "Growth & croissance"],
     phases: [
       { name: "Sprint 0 — Cadrage", duration: "Semaine 1", desc: "Objectifs, priorités, backlog initial, outils de suivi" },
@@ -438,7 +438,7 @@ function ServiceCard({ service }: { service: ServiceGuide }) {
               <Clock size={10} /> {service.timeline}
             </span>
             <span className="font-body text-[10px] px-1.5 py-0.5 rounded-full border"
-              style={{ color: service.method === "cascade" ? "#0EA5E9" : "#10B981", borderColor: service.method === "cascade" ? "#0EA5E920" : "#10B98120", background: service.method === "cascade" ? "#0EA5E908" : "#10B98108" }}>
+              style={{ color: service.method === "cascade" ? "#C8A84B" : "#8B5CF6", borderColor: service.method === "cascade" ? "#C8A84B20" : "#8B5CF620", background: service.method === "cascade" ? "#C8A84B08" : "#8B5CF608" }}>
               {service.method === "cascade" ? "Cascade" : service.method === "agile" ? "Agile" : "Cascade + Agile"}
             </span>
           </div>
@@ -643,8 +643,8 @@ export default function RoadmapGuide() {
       {/* ── Section 3: Guide par service — Artistes ── */}
       <section>
         <div className="flex items-center gap-2 mb-5">
-          <div className="w-7 h-7 rounded-lg flex items-center justify-center" style={{ background: "#EC489920" }}>
-            <Mic2 size={14} style={{ color: "#EC4899" }} />
+          <div className="w-7 h-7 rounded-lg flex items-center justify-center" style={{ background: "#C8A84B20" }}>
+            <Mic2 size={14} style={{ color: "#C8A84B" }} />
           </div>
           <p className="font-body text-[10px] font-bold uppercase tracking-[0.2em] text-[#A8A29E]">
             Services Artistes — Questions · Livrables · Outils
@@ -660,8 +660,8 @@ export default function RoadmapGuide() {
       {/* ── Section 4: Guide par service — Entreprises ── */}
       <section>
         <div className="flex items-center gap-2 mb-5">
-          <div className="w-7 h-7 rounded-lg flex items-center justify-center" style={{ background: "#3B82F620" }}>
-            <Building2 size={14} style={{ color: "#3B82F6" }} />
+          <div className="w-7 h-7 rounded-lg flex items-center justify-center" style={{ background: "#C8A84B20" }}>
+            <Building2 size={14} style={{ color: "#C8A84B" }} />
           </div>
           <p className="font-body text-[10px] font-bold uppercase tracking-[0.2em] text-[#A8A29E]">
             Services Entreprises — Questions · Livrables · Outils
@@ -700,8 +700,8 @@ export default function RoadmapGuide() {
                 <span className="font-body text-sm text-[#78716C]">{s.timeline}</span>
                 <span className="font-body text-xs px-2 py-0.5 rounded-full w-fit"
                   style={{
-                    background: s.method === "cascade" ? "#0EA5E912" : "#10B98112",
-                    color: s.method === "cascade" ? "#0EA5E9" : "#10B981",
+                    background: s.method === "cascade" ? "#C8A84B12" : "#8B5CF612",
+                    color: s.method === "cascade" ? "#C8A84B" : "#8B5CF6",
                   }}>
                   {s.method === "cascade" ? "Cascade" : "Agile"}
                 </span>

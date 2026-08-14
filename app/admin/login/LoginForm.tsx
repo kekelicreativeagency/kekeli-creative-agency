@@ -192,7 +192,7 @@ export default function LoginForm() {
             <button onClick={resendCode}
               className="mt-4 w-full flex items-center justify-center gap-1.5 font-body text-xs text-white/30 hover:text-white/60 transition-colors py-2">
               <RotateCw size={11} />
-              Recommencer avec un nouveau code
+              Ressaisir le mot de passe pour recevoir un nouveau code
             </button>
           </>
         )}

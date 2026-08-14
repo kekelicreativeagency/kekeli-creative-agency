@@ -4,9 +4,7 @@ import Hero from "@/components/sections/Hero";
 import ServicesGrid from "@/components/sections/ServicesGrid";
 // Lazy-load below-fold sections — only Hero + ServicesGrid load immediately
 const KELIBanner     = dynamic(() => import("@/components/sections/KELIBanner"));
-const IAToolsSection = dynamic(() => import("@/components/sections/IAToolsSection"));
-const PortfolioPreview = dynamic(() => import("@/components/sections/PortfolioPreview"));
-const BooksDownload  = dynamic(() => import("@/components/sections/BooksDownload"));
+const ServicesShowcase = dynamic(() => import("@/components/services/ServicesShowcase"));
 const SondageTeaser  = dynamic(() => import("@/components/sections/SondageTeaser"));
 const ContactCTA     = dynamic(() => import("@/components/sections/ContactCTA"));
 
@@ -117,9 +115,11 @@ export default function Home() {
       <hr style={{ border: "none", borderTop: "1px solid rgba(255,255,255,0.18)", margin: 0 }} />
       <ServicesGrid />
       <KELIBanner />
-      <IAToolsSection />
-      <PortfolioPreview />
-      <BooksDownload />
+      <ServicesShowcase
+        showBreadcrumb={false}
+        heroImageLeft={{ src: "/images/PDG.jpg", alt: "PDG — Kekeli Creative Agency" }}
+        heroImageRight={{ src: "/images/CEO_femme.jpg", alt: "CEO — Kekeli Creative Agency" }}
+      />
       <SondageTeaser />
       <ContactCTA />
     </>

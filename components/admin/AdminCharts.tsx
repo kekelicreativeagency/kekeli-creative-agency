@@ -5,11 +5,11 @@ interface Props {
 }
 
 const TYPE_COLORS: Record<string, string> = {
-  contact: "#4C9BFF",
+  contact: "#C8A84B",
   brief:   "#8B5CF6",
   artiste: "#C8A84B",
-  sondage: "#10B981",
-  projet:  "#14B8A6",
+  sondage: "#8B5CF6",
+  projet:  "#C8A84B",
 };
 
 const TYPE_LABELS: Record<string, string> = {

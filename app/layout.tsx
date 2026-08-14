@@ -1,21 +1,13 @@
 ﻿import type { Metadata } from "next";
-import { Cormorant_Garamond, Lato } from "next/font/google";
+import { Outfit } from "next/font/google";
 import "./globals.css";
 import SplashScreen from "@/components/ui/SplashScreen";
 import { LanguageProvider } from "@/providers/LanguageProvider";
 
-const cormorant = Cormorant_Garamond({
-  variable: "--font-display",
+const outfit = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
-  weight: ["300", "400", "600", "700"],
-  style: ["normal", "italic"],
-  display: "swap",
-});
-
-const lato = Lato({
-  variable: "--font-body",
-  subsets: ["latin"],
-  weight: ["300", "400", "700"],
+  weight: ["300", "400", "500", "600", "700", "800"],
   display: "swap",
 });
 
@@ -41,14 +33,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "fr_SN",
     siteName: "KEKELI Creative Agency",
-    title: "KEKELI Creative Agency — Mettre la lumière sur votre projet",
+    title: "KEKELI Creative Agency — Révéler la lumière de votre vision",
     description: "Agence de communication basée à Dakar, Sénégal. Communication, stratégie digitale, photo & vidéo.",
     /* opengraph-image.tsx génère l'image dynamiquement */
   },
   twitter: {
     card: "summary_large_image",
     site: "@kekeli_agency",
-    title: "KEKELI Creative Agency — Mettre la lumière sur votre projet",
+    title: "KEKELI Creative Agency — Révéler la lumière de votre vision",
     description: "Agence de communication basée à Dakar, Sénégal.",
     /* opengraph-image.tsx génère l'image dynamiquement */
   },
@@ -78,7 +70,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="fr" className={`${cormorant.variable} ${lato.variable}`}>
+    <html lang="fr" className={outfit.variable}>
       <head>
         <script
           type="application/ld+json"

@@ -85,7 +85,7 @@ export async function POST(req: NextRequest) {
             <div style="background:rgba(200,168,75,0.10);border:1px solid rgba(200,168,75,0.25);border-radius:12px;padding:20px 24px;margin-bottom:28px;">
               <p style="color:#C8A84B;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;margin:0 0 6px;">Votre achat</p>
               <p style="font-size:16px;font-weight:700;color:#fff;margin:0;">${book.title}</p>
-              <p style="font-size:13px;color:rgba(255,255,255,0.50);margin:4px 0 0;">5 000 F CFA · Paiement confirmé ✓</p>
+              <p style="font-size:13px;color:rgba(255,255,255,0.50);margin:4px 0 0;">20 $ · Paiement confirmé ✓</p>
             </div>
             <a href="${SITE_URL}/contact" style="display:inline-block;background:#C8A84B;color:#0C0B09;font-weight:700;font-size:14px;padding:14px 28px;border-radius:30px;text-decoration:none;">
               Discuter avec KEKELI →

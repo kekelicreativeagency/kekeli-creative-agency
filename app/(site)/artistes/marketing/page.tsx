@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: "Publicité payante, promotion de sorties et placements influenceurs pour artistes africains.",
 };
 
-const ACCENT       = "#F97316";
+const ACCENT       = "#C8A84B";
 const ACCENT_LIGHT = "#FED7AA";
 const DARK_BG      = "#0C0B09";
 const CREAM_BG     = "linear-gradient(160deg, #FBF6EC 0%, #F5EDD8 50%, #FAF4E8 100%)";

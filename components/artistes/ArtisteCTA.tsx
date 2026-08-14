@@ -38,8 +38,8 @@ export default function ArtisteCTA() {
           <div className="flex flex-wrap items-center justify-center gap-6 mb-10">
             {[
               { color: "#8B5CF6", text: a.ctaTag1 },
-              { color: "#EC4899", text: a.ctaTag2 },
-              { color: "#10B981", text: a.ctaTag3 },
+              { color: "#C8A84B", text: a.ctaTag2 },
+              { color: "#8B5CF6", text: a.ctaTag3 },
             ].map(({ color, text }) => (
               <div key={text} className="flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full" style={{ background: color }} />

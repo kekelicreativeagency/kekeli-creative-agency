@@ -10,6 +10,7 @@ import AdminSidebar from "@/components/admin/AdminSidebar";
 import RoadmapGuide from "@/components/admin/RoadmapGuide";
 import NewsletterPanel, { type NewsletterSubscriber } from "@/components/admin/NewsletterPanel";
 import BlogPanel, { type BlogPost as AdminBlogPost } from "@/components/admin/BlogPanel";
+import { computeSidebarCounts } from "@/lib/admin/sidebarCounts";
 import {
   Users, MessageSquare, Zap, BarChart2, Sparkles,
   FolderOpen, Mic2, Building2, Mail, FileText, BookDown,
@@ -107,17 +108,7 @@ export default async function AdminDashboard({
 
   const activeSubscribers = newsletter.filter((s) => !s.unsubscribed_at).length;
 
-  const sidebarCounts = {
-    leads: leads.length, newLeads,
-    artistes: artisteLeads, newArtistes: newArtiste,
-    entreprises: entrepriseLeads, newEntreprises: newEntreprise,
-    clients: clients.length, pending: pendingClients,
-    projects: projects.length, active: activeProjects,
-    conversations: conversations.length,
-    newsletter: activeSubscribers,
-    blog: blogPosts.filter((p) => p.published).length,
-    guides: guideTotal,
-  };
+  const sidebarCounts = computeSidebarCounts({ leads, clients, projects, conversations, newsletter, blogPosts });
 
   /* ── Filtered leads for sub-tabs ── */
   const artisteLeadsList    = leads.filter((l) => l.type === "artiste");
@@ -151,27 +142,27 @@ export default async function AdminDashboard({
               {/* Stats row 1 — Leads */}
               <SectionTitle>Leads & Contacts</SectionTitle>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
-                <StatCard icon={<MessageSquare size={16} />} label="Leads total"      value={leads.length}    sub={newLeads > 0 ? `${newLeads} nouveau${newLeads > 1 ? "x" : ""}` : undefined} color="#10B981" accent={newLeads > 0} />
-                <StatCard icon={<Mic2 size={16} />}          label="Leads artistes"   value={artisteLeads}    sub={newArtiste > 0 ? `${newArtiste} nouveau${newArtiste > 1 ? "x" : ""}` : undefined} color="#EC4899" accent={newArtiste > 0} />
-                <StatCard icon={<Building2 size={16} />}     label="Leads entreprises" value={entrepriseLeads} sub={newEntreprise > 0 ? `${newEntreprise} nouveau${newEntreprise > 1 ? "x" : ""}` : undefined} color="#3B82F6" accent={newEntreprise > 0} />
-                <StatCard icon={<Zap size={16} />}           label="Briefs / Contacts" value={briefCount + contactCount} color="#F97316" />
+                <StatCard icon={<MessageSquare size={16} />} label="Leads total"      value={leads.length}    sub={newLeads > 0 ? `${newLeads} nouveau${newLeads > 1 ? "x" : ""}` : undefined} color="#C8A84B" accent={newLeads > 0} />
+                <StatCard icon={<Mic2 size={16} />}          label="Leads artistes"   value={artisteLeads}    sub={newArtiste > 0 ? `${newArtiste} nouveau${newArtiste > 1 ? "x" : ""}` : undefined} color="#8B5CF6" accent={newArtiste > 0} />
+                <StatCard icon={<Building2 size={16} />}     label="Leads entreprises" value={entrepriseLeads} sub={newEntreprise > 0 ? `${newEntreprise} nouveau${newEntreprise > 1 ? "x" : ""}` : undefined} color="#C8A84B" accent={newEntreprise > 0} />
+                <StatCard icon={<Zap size={16} />}           label="Briefs / Contacts" value={briefCount + contactCount} color="#8B5CF6" />
               </div>
 
               {/* Stats row — Téléchargements livres */}
               <SectionTitle>Téléchargements des livres</SectionTitle>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
                 <StatCard icon={<BookDown size={16} />} label="Total téléchargements" value={guideTotal} color="#8B5CF6" accent={guideTotal > 0} />
-                <StatCard icon={<Mic2 size={16} />}     label="Du Talent au Sommet"    value={guideArtiste}    sub="Guide artiste" color="#EC4899" />
-                <StatCard icon={<Building2 size={16} />} label="Guide Entrepreneur"    value={guideEntreprise} sub="Guide entrepreneur" color="#3B82F6" />
+                <StatCard icon={<Mic2 size={16} />}     label="Du Talent au Sommet"    value={guideArtiste}    sub="Guide artiste" color="#8B5CF6" />
+                <StatCard icon={<Building2 size={16} />} label="Guide Entrepreneur"    value={guideEntreprise} sub="Guide entrepreneur" color="#C8A84B" />
               </div>
 
               {/* Stats row 2 — Gestion */}
               <SectionTitle>Gestion</SectionTitle>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
                 <StatCard icon={<Users size={16} />}      label="Clients actifs"     value={activeClients}        sub={pendingClients > 0 ? `${pendingClients} en attente` : undefined} color="#8B5CF6" accent={pendingClients > 0} />
-                <StatCard icon={<FolderOpen size={16} />} label="Projets total"       value={projects.length}      sub={activeProjects > 0 ? `${activeProjects} en cours` : undefined}   color="#F59E0B" accent={activeProjects > 0} />
-                <StatCard icon={<Sparkles size={16} />}   label="Conversations IA"   value={conversations.length} sub={qualifiedConvs > 0 ? `${qualifiedConvs} qualifiées` : undefined}  color="#06B6D4" />
-                <StatCard icon={<BarChart2 size={16} />}  label="Sondages"           value={sondageCount}          color="#A855F7" />
+                <StatCard icon={<FolderOpen size={16} />} label="Projets total"       value={projects.length}      sub={activeProjects > 0 ? `${activeProjects} en cours` : undefined}   color="#C8A84B" accent={activeProjects > 0} />
+                <StatCard icon={<Sparkles size={16} />}   label="Conversations IA"   value={conversations.length} sub={qualifiedConvs > 0 ? `${qualifiedConvs} qualifiées` : undefined}  color="#8B5CF6" />
+                <StatCard icon={<BarChart2 size={16} />}  label="Sondages"           value={sondageCount}          color="#C8A84B" />
               </div>
 
               {/* Charts */}
@@ -201,8 +192,8 @@ export default async function AdminDashboard({
           {tab === "artistes" && (
             <>
               <div className="mb-6 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: "#EC489920" }}>
-                  <Mic2 size={18} style={{ color: "#EC4899" }} />
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: "#8B5CF620" }}>
+                  <Mic2 size={18} style={{ color: "#8B5CF6" }} />
                 </div>
                 <div>
                   <h1 className="font-display text-2xl text-[#0C0B09]">Leads Artistes</h1>
@@ -217,8 +208,8 @@ export default async function AdminDashboard({
           {tab === "entreprises" && (
             <>
               <div className="mb-6 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: "#3B82F620" }}>
-                  <Building2 size={18} style={{ color: "#3B82F6" }} />
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: "#C8A84B20" }}>
+                  <Building2 size={18} style={{ color: "#C8A84B" }} />
                 </div>
                 <div>
                   <h1 className="font-display text-2xl text-[#0C0B09]">Leads Entreprises</h1>
@@ -249,8 +240,8 @@ export default async function AdminDashboard({
           {tab === "projects" && (
             <>
               <div className="mb-6 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: "#F59E0B20" }}>
-                  <FolderOpen size={18} style={{ color: "#F59E0B" }} />
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: "#C8A84B20" }}>
+                  <FolderOpen size={18} style={{ color: "#C8A84B" }} />
                 </div>
                 <div>
                   <h1 className="font-display text-2xl text-[#0C0B09]">Projets</h1>
@@ -265,8 +256,8 @@ export default async function AdminDashboard({
           {tab === "newsletter" && (
             <>
               <div className="mb-6 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: "#10B98120" }}>
-                  <Mail size={18} style={{ color: "#10B981" }} />
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: "#C8A84B20" }}>
+                  <Mail size={18} style={{ color: "#C8A84B" }} />
                 </div>
                 <div>
                   <h1 className="font-display text-2xl text-[#0C0B09]">Newsletter</h1>
@@ -298,8 +289,8 @@ export default async function AdminDashboard({
               </div>
               <div className="grid grid-cols-3 gap-4 mb-6">
                 <StatCard icon={<BookDown size={16} />}   label="Total"               value={guideTotal}      color="#8B5CF6" accent />
-                <StatCard icon={<Mic2 size={16} />}       label="Du Talent au Sommet"  value={guideArtiste}    color="#EC4899" />
-                <StatCard icon={<Building2 size={16} />}  label="Guide Entrepreneur"   value={guideEntreprise} color="#3B82F6" />
+                <StatCard icon={<Mic2 size={16} />}       label="Du Talent au Sommet"  value={guideArtiste}    color="#8B5CF6" />
+                <StatCard icon={<Building2 size={16} />}  label="Guide Entrepreneur"   value={guideEntreprise} color="#C8A84B" />
               </div>
               <LeadsTable leads={guideLeadsList} />
             </>
@@ -315,8 +306,8 @@ export default async function AdminDashboard({
           {tab === "conversations" && (
             <>
               <div className="mb-6 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: "#06B6D420" }}>
-                  <Sparkles size={18} style={{ color: "#06B6D4" }} />
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: "#8B5CF620" }}>
+                  <Sparkles size={18} style={{ color: "#8B5CF6" }} />
                 </div>
                 <div>
                   <h1 className="font-display text-2xl text-[#0C0B09]">Conversations IA</h1>

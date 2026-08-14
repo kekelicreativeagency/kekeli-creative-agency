@@ -48,14 +48,13 @@ export default function NewsletterForm() {
     return (
       <div className="flex flex-col items-center gap-3 py-6">
         <div className="w-14 h-14 rounded-full flex items-center justify-center"
-          style={{ background: "rgba(16,185,129,0.15)", border: "1px solid rgba(16,185,129,0.35)" }}>
+          style={{ background: "rgba(16,185,129,0.12)", border: "1px solid rgba(16,185,129,0.35)" }}>
           <CheckCircle2 size={24} style={{ color: "#10B981" }} />
         </div>
-        <p className="font-body text-sm text-center" style={{ color: "#10B981" }}>{msg}</p>
+        <p className="font-body text-sm text-center" style={{ color: "#059669" }}>{msg}</p>
         <button
           onClick={() => { setState("idle"); setMsg(""); }}
-          className="font-body text-xs underline underline-offset-2 transition-opacity hover:opacity-70"
-          style={{ color: "rgba(255,255,255,0.35)" }}
+          className="font-body text-xs underline underline-offset-2 transition-opacity hover:opacity-70 text-text-muted"
         >
           S&apos;inscrire avec une autre adresse
         </button>
@@ -73,14 +72,7 @@ export default function NewsletterForm() {
           onChange={(e) => setName(e.target.value)}
           placeholder="Votre prénom (optionnel)"
           maxLength={80}
-          className="flex-1 font-body text-sm px-4 py-3 rounded-xl outline-none transition-all"
-          style={{
-            background: "rgba(255,255,255,0.07)",
-            border: "1px solid rgba(255,255,255,0.12)",
-            color: "#fff",
-          }}
-          onFocus={(e) => { e.currentTarget.style.border = "1px solid rgba(200,168,75,0.5)"; }}
-          onBlur={(e) => { e.currentTarget.style.border = "1px solid rgba(255,255,255,0.12)"; }}
+          className="flex-1 font-body text-sm px-4 py-3 rounded-xl outline-none transition-all bg-white border border-black/10 text-text-primary placeholder:text-text-subtle focus:border-gold/60"
         />
         <input
           type="email"
@@ -89,14 +81,7 @@ export default function NewsletterForm() {
           placeholder="Votre adresse email *"
           required
           maxLength={150}
-          className="flex-1 font-body text-sm px-4 py-3 rounded-xl outline-none transition-all"
-          style={{
-            background: "rgba(255,255,255,0.07)",
-            border: "1px solid rgba(255,255,255,0.12)",
-            color: "#fff",
-          }}
-          onFocus={(e) => { e.currentTarget.style.border = "1px solid rgba(200,168,75,0.5)"; }}
-          onBlur={(e) => { e.currentTarget.style.border = "1px solid rgba(255,255,255,0.12)"; }}
+          className="flex-1 font-body text-sm px-4 py-3 rounded-xl outline-none transition-all bg-white border border-black/10 text-text-primary placeholder:text-text-subtle focus:border-gold/60"
         />
         <button
           type="submit"
@@ -125,13 +110,13 @@ export default function NewsletterForm() {
           onKeyDown={(e) => e.key === " " && setGdpr(!gdpr)}
           className="mt-0.5 w-4 h-4 rounded flex items-center justify-center shrink-0 transition-all"
           style={{
-            background: gdpr ? "#C8A84B" : "rgba(255,255,255,0.08)",
-            border: gdpr ? "1px solid #C8A84B" : "1px solid rgba(255,255,255,0.2)",
+            background: gdpr ? "#C8A84B" : "rgba(12,11,9,0.04)",
+            border: gdpr ? "1px solid #C8A84B" : "1px solid rgba(12,11,9,0.18)",
           }}
         >
           {gdpr && <span style={{ color: "#0C0B09", fontSize: 10, fontWeight: 800 }}>✓</span>}
         </div>
-        <span className="font-body text-[11px] leading-relaxed" style={{ color: "rgba(255,255,255,0.40)" }}>
+        <span className="font-body text-[11px] leading-relaxed text-text-muted">
           J&apos;accepte de recevoir la newsletter KEKELI Creative Agency. Pas de spam — désinscription possible à tout moment en un clic.
         </span>
       </label>

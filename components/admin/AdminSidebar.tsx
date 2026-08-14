@@ -20,18 +20,18 @@ const NAV = [
   {
     section: "Leads",
     items: [
-      { id: "leads",       icon: MessageSquare, label: "Tous les leads",    tab: "leads",         color: "#10B981" },
-      { id: "artistes",    icon: Mic2,          label: "Artistes",          tab: "artistes",      color: "#EC4899" },
-      { id: "entreprises", icon: Building2,     label: "Entreprises",       tab: "entreprises",   color: "#3B82F6" },
+      { id: "leads",       icon: MessageSquare, label: "Tous les leads",    tab: "leads",         color: "#8B5CF6" },
+      { id: "artistes",    icon: Mic2,          label: "Artistes",          tab: "artistes",      color: "#C8A84B" },
+      { id: "entreprises", icon: Building2,     label: "Entreprises",       tab: "entreprises",   color: "#8B5CF6" },
     ],
   },
   {
     section: "Gestion",
     items: [
-      { id: "clients",       icon: Users,       label: "Clients",           tab: "clients",       color: "#8B5CF6" },
-      { id: "projects",      icon: FolderOpen,  label: "Projets",           tab: "projects",      color: "#F97316" },
-      { id: "conversations", icon: Sparkles,    label: "Conversations IA",  tab: "conversations", color: "#06B6D4" },
-      { id: "newsletter",    icon: Mail,        label: "Newsletter",        tab: "newsletter",    color: "#10B981" },
+      { id: "clients",       icon: Users,       label: "Clients",           tab: "clients",       color: "#C8A84B" },
+      { id: "projects",      icon: FolderOpen,  label: "Projets",           tab: "projects",      color: "#8B5CF6" },
+      { id: "conversations", icon: Sparkles,    label: "Conversations IA",  tab: "conversations", color: "#C8A84B" },
+      { id: "newsletter",    icon: Mail,        label: "Newsletter",        tab: "newsletter",    color: "#8B5CF6" },
       { id: "blog",          icon: FileText,    label: "Blog",              tab: "blog",          color: "#C8A84B" },
       { id: "guides",        icon: BookDown,    label: "Livres téléchargés", tab: "guides",        color: "#8B5CF6" },
     ],
@@ -40,9 +40,9 @@ const NAV = [
     section: "Ressources",
     items: [
       { id: "roadmap",         icon: Map,       label: "Feuille de route",    tab: "roadmap", color: "#C8A84B" },
-      { id: "catalogue",       icon: BookOpen,  label: "Catalogue PDF",       tab: null, href: "/admin/catalogue",        color: "#EC4899" },
-      { id: "ebook-artiste",   icon: Music,     label: "Guide Artiste PDF",   tab: null, href: "/admin/ebook-artiste",    color: "#8B5CF6" },
-      { id: "ebook-entrepreneur", icon: Briefcase, label: "Guide Entrepreneur PDF", tab: null, href: "/admin/ebook-entrepreneur", color: "#0EA5E9" },
+      { id: "catalogue",       icon: BookOpen,  label: "Catalogue PDF",       tab: null, href: "/admin/catalogue",        color: "#8B5CF6" },
+      { id: "ebook-artiste",   icon: Music,     label: "Guide Artiste PDF",   tab: null, href: "/admin/ebook-artiste",    color: "#C8A84B" },
+      { id: "ebook-entrepreneur", icon: Briefcase, label: "Guide Entrepreneur PDF", tab: null, href: "/admin/ebook-entrepreneur", color: "#8B5CF6" },
     ],
   },
 ];
@@ -73,12 +73,12 @@ export default function AdminSidebar({ counts }: Props) {
   const router = useRouter();
 
   const badges: Record<string, { count: number; color: string } | undefined> = {
-    leads:         counts.newLeads > 0     ? { count: counts.newLeads,     color: "#10B981" } : undefined,
-    artistes:      counts.newArtistes > 0  ? { count: counts.newArtistes,  color: "#EC4899" } : undefined,
-    entreprises:   counts.newEntreprises > 0 ? { count: counts.newEntreprises, color: "#3B82F6" } : undefined,
-    clients:       counts.pending > 0      ? { count: counts.pending,      color: "#8B5CF6" } : undefined,
-    projects:      counts.active > 0       ? { count: counts.active,       color: "#F97316" } : undefined,
-    conversations: counts.conversations > 0 ? { count: counts.conversations, color: "#06B6D4" } : undefined,
+    leads:         counts.newLeads > 0     ? { count: counts.newLeads,     color: "#8B5CF6" } : undefined,
+    artistes:      counts.newArtistes > 0  ? { count: counts.newArtistes,  color: "#C8A84B" } : undefined,
+    entreprises:   counts.newEntreprises > 0 ? { count: counts.newEntreprises, color: "#8B5CF6" } : undefined,
+    clients:       counts.pending > 0      ? { count: counts.pending,      color: "#C8A84B" } : undefined,
+    projects:      counts.active > 0       ? { count: counts.active,       color: "#8B5CF6" } : undefined,
+    conversations: counts.conversations > 0 ? { count: counts.conversations, color: "#C8A84B" } : undefined,
     guides:        counts.guides > 0       ? { count: counts.guides,       color: "#8B5CF6" } : undefined,
   };
 

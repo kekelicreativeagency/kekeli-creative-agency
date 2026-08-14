@@ -122,7 +122,7 @@ export default function NewsletterWelcome({ name, siteUrl, unsubscribeUrl }: Pro
               L&apos;équipe KEKELI Creative Agency
             </Text>
             <Text style={{ color: muted, fontSize: 11, textAlign: "center", fontStyle: "italic", margin: "0 0 12px" }}>
-              &ldquo;Mettre la lumière sur votre projet&rdquo; — Dakar, Sénégal
+              &ldquo;Révéler la lumière de votre vision&rdquo; — Dakar, Sénégal
             </Text>
             <Text style={{ color: "#B0A89E", fontSize: 10, textAlign: "center", margin: 0 }}>
               Vous recevez cet email car vous vous êtes abonné(e) à la newsletter KEKELI.{" "}

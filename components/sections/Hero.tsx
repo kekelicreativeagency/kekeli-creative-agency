@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useRef, useCallback } from "react";
 import Image from "next/image";
@@ -196,7 +196,7 @@ export default function Hero() {
           />
         </div>
 
-        {/* Floating project card — bottom */}
+        {/* Floating expertise card — bottom */}
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
@@ -205,14 +205,14 @@ export default function Hero() {
           style={{ boxShadow: "0 8px 32px rgba(0,0,0,0.40)" }}
         >
           <p className="font-body text-[9px] uppercase tracking-[0.2em] text-white/40 mb-0.5">
-            {tr.hero.recentWork}
+            {tr.hero.expertiseLabel}
           </p>
           <p className="font-body text-[0.9rem] font-semibold text-white leading-snug">
-            Sunu Impact Festival
+            {tr.hero.expertiseValue}
           </p>
-          <p className="font-body text-[11px] text-gold mt-0.5">
-            sunuimpactfestival.com →
-          </p>
+          <a href="/realisations" className="font-body text-[11px] text-gold mt-0.5 inline-block">
+            {tr.hero.viewWork} →
+          </a>
         </motion.div>
 
         {/* Floating badge — top */}
@@ -221,7 +221,7 @@ export default function Hero() {
           animate={{ opacity: 1, scale: 1, rotate: 0 }}
           transition={{ type: "spring", stiffness: 240, damping: 18, delay: 1.3 }}
           className="absolute -top-3 -right-4 bg-gold rounded-2xl py-3 px-4 text-center z-20"
-          style={{ boxShadow: "0 8px_28px rgba(200,168,75,0.45)" }}
+          style={{ boxShadow: "0 8px 28px rgba(200,168,75,0.45)" }}
         >
           <p className="font-body text-[1.6rem] font-bold text-black leading-none">50+</p>
           <p className="font-body text-[9px] font-semibold uppercase tracking-wide text-black/60 mt-0.5">
@@ -252,15 +252,15 @@ export default function Hero() {
           </motion.div>
 
           {/* H1 */}
-          <h1 className="font-body font-bold text-5xl sm:text-6xl lg:text-[4rem] leading-[1.08] mb-6">
+          <h1 className="font-body font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-[4rem] leading-[1.08] mb-6 tracking-tight">
             <LineReveal delay={0.12}>
-              <span className="block text-white">{tr.hero.line1}</span>
+              <span className="block text-white whitespace-nowrap">{tr.hero.line1}</span>
             </LineReveal>
             <LineReveal delay={0.26}>
-              <span className="block text-gold">{tr.hero.line2}</span>
+              <span className="block text-gold whitespace-nowrap">{tr.hero.line2}</span>
             </LineReveal>
             <LineReveal delay={0.4}>
-              <span className="block text-white">{tr.hero.line3}</span>
+              <span className="block text-white whitespace-nowrap">{tr.hero.line3}</span>
             </LineReveal>
           </h1>
 
@@ -307,6 +307,7 @@ export default function Hero() {
               fill
               className="object-cover"
               priority
+              sizes="100vw"
             />
             <div
               className="absolute inset-0"

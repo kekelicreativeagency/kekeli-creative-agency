@@ -9,11 +9,11 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import { useT } from "@/hooks/useT";
 
 const PROFILES_STATIC = [
-  { emoji: "🏢", href: "/sondage/entreprise", accent: "#3B82F6", tk: "company",  descTk: "companyDesc"  },
-  { emoji: "🎤", href: "/sondage/artiste",    accent: "#C8A84B", tk: "artist",   descTk: "artistDesc"   },
-  { emoji: "🛒", href: "/sondage/vendeur",    accent: "#F97316", tk: "seller",   descTk: "sellerDesc"   },
-  { emoji: "✨", href: "/sondage/marque",     accent: "#EC4899", tk: "brand",    descTk: "brandDesc"    },
-  { emoji: "🎪", href: "/sondage/evenement",  accent: "#10B981", tk: "event",    descTk: "eventDesc"    },
+  { emoji: "🏢", href: "/sondage/entreprise", accent: "#C8A84B", tk: "company",  descTk: "companyDesc"  },
+  { emoji: "🎤", href: "/sondage/artiste",    accent: "#8B5CF6", tk: "artist",   descTk: "artistDesc"   },
+  { emoji: "🛒", href: "/sondage/vendeur",    accent: "#C8A84B", tk: "seller",   descTk: "sellerDesc"   },
+  { emoji: "✨", href: "/sondage/marque",     accent: "#8B5CF6", tk: "brand",    descTk: "brandDesc"    },
+  { emoji: "🎪", href: "/sondage/evenement",  accent: "#C8A84B", tk: "event",    descTk: "eventDesc"    },
 ] as const;
 
 export default function SondageTeaser() {

@@ -7,8 +7,8 @@ type GuideType = "artiste" | "entreprise";
 const VALID: GuideType[] = ["artiste", "entreprise"];
 
 const BOOKS: Record<GuideType, { title: string; price: string }> = {
-  artiste:    { title: "Du Talent au Sommet",                         price: "5 000 F CFA" },
-  entreprise: { title: "Le Guide de l'Entrepreneur au Sénégal 2026",  price: "5 000 F CFA" },
+  artiste:    { title: "Du Talent au Sommet",                         price: "20 $" },
+  entreprise: { title: "Le Guide de l'Entrepreneur au Sénégal 2026",  price: "20 $" },
 };
 
 const ADMIN_EMAIL = "contact@kekelicreativeagency.com";

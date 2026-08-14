@@ -109,17 +109,20 @@ const t = {
     /* ── Hero ────────────────────────────────── */
     hero: {
       badge: "Agence créative · Dakar, Sénégal",
-      line1: "Mettre la",
-      line2: "lumière sur",
-      line3: "votre projet.",
+      line1: "Révéler la",
+      line2: "lumière de",
+      line3: "votre vision.",
       subtitle:
-        "Agence de communication basée à Dakar — web, photo, stratégie digitale, branding et couverture événementielle pour les entreprises, artistes et événements.",
+        "Agence de communication basée à Dakar — stratégie digitale, branding, photo/vidéo et couverture événementielle pour les organismes internationaux, PME et institutions en Afrique de l'Ouest.",
       nudge: "Pas sûr de par où commencer ?",
       nudgeCta: "Discuter avec KELI →",
       discoverServices: "Découvrir nos services",
       chatKeli: "Discuter avec KELI",
       recentWork: "Réalisation récente",
       projects: "Projets",
+      expertiseLabel: "Domaine d'expertise",
+      expertiseValue: "Entreprises & Institutions",
+      viewWork: "Voir nos réalisations",
     },
 
     /* ── ServicesGrid ─────────────────────────── */
@@ -319,7 +322,7 @@ const t = {
 
     /* ── Footer ───────────────────────────────── */
     footer: {
-      tagline: "Mettre la lumière sur votre projet.",
+      tagline: "Révéler la lumière de votre vision.",
       location: "Agence de communication basée à Dakar, Sénégal.",
       auditBadge: "Audit de visibilité gratuit",
       auditCta: "Tester ma visibilité →",
@@ -437,6 +440,14 @@ const t = {
           "Artistes, entreprises, indépendants — chaque service est conçu pour maximiser votre impact au Sénégal et en Afrique de l'Ouest.",
         artistsTab: "Services artistes",
         companiesTab: "Services entreprises",
+        personalitiesTab: "Services personnalités",
+        personalitiesEyebrow: "Pour les personnalités",
+        personalitiesTitle: "Pour les personnalités",
+        personalitiesTagline1: "Votre image,",
+        personalitiesTaglineHL: "votre premier message",
+        personalitiesDesc:
+          "Personal branding, image digitale, stratégie d'influence et gestion de réputation pour dirigeants et représentants institutionnels.",
+        seePersonalities: "Voir la page personnalités",
         artistsEyebrow: "Pour les artistes",
         artistsTitle: "Pour les artistes",
         artistsTagline1: "Mettre la",
@@ -657,16 +668,19 @@ const t = {
 
     hero: {
       badge: "Creative Agency · Dakar, Senegal",
-      line1: "Putting the",
-      line2: "spotlight on",
-      line3: "your project.",
+      line1: "Unveiling the",
+      line2: "light within",
+      line3: "your vision.",
       subtitle:
-        "Communication agency based in Dakar — web, photo, digital strategy, branding and event coverage for businesses, artists and events.",
+        "Communication agency based in Dakar — digital strategy, branding, photo/video and event coverage for international organizations, SMEs and institutions across West Africa.",
       nudge: "Not sure where to start?",
       nudgeCta: "Chat with KELI →",
       discoverServices: "Discover our services",
       chatKeli: "Chat with KELI",
       recentWork: "Recent work",
+      expertiseLabel: "Area of expertise",
+      expertiseValue: "Businesses & Institutions",
+      viewWork: "View our work",
       projects: "Projects",
     },
 
@@ -855,7 +869,7 @@ const t = {
     },
 
     footer: {
-      tagline: "Putting the spotlight on your project.",
+      tagline: "Unveiling the light within your vision.",
       location: "Communication agency based in Dakar, Senegal.",
       auditBadge: "Free visibility audit",
       auditCta: "Test my visibility →",
@@ -965,6 +979,14 @@ const t = {
         intro: "Artists, businesses, freelancers — every service is designed to maximize your impact in Senegal and West Africa.",
         artistsTab: "Artist services",
         companiesTab: "Business services",
+        personalitiesTab: "Personalities services",
+        personalitiesEyebrow: "For personalities",
+        personalitiesTitle: "For personalities",
+        personalitiesTagline1: "Your image,",
+        personalitiesTaglineHL: "your first message",
+        personalitiesDesc:
+          "Personal branding, digital image, influence strategy and reputation management for leaders and institutional representatives.",
+        seePersonalities: "See the personalities page",
         artistsEyebrow: "For artists",
         artistsTitle: "For artists",
         artistsTagline1: "Putting the",
