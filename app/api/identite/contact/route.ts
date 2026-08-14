@@ -62,9 +62,11 @@ export async function POST(req: NextRequest) {
     const plateformesStr    = Array.isArray(plateformesChoisies) ? plateformesChoisies.join(", ") : "—";
     const elementsStr       = Array.isArray(elementsChoisis) ? elementsChoisis.join(", ") : "—";
 
+    /* ── Emails (non-bloquant : un échec d'envoi ne doit pas faire perdre le lead déjà enregistré) ── */
+    try {
     /* ── Email agence ── */
     await resend.emails.send({
-      from: "KEKELI Identité <onboarding@resend.dev>",
+      from: "KEKELI Identité <noreply@kekelicreativeagency.com>",
       to: AGENCY_EMAIL,
       subject: `🌐 Demande identité digitale — ${nomArtiste}`,
       html: `
@@ -141,7 +143,7 @@ export async function POST(req: NextRequest) {
 
     /* ── Email confirmation artiste ── */
     await resend.emails.send({
-      from: "KEKELI Creative Agency <onboarding@resend.dev>",
+      from: "KEKELI Creative Agency <noreply@kekelicreativeagency.com>",
       to: email,
       subject: `✅ Demande d'identité digitale reçue — KEKELI Creative Agency`,
       html: `
@@ -160,6 +162,9 @@ export async function POST(req: NextRequest) {
         </div>
       `,
     });
+    } catch (emailErr) {
+      console.error("Identite email error:", emailErr);
+    }
 
     return NextResponse.json({ success: true });
   } catch (err) {

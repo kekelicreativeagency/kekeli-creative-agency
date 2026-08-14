@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
 
     try {
       await resend.emails.send({
-        from: "onboarding@resend.dev",
+        from: "noreply@kekelicreativeagency.com",
         to: process.env.AGENCY_EMAIL ?? "amsetdesign@gmail.com",
         subject: `🏢 Nouveau brief entreprise — ${data.nom_entreprise}`,
         html: `

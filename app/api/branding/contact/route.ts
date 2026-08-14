@@ -52,9 +52,11 @@ export async function POST(req: NextRequest) {
       .join(", ");
     const plateformesStr = Array.isArray(plateformesUtilisees) ? plateformesUtilisees.join(", ") : "—";
 
+    /* ── Emails (non-bloquant : un échec d'envoi ne doit pas faire perdre le lead déjà enregistré) ── */
+    try {
     /* ── Email agence ── */
     await resend.emails.send({
-      from: "KEKELI Branding <onboarding@resend.dev>",
+      from: "KEKELI Branding <noreply@kekelicreativeagency.com>",
       to: AGENCY_EMAIL,
       subject: `🎨 Demande de branding — ${nomArtiste}`,
       html: `
@@ -96,7 +98,7 @@ export async function POST(req: NextRequest) {
 
     /* ── Email confirmation artiste ── */
     await resend.emails.send({
-      from: "KEKELI Creative Agency <onboarding@resend.dev>",
+      from: "KEKELI Creative Agency <noreply@kekelicreativeagency.com>",
       to: email,
       subject: `✅ Brief branding reçu — KEKELI Creative Agency`,
       html: `
@@ -115,6 +117,9 @@ export async function POST(req: NextRequest) {
         </div>
       `,
     });
+    } catch (emailErr) {
+      console.error("Branding email error:", emailErr);
+    }
 
     return NextResponse.json({ success: true });
   } catch (err) {

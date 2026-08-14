@@ -61,7 +61,7 @@ export async function POST(request: Request) {
 
     resend.emails
       .send({
-        from: "KEKELI Creative Agency <onboarding@resend.dev>",
+        from: "KEKELI Creative Agency <noreply@kekelicreativeagency.com>",
         to: [AGENCY_EMAIL],
         subject: `🆕 Nouvelle demande d'accès — ${full_name}`,
         html: await render(

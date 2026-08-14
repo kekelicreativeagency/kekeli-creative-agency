@@ -26,37 +26,37 @@ export async function POST(request: Request) {
       timeStyle: "short",
     });
 
-    /* ── Envoi des 2 emails en parallèle ─────────── */
-    const [notif, confirm] = await Promise.all([
-      // Email 1 : Notification à l'agence
-      resend.emails.send({
-        from: "KEKELI Creative Agency <onboarding@resend.dev>",
-        to: [AGENCY_EMAIL],
-        subject: `📬 Nouvelle demande — ${data.typeProjet} — ${data.prenom} ${data.nom}`,
-        html: await render(ContactNotification({ data, receivedAt })),
-      }),
+    /* ── Sauvegarde du lead en premier — ne doit jamais dépendre de l'envoi d'email ── */
+    const { error: dbErr } = await getSupabase().from("leads").insert({ type: "contact", data });
+    if (dbErr) console.error("Supabase insert error:", dbErr.message);
 
-      // Email 2 : Confirmation au client
-      resend.emails.send({
-        from: "KEKELI Creative Agency <onboarding@resend.dev>",
-        to: [data.email],
-        replyTo: AGENCY_EMAIL,
-        subject: "✅ KEKELI Creative Agency a bien reçu votre message",
-        html: await render(ContactConfirmation({ data, siteUrl: SITE_URL })),
-      }),
-    ]);
+    /* ── Emails (non-bloquant) ── */
+    try {
+      const [notif, confirm] = await Promise.all([
+        // Email 1 : Notification à l'agence
+        resend.emails.send({
+          from: "KEKELI Creative Agency <noreply@kekelicreativeagency.com>",
+          to: [AGENCY_EMAIL],
+          subject: `📬 Nouvelle demande — ${data.typeProjet} — ${data.prenom} ${data.nom}`,
+          html: await render(ContactNotification({ data, receivedAt })),
+        }),
 
-    if (notif.error || confirm.error) {
-      console.error("Resend error:", notif.error ?? confirm.error);
-      return NextResponse.json(
-        { error: "Erreur lors de l'envoi de l'email. Veuillez réessayer." },
-        { status: 500 },
-      );
+        // Email 2 : Confirmation au client
+        resend.emails.send({
+          from: "KEKELI Creative Agency <noreply@kekelicreativeagency.com>",
+          to: [data.email],
+          replyTo: AGENCY_EMAIL,
+          subject: "✅ KEKELI Creative Agency a bien reçu votre message",
+          html: await render(ContactConfirmation({ data, siteUrl: SITE_URL })),
+        }),
+      ]);
+
+      if (notif.error || confirm.error) {
+        console.error("Resend error:", notif.error ?? confirm.error);
+      }
+    } catch (emailErr) {
+      console.error("Contact email error:", emailErr);
     }
-
-    // Save to Supabase (non-blocking — email already sent)
-    getSupabase().from("leads").insert({ type: "contact", data })
-      .then(({ error: dbErr }) => { if (dbErr) console.error("Supabase insert error:", dbErr.message); });
 
     return NextResponse.json({ success: true });
   } catch (err) {

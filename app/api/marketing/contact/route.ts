@@ -57,9 +57,11 @@ export async function POST(req: NextRequest) {
     const showPromotion   = Array.isArray(services) && services.includes("promotion");
     const showInfluenceurs = Array.isArray(services) && services.includes("influenceurs");
 
+    /* ── Emails (non-bloquant : un échec d'envoi ne doit pas faire perdre le lead déjà enregistré) ── */
+    try {
     /* ── Email agence ── */
     await resend.emails.send({
-      from: "KEKELI Marketing <onboarding@resend.dev>",
+      from: "KEKELI Marketing <noreply@kekelicreativeagency.com>",
       to: AGENCY_EMAIL,
       subject: `📣 Demande marketing digital — ${nomArtiste}`,
       html: `
@@ -123,7 +125,7 @@ export async function POST(req: NextRequest) {
 
     /* ── Email confirmation artiste ── */
     await resend.emails.send({
-      from: "KEKELI Creative Agency <onboarding@resend.dev>",
+      from: "KEKELI Creative Agency <noreply@kekelicreativeagency.com>",
       to: email,
       subject: `✅ Brief marketing reçu — KEKELI Creative Agency`,
       html: `
@@ -142,6 +144,9 @@ export async function POST(req: NextRequest) {
         </div>
       `,
     });
+    } catch (emailErr) {
+      console.error("Marketing email error:", emailErr);
+    }
 
     return NextResponse.json({ success: true });
   } catch (err) {

@@ -52,7 +52,7 @@ export async function PATCH(request: Request) {
   if (status === "active" && data) {
     resend.emails
       .send({
-        from: "KEKELI Creative Agency <onboarding@resend.dev>",
+        from: "KEKELI Creative Agency <noreply@kekelicreativeagency.com>",
         to: [data.email],
         subject: "✅ Votre accès à l'espace client KEKELI est activé !",
         html: await render(ClientActivation({ full_name: data.full_name, siteUrl: SITE_URL })),

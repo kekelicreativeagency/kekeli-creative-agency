@@ -52,9 +52,11 @@ export async function POST(req: NextRequest) {
     const prodLabel = prodLabels[productionType] ?? productionType;
     const diffusionStr = Array.isArray(diffusion) ? diffusion.join(", ") : diffusion || "—";
 
+    /* ── Emails (non-bloquant : un échec d'envoi ne doit pas faire perdre le lead déjà enregistré) ── */
+    try {
     /* ── Email agence ── */
     await resend.emails.send({
-      from: "KEKELI Clips <onboarding@resend.dev>",
+      from: "KEKELI Clips <noreply@kekelicreativeagency.com>",
       to: AGENCY_EMAIL,
       subject: `🎬 Demande de clip — ${prodLabel} · ${nomArtiste}`,
       html: `
@@ -117,7 +119,7 @@ export async function POST(req: NextRequest) {
 
     /* ── Email confirmation artiste ── */
     await resend.emails.send({
-      from: "KEKELI Creative Agency <onboarding@resend.dev>",
+      from: "KEKELI Creative Agency <noreply@kekelicreativeagency.com>",
       to: email,
       subject: `✅ Brief vidéo reçu — ${titreSon || prodLabel}`,
       html: `
@@ -136,6 +138,9 @@ export async function POST(req: NextRequest) {
         </div>
       `,
     });
+    } catch (emailErr) {
+      console.error("Clips email error:", emailErr);
+    }
 
     return NextResponse.json({ success: true });
   } catch (err) {

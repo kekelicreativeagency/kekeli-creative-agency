@@ -48,9 +48,11 @@ export async function POST(req: NextRequest) {
     const showYoutube = serviceType === "youtube" || serviceType === "les-deux";
     const showDroits  = serviceType === "droits"  || serviceType === "les-deux";
 
+    /* ── Emails (non-bloquant : un échec d'envoi ne doit pas faire perdre le lead déjà enregistré) ── */
+    try {
     /* ── Email agence ── */
     await resend.emails.send({
-      from: "KEKELI Monétisation <onboarding@resend.dev>",
+      from: "KEKELI Monétisation <noreply@kekelicreativeagency.com>",
       to: AGENCY_EMAIL,
       subject: `💰 Demande de monétisation — ${serviceLabel} · ${nomArtiste}`,
       html: `
@@ -99,7 +101,7 @@ export async function POST(req: NextRequest) {
 
     /* ── Email confirmation artiste ── */
     await resend.emails.send({
-      from: "KEKELI Creative Agency <onboarding@resend.dev>",
+      from: "KEKELI Creative Agency <noreply@kekelicreativeagency.com>",
       to: email,
       subject: `✅ Demande de monétisation reçue — KEKELI Creative Agency`,
       html: `
@@ -118,6 +120,9 @@ export async function POST(req: NextRequest) {
         </div>
       `,
     });
+    } catch (emailErr) {
+      console.error("Monetisation email error:", emailErr);
+    }
 
     return NextResponse.json({ success: true });
   } catch (err) {

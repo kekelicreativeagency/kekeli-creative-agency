@@ -48,18 +48,22 @@ export async function POST(request: Request) {
       timeStyle: "short",
     });
 
-    await resend.emails.send({
-      from: "KEKELI Creative Agency <onboarding@resend.dev>",
-      to: [AGENCY_EMAIL],
-      subject: `⚡ Brief Express — ${projetLabel} — ${data.prenom}`,
-      html: await render(
-        BriefNotification({ data, projetLabel, budgetLabel, delaiLabel, receivedAt })
-      ),
-    });
+    /* ── Sauvegarde du lead en premier — ne doit jamais dépendre de l'envoi d'email ── */
+    const { error: dbErr } = await getSupabase().from("leads").insert({ type: "brief", data });
+    if (dbErr) console.error("Supabase insert error:", dbErr.message);
 
-    // Save to Supabase
-    getSupabase().from("leads").insert({ type: "brief", data })
-      .then(({ error: dbErr }) => { if (dbErr) console.error("Supabase insert error:", dbErr.message); });
+    try {
+      await resend.emails.send({
+        from: "KEKELI Creative Agency <noreply@kekelicreativeagency.com>",
+        to: [AGENCY_EMAIL],
+        subject: `⚡ Brief Express — ${projetLabel} — ${data.prenom}`,
+        html: await render(
+          BriefNotification({ data, projetLabel, budgetLabel, delaiLabel, receivedAt })
+        ),
+      });
+    } catch (emailErr) {
+      console.error("Brief email error:", emailErr);
+    }
 
     return NextResponse.json({ success: true });
   } catch (err) {

@@ -51,7 +51,7 @@ export async function POST(request: Request) {
     const messageContent = `Nouvelle demande de projet\n\nType : ${type}\nUrgence : ${urgencyLabel}\n\nDescription :\n${description}`;
 
     await resend.emails.send({
-      from: "KEKELI Creative Agency <onboarding@resend.dev>",
+      from: "KEKELI Creative Agency <noreply@kekelicreativeagency.com>",
       to: [AGENCY_EMAIL],
       subject: `📋 Demande de projet — ${type} — ${clientName}`,
       html: await render(

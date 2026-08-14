@@ -47,43 +47,45 @@ export async function POST(request: Request) {
       content: Buffer.from(pdfBuffer),
     };
 
-    // Send both emails in parallel
-    const [notif, confirm] = await Promise.all([
-      resend.emails.send({
-        from: "KEKELI Creative Agency <onboarding@resend.dev>",
-        to: [AGENCY_EMAIL],
-        subject: `🎯 Sondage — ${config.title} — ${userInfo.prenom} — ${score}/100`,
-        html: await render(SondageNotification({ config, score, userInfo, receivedAt })),
-      }),
-      resend.emails.send({
-        from: "KEKELI Creative Agency <onboarding@resend.dev>",
-        to: [userInfo.email],
-        replyTo: AGENCY_EMAIL,
-        subject: `✅ ${config.tone === "tu" ? "Ton" : "Votre"} rapport d'audit KEKELI — ${score}/100`,
-        html: await render(SondageConfirmation({ config, score, userInfo, siteUrl: SITE_URL })),
-        attachments: [pdfAttachment],
-      }),
-    ]);
-
-    if (notif.error || confirm.error) {
-      console.error("Resend sondage error:", notif.error ?? confirm.error);
-      return NextResponse.json(
-        { error: "Erreur lors de l'envoi de l'email. Veuillez réessayer." },
-        { status: 500 }
-      );
-    }
-
-    // Save to Supabase — with full answers for detailed analysis
-    getSupabase().from("leads").insert({
+    // Sauvegarde du lead en premier — ne doit jamais dépendre de l'envoi d'email
+    // (avec les réponses détaillées question par question, pour analyse)
+    const { error: dbErr } = await getSupabase().from("leads").insert({
       type: "sondage",
       data: {
         sondage_type: type,
         score,
         userInfo,
-        answers,           // réponses détaillées question par question
+        answers,
         submitted_at: new Date().toISOString(),
       },
-    }).then(({ error: dbErr }) => { if (dbErr) console.error("Supabase insert error:", dbErr.message); });
+    });
+    if (dbErr) console.error("Supabase insert error:", dbErr.message);
+
+    // Envoi des emails (non-bloquant)
+    try {
+      const [notif, confirm] = await Promise.all([
+        resend.emails.send({
+          from: "KEKELI Creative Agency <noreply@kekelicreativeagency.com>",
+          to: [AGENCY_EMAIL],
+          subject: `🎯 Sondage — ${config.title} — ${userInfo.prenom} — ${score}/100`,
+          html: await render(SondageNotification({ config, score, userInfo, receivedAt })),
+        }),
+        resend.emails.send({
+          from: "KEKELI Creative Agency <noreply@kekelicreativeagency.com>",
+          to: [userInfo.email],
+          replyTo: AGENCY_EMAIL,
+          subject: `✅ ${config.tone === "tu" ? "Ton" : "Votre"} rapport d'audit KEKELI — ${score}/100`,
+          html: await render(SondageConfirmation({ config, score, userInfo, siteUrl: SITE_URL })),
+          attachments: [pdfAttachment],
+        }),
+      ]);
+
+      if (notif.error || confirm.error) {
+        console.error("Resend sondage error:", notif.error ?? confirm.error);
+      }
+    } catch (emailErr) {
+      console.error("Sondage email error:", emailErr);
+    }
 
     return NextResponse.json({ success: true });
   } catch (err) {

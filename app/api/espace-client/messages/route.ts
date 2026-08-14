@@ -108,7 +108,7 @@ export async function POST(request: Request) {
     // Notify agency (non-blocking)
     resend.emails
       .send({
-        from: "KEKELI Creative Agency <onboarding@resend.dev>",
+        from: "KEKELI Creative Agency <noreply@kekelicreativeagency.com>",
         to: [AGENCY_EMAIL],
         subject: `💬 Nouveau message de ${senderName} — ${project.title}`,
         html: await render(

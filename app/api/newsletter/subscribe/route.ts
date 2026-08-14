@@ -64,18 +64,22 @@ export async function POST(request: Request) {
 
     const unsubscribeUrl = `${SITE_URL}/api/newsletter/unsubscribe?token=${sub?.token ?? ""}`;
 
-    /* ── Email de bienvenue ── */
-    await resend.emails.send({
-      from: "KEKELI Creative Agency <onboarding@resend.dev>",
-      to: [email],
-      replyTo: AGENCY_EMAIL,
-      subject: "🎉 Bienvenue dans la newsletter KEKELI !",
-      html: await render(NewsletterWelcome({ name, siteUrl: SITE_URL, unsubscribeUrl })),
-    });
+    /* ── Email de bienvenue (ne doit jamais faire échouer l'inscription) ── */
+    try {
+      await resend.emails.send({
+        from: "KEKELI Creative Agency <noreply@kekelicreativeagency.com>",
+        to: [email],
+        replyTo: AGENCY_EMAIL,
+        subject: "🎉 Bienvenue dans la newsletter KEKELI !",
+        html: await render(NewsletterWelcome({ name, siteUrl: SITE_URL, unsubscribeUrl })),
+      });
+    } catch (emailErr) {
+      console.error("Newsletter welcome email error:", emailErr);
+    }
 
     /* ── Notification interne ── */
     resend.emails.send({
-      from: "KEKELI Creative Agency <onboarding@resend.dev>",
+      from: "KEKELI Creative Agency <noreply@kekelicreativeagency.com>",
       to: [AGENCY_EMAIL],
       subject: `📧 Nouvel abonné newsletter — ${email}`,
       html: `<p><strong>Nouvel abonné newsletter :</strong><br/>Email : ${email}<br/>Nom : ${name ?? "—"}<br/>Source : ${source}</p>`,

@@ -83,7 +83,7 @@ export async function POST(request: Request) {
       if (client?.email) {
         resend.emails
           .send({
-            from: "KEKELI Creative Agency <onboarding@resend.dev>",
+            from: "KEKELI Creative Agency <noreply@kekelicreativeagency.com>",
             to: [client.email],
             subject: `🔔 Nouvelle mise à jour — ${project.title}`,
             html: await render(
@@ -132,7 +132,7 @@ export async function POST(request: Request) {
       if (client?.email) {
         resend.emails
           .send({
-            from: "KEKELI Creative Agency <onboarding@resend.dev>",
+            from: "KEKELI Creative Agency <noreply@kekelicreativeagency.com>",
             to: [client.email],
             subject: `💬 Nouveau message de l'équipe KEKELI — ${project.title}`,
             html: await render(

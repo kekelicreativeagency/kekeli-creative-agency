@@ -50,9 +50,11 @@ export async function POST(req: NextRequest) {
       .map((s: string) => SERVICE_LABELS[s] ?? s)
       .join(", ");
 
+    /* ── Emails (non-bloquant : un échec d'envoi ne doit pas faire perdre le lead déjà enregistré) ── */
+    try {
     /* ── Email agence ── */
     await resend.emails.send({
-      from: "KEKELI Direction Artistique <onboarding@resend.dev>",
+      from: "KEKELI Direction Artistique <noreply@kekelicreativeagency.com>",
       to: AGENCY_EMAIL,
       subject: `🎨 Demande de direction artistique — ${nomArtiste}`,
       html: `
@@ -93,7 +95,7 @@ export async function POST(req: NextRequest) {
 
     /* ── Email confirmation artiste ── */
     await resend.emails.send({
-      from: "KEKELI Creative Agency <onboarding@resend.dev>",
+      from: "KEKELI Creative Agency <noreply@kekelicreativeagency.com>",
       to: email,
       subject: `✅ Demande de direction artistique reçue — KEKELI Creative Agency`,
       html: `
@@ -112,6 +114,9 @@ export async function POST(req: NextRequest) {
         </div>
       `,
     });
+    } catch (emailErr) {
+      console.error("Direction email error:", emailErr);
+    }
 
     return NextResponse.json({ success: true });
   } catch (err) {
