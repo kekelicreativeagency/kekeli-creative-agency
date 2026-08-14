@@ -59,6 +59,21 @@ export default function ContactContent() {
 
                 <div className="space-y-4 mb-8">
                   <a
+                    href="mailto:contact@kekelicreativeagency.com"
+                    className="flex items-center gap-4 p-4 rounded-xl border border-border bg-bg-primary hover:border-gold hover:[box-shadow:var(--shadow-gold)] transition-all group"
+                  >
+                    <div className="w-10 h-10 rounded-full bg-gold-pale flex items-center justify-center shrink-0">
+                      <Mail size={16} className="text-gold" />
+                    </div>
+                    <div>
+                      <p className="font-body text-xs text-text-muted mb-0.5">{c.emailLabel}</p>
+                      <p className="font-body text-sm font-medium text-text-primary group-hover:text-gold transition-colors">
+                        contact@kekelicreativeagency.com
+                      </p>
+                    </div>
+                  </a>
+
+                  <a
                     href="mailto:kekelicreativeagency@gmail.com"
                     className="flex items-center gap-4 p-4 rounded-xl border border-border bg-bg-primary hover:border-gold hover:[box-shadow:var(--shadow-gold)] transition-all group"
                   >
