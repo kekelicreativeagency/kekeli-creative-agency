@@ -58,6 +58,10 @@ interface Message {
   content: string;
 }
 
+// Laisse le temps au streaming Claude de se terminer même sur une réponse
+// plus longue que la moyenne, avant que Vercel ne coupe la fonction.
+export const maxDuration = 60;
+
 // ── Streaming chat response ────────────────────────────────────────
 export async function POST(request: Request) {
   const { messages, sessionId, action } = await request.json() as {
@@ -116,7 +120,7 @@ ${messages.map((m) => `${m.role === "user" ? "Client" : "KELI"}: ${m.content}`).
       try {
         const stream = anthropic.messages.stream({
           model: "claude-sonnet-4-6",
-          max_tokens: 500,
+          max_tokens: 1024,
           system: SYSTEM_PROMPT,
           messages: messages.slice(-20),
         });
