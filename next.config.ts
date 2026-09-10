@@ -3,13 +3,15 @@ import type { NextConfig } from "next";
 const CSP = [
   "default-src 'self'",
   // Next.js injecte des scripts inline + Framer Motion utilise eval en dev
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.instagram.com",
+  // + Google Analytics (gtag.js)
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.instagram.com https://www.googletagmanager.com",
   "style-src 'self' 'unsafe-inline'",
   // Images locales + YouTube thumbnails + toutes origines HTTPS
   "img-src 'self' data: blob: https:",
   "font-src 'self' data:",
   // Fetch/XHR : Supabase (REST + Realtime) + API Anthropic pour le chat
-  "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://api.anthropic.com",
+  // + Google Analytics (envoi des évènements de mesure)
+  "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://api.anthropic.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com",
   // Embeds YouTube et Instagram
   "frame-src https://www.youtube.com https://www.youtube-nocookie.com https://www.instagram.com",
   // Personne ne peut intégrer ce site dans une iframe
