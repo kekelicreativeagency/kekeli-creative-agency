@@ -76,12 +76,12 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
         />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-SZR10E0WGB" />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-SZR10EDWGB" />
         <script dangerouslySetInnerHTML={{ __html: `
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', 'G-SZR10E0WGB');
+          gtag('config', 'G-SZR10EDWGB');
         `}} />
       </head>
       <body className="min-h-full flex flex-col bg-bg-primary text-text-primary">
