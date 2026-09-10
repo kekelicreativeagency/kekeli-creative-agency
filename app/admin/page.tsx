@@ -10,10 +10,11 @@ import AdminSidebar from "@/components/admin/AdminSidebar";
 import RoadmapGuide from "@/components/admin/RoadmapGuide";
 import NewsletterPanel, { type NewsletterSubscriber } from "@/components/admin/NewsletterPanel";
 import BlogPanel, { type BlogPost as AdminBlogPost } from "@/components/admin/BlogPanel";
+import AnalyticsPanel from "@/components/admin/AnalyticsPanel";
 import { computeSidebarCounts } from "@/lib/admin/sidebarCounts";
 import {
   Users, MessageSquare, Zap, BarChart2, Sparkles,
-  FolderOpen, Mic2, Building2, Mail, FileText, BookDown,
+  FolderOpen, Mic2, Building2, Mail, FileText, BookDown, Activity,
 } from "lucide-react";
 
 export const metadata: Metadata = { title: "Dashboard — KEKELI Admin" };
@@ -174,6 +175,22 @@ export default async function AdminDashboard({
                 <SectionTitle>Derniers leads</SectionTitle>
                 <LeadsTable leads={leads.slice(0, 10)} />
               </div>
+            </>
+          )}
+
+          {/* ── ANALYTICS / VISITEURS ── */}
+          {tab === "analytics" && (
+            <>
+              <div className="mb-6 flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: "#22C55E20" }}>
+                  <Activity size={18} style={{ color: "#22C55E" }} />
+                </div>
+                <div>
+                  <h1 className="font-display text-2xl text-[#0C0B09]">Visiteurs du site</h1>
+                  <p className="font-body text-sm text-[#78716C]">Données Google Analytics en direct</p>
+                </div>
+              </div>
+              <AnalyticsPanel />
             </>
           )}
 

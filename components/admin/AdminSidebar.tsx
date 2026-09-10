@@ -6,7 +6,7 @@ import { useTransition } from "react";
 import { useRouter } from "next/navigation";
 import {
   LayoutDashboard, MessageSquare, Mic2, Building2,
-  Users, FolderOpen, Sparkles, ExternalLink, LogOut, Map, BookOpen, Music, Briefcase, Mail, FileText, BookDown,
+  Users, FolderOpen, Sparkles, ExternalLink, LogOut, Map, BookOpen, Music, Briefcase, Mail, FileText, BookDown, Activity,
 } from "lucide-react";
 import { logout } from "@/app/admin/actions";
 
@@ -15,6 +15,7 @@ const NAV = [
     section: "Vue d'ensemble",
     items: [
       { id: "dashboard", icon: LayoutDashboard, label: "Dashboard",         tab: null,            color: "#C8A84B" },
+      { id: "analytics", icon: Activity,        label: "Visiteurs",        tab: "analytics",     color: "#22C55E" },
     ],
   },
   {
