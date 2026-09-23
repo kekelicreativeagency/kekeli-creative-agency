@@ -27,5 +27,8 @@
   ],
   "env": {
     "NEXT_PUBLIC_SITE_URL": "https://kekelicreativeagency.com"
-  }
+  },
+  "crons": [
+    { "path": "/api/cron/keep-alive", "schedule": "0 6 * * *" }
+  ]
 }
