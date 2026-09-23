@@ -71,7 +71,7 @@ export default function ArtistesHero() {
     <section
       ref={sectionRef}
       onMouseMove={handleMouseMove}
-      className="relative h-screen flex items-center overflow-hidden"
+      className="relative min-h-screen flex items-center overflow-hidden py-24 md:py-0"
     >
       {/* Background image */}
       <div className="absolute inset-0">

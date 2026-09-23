@@ -158,7 +158,7 @@ export default function ExperienceClient() {
       {/* ── SECTION 1: HERO ──────────────────────────────── */}
       <section
         ref={heroRef}
-        className="relative h-screen flex flex-col items-center justify-center overflow-hidden"
+        className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden py-24 md:py-0"
       >
         {/* Radial glow */}
         <div
