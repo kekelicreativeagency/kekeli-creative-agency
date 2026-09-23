@@ -24,7 +24,6 @@ const SERVICES = [
     image: "/images/promo-personnalites-reseaux.png",
     imageAlt: "Confiez-nous vos réseaux sociaux, KEKELI Creative Agency",
     accent: "#C8A84B",
-    accentText: "#151008",
   },
   {
     id: "personnalites",
@@ -36,7 +35,6 @@ const SERVICES = [
     image: "/images/promo-entreprises-kekelicom.png",
     imageAlt: "Visuel KEKELI Creative Agency, communication qui inspire confiance",
     accent: "#C8A84B",
-    accentText: "#151008",
   },
   {
     id: "artistes",
@@ -48,7 +46,6 @@ const SERVICES = [
     image: "/images/promo-artistes-branding.png",
     imageAlt: "Branding Artiste, KEKELI Creative Agency",
     accent: "#8B5CF6",
-    accentText: "#FFFFFF",
   },
 ] as const;
 
@@ -134,8 +131,8 @@ export default function ServicesGrid() {
                 </div>
                 <div className="mt-5">
                   <span
-                    className="inline-block font-body text-[11px] font-bold uppercase tracking-[0.08em] mb-3 px-2.5 py-1 rounded-full"
-                    style={{ background: service.accent, color: service.accentText }}
+                    className="inline-block font-body text-[11px] font-bold uppercase tracking-[0.1em] mb-3"
+                    style={{ color: service.accent }}
                   >
                     {service.kicker}
                   </span>
