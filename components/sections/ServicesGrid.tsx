@@ -21,8 +21,8 @@ const SERVICES = [
     description:
       "Sites web, campagnes et couverture d'événements pour PME, ONG et organismes internationaux.",
     cta: { label: "Voir les services entreprises", href: "/entreprises/branding" },
-    image: "/images/promo-entreprises-kekelicom.png",
-    imageAlt: "Visuel KEKELI Creative Agency, communication qui inspire confiance",
+    image: "/images/promo-personnalites-reseaux.png",
+    imageAlt: "Confiez-nous vos réseaux sociaux, KEKELI Creative Agency",
     accent: "#C8A84B",
     accentText: "#151008",
   },
@@ -33,8 +33,8 @@ const SERVICES = [
     description:
       "Image digitale et personal branding pour dirigeants et représentants institutionnels.",
     cta: { label: "Voir les services personnalités", href: "/personnalites/personal-branding" },
-    image: "/images/promo-personnalites-reseaux.png",
-    imageAlt: "Confiez-nous vos réseaux sociaux, KEKELI Creative Agency",
+    image: "/images/promo-entreprises-kekelicom.png",
+    imageAlt: "Visuel KEKELI Creative Agency, communication qui inspire confiance",
     accent: "#C8A84B",
     accentText: "#151008",
   },
@@ -126,8 +126,7 @@ export default function ServicesGrid() {
                     sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 30vw"
                   />
                   <span
-                    className="absolute bottom-4 left-4 right-4 inline-flex items-center justify-center gap-2 font-body text-sm font-bold px-4 py-2.5 rounded-full shadow-lg transition-all duration-200 group-hover:gap-3"
-                    style={{ background: service.accent, color: service.accentText }}
+                    className="absolute bottom-4 left-4 right-4 inline-flex items-center justify-center gap-2 font-body text-sm font-bold px-4 py-2.5 rounded-full text-white bg-black/55 backdrop-blur-sm transition-all duration-200 group-hover:bg-black/70 group-hover:gap-3"
                   >
                     {service.cta.label}
                     <ArrowRight size={14} />
