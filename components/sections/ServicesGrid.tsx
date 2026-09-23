@@ -17,6 +17,7 @@ const FEATURED = {
   image: "/images/entreprise.jpg",
   imageAlt: "Dirigeante d'entreprise à son bureau, KEKELI Creative Agency",
   accent: "#C8A84B",
+  accentText: "#151008",
 };
 
 const SECONDARY = [
@@ -30,6 +31,7 @@ const SECONDARY = [
     image: "/images/branding.jpg",
     imageAlt: "Personnalité publique consultant ses statistiques, KEKELI Creative Agency",
     accent: "#C8A84B",
+    accentText: "#151008",
   },
   {
     id: "artistes",
@@ -41,6 +43,7 @@ const SECONDARY = [
     image: "/images/artiste.jpg",
     imageAlt: "Artiste musicien au piano, KEKELI Creative Agency",
     accent: "#8B5CF6",
+    accentText: "#FFFFFF",
   },
 ] as const;
 
@@ -76,31 +79,31 @@ export default function ServicesGrid() {
                 />
               </div>
               <div className="mt-6 max-w-xl">
-                <p
-                  className="font-body text-xs font-bold uppercase tracking-[0.16em] mb-3"
-                  style={{ color: FEATURED.accent }}
+                <span
+                  className="inline-block font-body text-xs font-bold uppercase tracking-[0.1em] mb-4 px-3 py-1.5 rounded-full"
+                  style={{ background: FEATURED.accent, color: FEATURED.accentText }}
                 >
                   {FEATURED.kicker}
-                </p>
-                <h3 className="font-display font-bold text-3xl md:text-4xl text-text-primary leading-[1.1] tracking-tight mb-3 transition-colors group-hover:opacity-80">
+                </span>
+                <h3 className="font-display font-bold text-3xl md:text-[2.75rem] text-text-primary leading-[1.05] tracking-tight mb-3 transition-colors group-hover:opacity-80">
                   {FEATURED.title}
                 </h3>
                 <p className="font-body text-base leading-relaxed text-text-muted mb-5 max-w-md">
                   {FEATURED.description}
                 </p>
-                <div className="flex flex-wrap gap-2 mb-6">
+                <div className="flex flex-wrap gap-2 mb-7">
                   {FEATURED.tags.map((t) => (
                     <span
                       key={t}
-                      className="font-body text-[11px] text-text-secondary border border-border rounded-2xl px-3 py-1"
+                      className="font-body text-[11px] font-semibold text-text-secondary border border-border rounded-2xl px-3 py-1"
                     >
                       {t}
                     </span>
                   ))}
                 </div>
                 <span
-                  className="inline-flex items-center gap-2 font-body text-sm font-semibold transition-all duration-200 group-hover:gap-3.5"
-                  style={{ color: FEATURED.accent }}
+                  className="inline-flex items-center gap-2 font-body text-sm font-bold px-5 py-3 rounded-full transition-all duration-200 group-hover:gap-3.5"
+                  style={{ background: FEATURED.accent, color: FEATURED.accentText }}
                 >
                   {FEATURED.cta.label}
                   <ArrowRight size={14} />
@@ -130,12 +133,12 @@ export default function ServicesGrid() {
                     />
                   </div>
                   <div className="mt-5">
-                    <p
-                      className="font-body text-[11px] font-bold uppercase tracking-[0.14em] mb-2"
-                      style={{ color: block.accent }}
+                    <span
+                      className="inline-block font-body text-[11px] font-bold uppercase tracking-[0.08em] mb-3 px-2.5 py-1 rounded-full"
+                      style={{ background: block.accent, color: block.accentText }}
                     >
                       {block.kicker}
-                    </p>
+                    </span>
                     <h3 className="font-display font-bold text-xl text-text-primary leading-tight mb-2 transition-colors group-hover:opacity-80">
                       {block.title}
                     </h3>
@@ -143,7 +146,7 @@ export default function ServicesGrid() {
                       {block.description}
                     </p>
                     <span
-                      className="inline-flex items-center gap-1.5 font-body text-sm font-semibold transition-all duration-200 group-hover:gap-2.5"
+                      className="inline-flex items-center gap-1.5 font-body text-sm font-bold transition-all duration-200 group-hover:gap-2.5"
                       style={{ color: block.accent }}
                     >
                       {block.cta.label}
