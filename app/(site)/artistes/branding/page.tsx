@@ -1,6 +1,7 @@
 ﻿import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight, Check, Palette, Star, Layers, Image, FileText, Eye, Zap, Users } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import FadeIn, { FadeInStagger, FadeInItem } from "@/components/animations/FadeIn";
 import BrandingForm from "@/components/branding/BrandingForm";
 
@@ -22,8 +23,6 @@ const ACCENT = "#8B5CF6";
 
 const services = [
   {
-    icon: Palette,
-    emoji: "✏️",
     title: "Logo & Identité Visuelle",
     desc: "Un logo fort et une charte graphique cohérente qui vous rendent immédiatement reconnaissable.",
     includes: [
@@ -36,8 +35,6 @@ const services = [
     ],
   },
   {
-    icon: Image,
-    emoji: "📱",
     title: "Templates Réseaux Sociaux",
     desc: "Des modèles prêts à l'emploi pour vos posts et stories — un feed professionnel sans effort.",
     includes: [
@@ -50,8 +47,6 @@ const services = [
     ],
   },
   {
-    icon: FileText,
-    emoji: "📄",
     title: "Press Kit Artiste (EPK)",
     desc: "Votre dossier de presse numérique — indispensable pour convaincre labels, médias et organisateurs.",
     includes: [
@@ -64,8 +59,6 @@ const services = [
     ],
   },
   {
-    icon: Layers,
-    emoji: "🎨",
     title: "Direction Artistique Globale",
     desc: "Votre univers visuel complet, cohérent sur tous vos supports — le pack le plus impactant.",
     includes: [
@@ -80,29 +73,29 @@ const services = [
 ];
 
 const processSteps = [
-  { step: "01", icon: "💬", title: "Brief créatif",        desc: "On échange sur votre univers, vos références et ce que vous voulez transmettre à votre audience." },
-  { step: "02", icon: "🗂️", title: "Moodboard",            desc: "On crée un moodboard visuel pour valider la direction artistique avant de commencer." },
-  { step: "03", icon: "✏️", title: "Création",             desc: "Notre équipe créative produit les éléments dans le style validé ensemble." },
-  { step: "04", icon: "🔁", title: "Révisions",            desc: "Vous donnez votre avis, on ajuste jusqu'à ce que vous soyez 100% satisfait." },
-  { step: "05", icon: "📦", title: "Livraison & Guide",    desc: "Livraison de tous les fichiers sources + guide d'utilisation de votre identité visuelle." },
+  { step: "01", title: "Brief créatif",        desc: "On échange sur votre univers, vos références et ce que vous voulez transmettre à votre audience." },
+  { step: "02", title: "Moodboard",            desc: "On crée un moodboard visuel pour valider la direction artistique avant de commencer." },
+  { step: "03", title: "Création",             desc: "Notre équipe créative produit les éléments dans le style validé ensemble." },
+  { step: "04", title: "Révisions",            desc: "Vous donnez votre avis, on ajuste jusqu'à ce que vous soyez 100% satisfait." },
+  { step: "05", title: "Livraison & Guide",    desc: "Livraison de tous les fichiers sources + guide d'utilisation de votre identité visuelle." },
 ];
 
 const brandElements = [
-  { emoji: "🔤", name: "Nom artistique fort",       desc: "Un nom mémorable qui sonne et s'écrit bien partout" },
-  { emoji: "🎨", name: "Palette de couleurs",       desc: "Vos couleurs signature qui créent une reconnaissance immédiate" },
-  { emoji: "✍️", name: "Typographies",              desc: "Les polices qui transmettent votre personnalité artistique" },
-  { emoji: "📸", name: "Direction photo",           desc: "Un style photo cohérent pour tous vos shoots" },
-  { emoji: "🎵", name: "Son de marque",             desc: "Une identité sonore reconnaissable en intro/outro" },
-  { emoji: "💬", name: "Ton de communication",      desc: "La façon dont vous parlez à votre audience, toujours cohérente" },
+  { name: "Nom artistique fort",       desc: "Un nom mémorable qui sonne et s'écrit bien partout" },
+  { name: "Palette de couleurs",       desc: "Vos couleurs signature qui créent une reconnaissance immédiate" },
+  { name: "Typographies",              desc: "Les polices qui transmettent votre personnalité artistique" },
+  { name: "Direction photo",           desc: "Un style photo cohérent pour tous vos shoots" },
+  { name: "Son de marque",             desc: "Une identité sonore reconnaissable en intro/outro" },
+  { name: "Ton de communication",      desc: "La façon dont vous parlez à votre audience, toujours cohérente" },
 ];
 
 const whyKekeli = [
-  { icon: Eye,    title: "Vision artistique",        desc: "Nous comprenons l'esthétique musicale africaine et créons des identités qui résonnent avec votre audience." },
-  { icon: Star,   title: "Designs originaux",        desc: "Aucun template générique. Chaque logo et charte est créé entièrement sur mesure pour vous." },
-  { icon: Zap,    title: "Cohérence totale",         desc: "Votre identité est la même sur tous vos supports : réseaux, clips, press kit, scène." },
-  { icon: Users,  title: "Expérience artistes",      desc: "Nous avons construit l'image de marque de dizaines d'artistes sénégalais et africains." },
-  { icon: Layers, title: "Fichiers complets",        desc: "Tous les formats dont vous avez besoin : PNG, SVG, PDF, Canva — pour toujours." },
-  { icon: Palette, title: "Accompagnement continu",  desc: "Même après la livraison, on reste disponibles pour adapter votre branding à vos nouvelles sorties." },
+  { title: "Vision artistique",        desc: "Nous comprenons l'esthétique musicale africaine et créons des identités qui résonnent avec votre audience." },
+  { title: "Designs originaux",        desc: "Aucun template générique. Chaque logo et charte est créé entièrement sur mesure pour vous." },
+  { title: "Cohérence totale",         desc: "Votre identité est la même sur tous vos supports : réseaux, clips, press kit, scène." },
+  { title: "Expérience artistes",      desc: "Nous avons construit l'image de marque de dizaines d'artistes sénégalais et africains." },
+  { title: "Fichiers complets",        desc: "Tous les formats dont vous avez besoin : PNG, SVG, PDF, Canva — pour toujours." },
+  { title: "Accompagnement continu",   desc: "Même après la livraison, on reste disponibles pour adapter votre branding à vos nouvelles sorties." },
 ];
 
 export default function BrandingPage() {
@@ -110,7 +103,7 @@ export default function BrandingPage() {
     <>
       {/* ── HERO ──────────────────────────────────────────── */}
       <section
-        className="relative py-32 overflow-hidden"
+        className="relative py-20 md:py-28 overflow-hidden"
         style={{ background: "#0C0B09" }}
       >
         {/* Blobs */}
@@ -120,60 +113,71 @@ export default function BrandingPage() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full blur-[100px] opacity-10" style={{ background: "#C8A84B" }} />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Breadcrumb */}
-          <FadeIn direction="down" className="mb-8">
-            <nav className="flex items-center gap-2 text-xs font-body" style={{ color: "rgba(255,255,255,0.45)" }}>
-              <Link href="/" className="hover:text-gold transition-colors">Accueil</Link>
-              <ChevronRight size={12} />
-              <Link href="/artistes" className="hover:text-gold transition-colors">Artistes</Link>
-              <ChevronRight size={12} />
-              <span style={{ color: "rgba(255,255,255,0.70)" }}>Branding Artiste</span>
-            </nav>
-          </FadeIn>
-
-          <div className="max-w-3xl">
-            <FadeIn direction="up" delay={0.05}>
-              <span className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full mb-6 font-body text-xs font-semibold uppercase tracking-[0.14em]" style={{ border: `1px solid rgba(139,92,246,0.35)`, background: "rgba(139,92,246,0.10)", color: "#A78BFA" }}>
-                <span className="w-1.5 h-1.5 rounded-full" style={{ background: "#A78BFA" }} />
-                Branding & Identité Visuelle · KEKELI Creative Agency
-              </span>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            {/* Breadcrumb */}
+            <FadeIn direction="down" className="mb-8">
+              <nav className="flex items-center gap-2 text-xs font-body" style={{ color: "rgba(255,255,255,0.45)" }}>
+                <Link href="/" className="hover:text-gold transition-colors">Accueil</Link>
+                <ChevronRight size={12} />
+                <Link href="/artistes" className="hover:text-gold transition-colors">Artistes</Link>
+                <ChevronRight size={12} />
+                <span style={{ color: "rgba(255,255,255,0.70)" }}>Branding Artiste</span>
+              </nav>
             </FadeIn>
 
-            <FadeIn direction="up" delay={0.12}>
-              <h1 className="font-body font-bold text-5xl sm:text-6xl lg:text-[4rem] leading-[1.08] text-white mb-6">
-                Une image qui vous<br />
-                <span style={{ color: "#A78BFA" }}>rend inoubliable</span>
-              </h1>
-            </FadeIn>
+            <div className="max-w-xl">
+              <FadeIn direction="up" delay={0.05}>
+                <p className="font-body text-xs font-semibold uppercase tracking-[0.2em] mb-4" style={{ color: "#A78BFA" }}>
+                  Branding & Identité Visuelle
+                </p>
+              </FadeIn>
 
-            <FadeIn direction="up" delay={0.22}>
-              <p className="font-body text-lg leading-relaxed mb-8 max-w-xl" style={{ color: "rgba(255,255,255,0.70)" }}>
-                Logo, charte graphique, templates réseaux, Press Kit — KEKELI Creative Agency construit une
-                identité visuelle forte et cohérente qui fait reconnaître votre talent au premier coup d'œil.
-              </p>
-            </FadeIn>
+              <FadeIn direction="up" delay={0.12}>
+                <h1 className="font-body font-bold text-5xl sm:text-6xl lg:text-[4rem] leading-[1.08] text-white mb-6">
+                  Une image qui vous<br />
+                  <span style={{ color: "#A78BFA" }}>rend inoubliable</span>
+                </h1>
+              </FadeIn>
 
-            <FadeIn direction="up" delay={0.3}>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <a
-                  href="#formulaire"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-body font-bold text-base text-black transition-all hover:scale-105"
-                  style={{ background: "linear-gradient(135deg, #C8A84B 0%, #D4A83A 100%)", boxShadow: "0 8px 30px rgba(200,168,75,0.40)" }}
-                >
-                  <Palette size={18} />
-                  Créer mon identité
-                </a>
-                <a
-                  href="#services"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-body font-semibold text-base transition-all"
-                  style={{ border: "2px solid rgba(255,255,255,0.25)", color: "rgba(255,255,255,0.85)" }}
-                >
-                  Voir les services
-                </a>
-              </div>
-            </FadeIn>
+              <FadeIn direction="up" delay={0.22}>
+                <p className="font-body text-lg leading-relaxed mb-8" style={{ color: "rgba(255,255,255,0.70)" }}>
+                  Logo, charte graphique, templates réseaux, Press Kit — KEKELI Creative Agency construit une
+                  identité visuelle forte et cohérente qui fait reconnaître votre talent au premier coup d&apos;œil.
+                </p>
+              </FadeIn>
+
+              <FadeIn direction="up" delay={0.3}>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <a
+                    href="#formulaire"
+                    className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-body font-bold text-base text-black transition-all hover:scale-105"
+                    style={{ background: "linear-gradient(135deg, #C8A84B 0%, #D4A83A 100%)", boxShadow: "0 8px 30px rgba(200,168,75,0.40)" }}
+                  >
+                    Créer mon identité
+                  </a>
+                  <a
+                    href="#services"
+                    className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-body font-semibold text-base transition-all"
+                    style={{ border: "2px solid rgba(255,255,255,0.25)", color: "rgba(255,255,255,0.85)" }}
+                  >
+                    Voir les services
+                  </a>
+                </div>
+              </FadeIn>
+            </div>
           </div>
+          <FadeIn direction="left" delay={0.15} className="hidden lg:block">
+            <div className="relative aspect-[4/3] rounded-3xl overflow-hidden" style={{ boxShadow: "0 32px 80px rgba(0,0,0,0.5)" }}>
+              <Image
+                src="/images/artiste 2.jpg"
+                alt="Portrait artiste, identité visuelle KEKELI Creative Agency"
+                fill
+                className="object-cover"
+                sizes="45vw"
+              />
+            </div>
+          </FadeIn>
         </div>
       </section>
 
@@ -188,14 +192,11 @@ export default function BrandingPage() {
             {brandElements.map((b) => (
               <FadeInItem key={b.name}>
                 <div
-                  className="flex items-start gap-3 p-4 rounded-2xl"
-                  style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}
+                  className="p-4 rounded-2xl border-l-2"
+                  style={{ background: "rgba(255,255,255,0.04)", borderColor: ACCENT }}
                 >
-                  <span className="text-2xl shrink-0">{b.emoji}</span>
-                  <div>
-                    <p className="font-body font-semibold text-white text-sm mb-1">{b.name}</p>
-                    <p className="font-body text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.50)" }}>{b.desc}</p>
-                  </div>
+                  <p className="font-body font-semibold text-white text-sm mb-1">{b.name}</p>
+                  <p className="font-body text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.50)" }}>{b.desc}</p>
                 </div>
               </FadeInItem>
             ))}
@@ -207,7 +208,7 @@ export default function BrandingPage() {
       <section id="services" className="py-24" style={{ background: "linear-gradient(160deg, #FBF6EC 0%, #F5EDD8 50%, #FAF4E8 100%)" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn direction="up" className="text-center mb-14">
-            <p className="font-body text-xs font-semibold uppercase tracking-[0.2em] text-gold mb-3">Ce qu'on crée pour vous</p>
+            <p className="font-body text-xs font-semibold uppercase tracking-[0.2em] text-gold mb-3">Ce qu&apos;on crée pour vous</p>
             <h2 className="font-display text-4xl md:text-5xl text-text-primary leading-tight">
               Nos services de <em className="text-gold not-italic">branding</em>
             </h2>
@@ -216,37 +217,27 @@ export default function BrandingPage() {
             </p>
           </FadeIn>
           <FadeInStagger className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {services.map((s) => {
-              const Icon = s.icon;
-              return (
-                <FadeInItem key={s.title}>
-                  <div className="h-full bg-white rounded-2xl p-6 flex flex-col" style={{ boxShadow: "0 4px 20px rgba(139,92,246,0.08)" }}>
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl" style={{ background: "rgba(139,92,246,0.10)" }}>
-                        {s.emoji}
+            {services.map((s) => (
+              <FadeInItem key={s.title}>
+                <div className="h-full bg-white rounded-2xl p-6 flex flex-col" style={{ boxShadow: "0 4px 20px rgba(139,92,246,0.08)" }}>
+                  <h3 className="font-body font-bold text-text-primary text-base leading-snug mb-2">{s.title}</h3>
+                  <p className="font-body text-xs text-text-muted leading-relaxed mb-4">{s.desc}</p>
+                  <div className="space-y-1.5 flex-1">
+                    {s.includes.map((item) => (
+                      <div key={item} className="flex items-center gap-2.5">
+                        <span className="w-1 h-1 rounded-full shrink-0" style={{ background: ACCENT }} />
+                        <span className="font-body text-xs text-text-secondary">{item}</span>
                       </div>
-                      <div className="flex-1">
-                        <h3 className="font-body font-bold text-text-primary text-base leading-snug">{s.title}</h3>
-                      </div>
-                    </div>
-                    <p className="font-body text-xs text-text-muted leading-relaxed mb-4">{s.desc}</p>
-                    <div className="space-y-1.5 flex-1">
-                      {s.includes.map((item) => (
-                        <div key={item} className="flex items-start gap-2">
-                          <Check size={12} className="mt-0.5 shrink-0" style={{ color: ACCENT }} />
-                          <span className="font-body text-xs text-text-secondary">{item}</span>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="mt-4 pt-4 border-t border-border">
-                      <a href="#formulaire" className="font-body text-xs font-semibold transition-colors" style={{ color: ACCENT }}>
-                        Demander un devis →
-                      </a>
-                    </div>
+                    ))}
                   </div>
-                </FadeInItem>
-              );
-            })}
+                  <div className="mt-4 pt-4 border-t border-border">
+                    <a href="#formulaire" className="font-body text-xs font-semibold transition-colors" style={{ color: ACCENT }}>
+                      Demander un devis →
+                    </a>
+                  </div>
+                </div>
+              </FadeInItem>
+            ))}
           </FadeInStagger>
         </div>
       </section>
@@ -264,10 +255,7 @@ export default function BrandingPage() {
             {processSteps.map((s) => (
               <FadeInItem key={s.step}>
                 <div className="flex flex-col p-5 rounded-2xl h-full" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}>
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="font-body font-bold text-[10px] tracking-[0.2em]" style={{ color: ACCENT }}>{s.step}</span>
-                    <span className="text-xl">{s.icon}</span>
-                  </div>
+                  <span className="font-body font-bold text-[10px] tracking-[0.2em] mb-3" style={{ color: ACCENT }}>{s.step}</span>
                   <h3 className="font-body font-bold text-white text-sm mb-2">{s.title}</h3>
                   <p className="font-body text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.50)" }}>{s.desc}</p>
                 </div>
@@ -287,16 +275,11 @@ export default function BrandingPage() {
             </h2>
           </FadeIn>
           <FadeInStagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {whyKekeli.map(({ icon: Icon, title, desc }) => (
+            {whyKekeli.map(({ title, desc }) => (
               <FadeInItem key={title}>
-                <div className="flex gap-4 p-5 rounded-2xl bg-white" style={{ boxShadow: "0 4px 20px rgba(139,92,246,0.08)" }}>
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: "rgba(139,92,246,0.10)" }}>
-                    <Icon size={18} style={{ color: ACCENT }} />
-                  </div>
-                  <div>
-                    <p className="font-body font-semibold text-text-primary text-sm mb-1">{title}</p>
-                    <p className="font-body text-xs leading-relaxed text-text-muted">{desc}</p>
-                  </div>
+                <div className="p-5 rounded-2xl bg-white border-l-2" style={{ boxShadow: "0 4px 20px rgba(139,92,246,0.08)", borderColor: ACCENT }}>
+                  <p className="font-body font-semibold text-text-primary text-sm mb-1">{title}</p>
+                  <p className="font-body text-xs leading-relaxed text-text-muted">{desc}</p>
                 </div>
               </FadeInItem>
             ))}

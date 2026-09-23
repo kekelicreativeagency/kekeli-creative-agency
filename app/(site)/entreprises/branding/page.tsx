@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight, Building2, Check, ArrowRight } from "lucide-react";
+import { ChevronRight, ArrowRight } from "lucide-react";
 import FadeIn from "@/components/animations/FadeIn";
 import EntreprisesForm from "@/components/entreprises/EntreprisesForm";
 
@@ -31,37 +32,45 @@ export default function BrandingPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative min-h-[45vh] flex items-end pb-16 overflow-hidden" style={{ background: "#130A28" }}>
+      <section className="relative py-20 md:py-28 overflow-hidden" style={{ background: "#130A28" }}>
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full opacity-20" style={{ background: `radial-gradient(circle, ${COLOR} 0%, transparent 70%)`, filter: "blur(80px)" }} />
         </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <FadeIn direction="down" className="mb-6">
-            <nav className="flex items-center gap-2 text-xs font-body text-white/40">
-              <Link href="/" className="hover:text-white/70 transition-colors">Accueil</Link>
-              <ChevronRight size={12} />
-              <Link href="/entreprises" className="hover:text-white/70 transition-colors">Entreprises</Link>
-              <ChevronRight size={12} />
-              <span className="text-white/70">Identité & Branding</span>
-            </nav>
-          </FadeIn>
-          <FadeIn direction="up" delay={0.1}>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: `${COLOR}22` }}>
-                <Building2 size={20} style={{ color: COLOR }} />
-              </div>
-              <p className="font-body text-xs font-semibold uppercase tracking-[0.2em]" style={{ color: COLOR }}>Identité Visuelle & Branding</p>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <FadeIn direction="down" className="mb-6">
+              <nav className="flex items-center gap-2 text-xs font-body text-white/40">
+                <Link href="/" className="hover:text-white/70 transition-colors">Accueil</Link>
+                <ChevronRight size={12} />
+                <Link href="/entreprises" className="hover:text-white/70 transition-colors">Entreprises</Link>
+                <ChevronRight size={12} />
+                <span className="text-white/70">Identité & Branding</span>
+              </nav>
+            </FadeIn>
+            <FadeIn direction="up" delay={0.1}>
+              <p className="font-body text-xs font-semibold uppercase tracking-[0.2em] mb-4" style={{ color: COLOR }}>Identité Visuelle & Branding</p>
+              <h1 className="font-display text-5xl sm:text-6xl text-white leading-tight mb-4">
+                Une image de marque<br /><em className="not-italic" style={{ color: COLOR }}>qui inspire confiance.</em>
+              </h1>
+              <p className="font-body text-lg text-white/50 max-w-xl mb-8">
+                Logo, charte graphique et templates — tout ce qu&apos;il faut pour que votre entreprise soit immédiatement reconnue comme professionnelle.
+              </p>
+              <Link href="#contact" className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full font-body font-semibold text-sm text-black"
+                style={{ background: "linear-gradient(135deg, #C8A84B 0%, #D4A83A 100%)" }}>
+                Démarrer mon branding <ArrowRight size={16} />
+              </Link>
+            </FadeIn>
+          </div>
+          <FadeIn direction="left" delay={0.15} className="hidden lg:block">
+            <div className="relative aspect-[4/3] rounded-3xl overflow-hidden" style={{ boxShadow: "0 32px 80px rgba(0,0,0,0.45)" }}>
+              <Image
+                src="/images/branding-marque-mode.jpg"
+                alt="Supports de branding entreprise : logo, papeterie, cartes de visite"
+                fill
+                className="object-cover"
+                sizes="45vw"
+              />
             </div>
-            <h1 className="font-display text-5xl sm:text-6xl text-white leading-tight mb-4">
-              Une image de marque<br /><em className="not-italic" style={{ color: COLOR }}>qui inspire confiance.</em>
-            </h1>
-            <p className="font-body text-lg text-white/50 max-w-xl mb-8">
-              Logo, charte graphique et templates — tout ce qu'il faut pour que votre entreprise soit immédiatement reconnue comme professionnelle.
-            </p>
-            <Link href="#contact" className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full font-body font-semibold text-sm text-black"
-              style={{ background: "linear-gradient(135deg, #C8A84B 0%, #D4A83A 100%)" }}>
-              Démarrer mon branding <ArrowRight size={16} />
-            </Link>
           </FadeIn>
         </div>
       </section>
@@ -79,8 +88,8 @@ export default function BrandingPage() {
                 <p className="font-body text-sm text-[#78716C] mb-4">{desc}</p>
                 <ul className="space-y-2">
                   {items.map((item) => (
-                    <li key={item} className="flex items-center gap-2 font-body text-sm text-[#57534E]">
-                      <Check size={14} style={{ color: COLOR }} />
+                    <li key={item} className="flex items-center gap-2.5 font-body text-sm text-[#57534E]">
+                      <span className="w-1 h-1 rounded-full shrink-0" style={{ background: COLOR }} />
                       {item}
                     </li>
                   ))}
