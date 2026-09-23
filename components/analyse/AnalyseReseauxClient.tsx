@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
+import AuditEmailGate from "@/components/ui/AuditEmailGate";
 
 /* ───────────────────────────────────── constants */
 const ACCENT = "#D946EF";
@@ -55,7 +56,7 @@ interface AnalysisResult {
   infos_web?: InfosWeb;
 }
 
-type Phase = "intro" | "form" | "loading" | "results" | "error";
+type Phase = "intro" | "form" | "loading" | "email" | "results" | "error";
 
 const SCORE_LABELS: Record<string, string> = {
   optimisation_profil:    "Optimisation du profil",
@@ -202,11 +203,30 @@ export default function AnalyseReseauxClient() {
       const json = await res.json();
       if (!json.analysis) throw new Error();
       setAnalysis(json.analysis);
-      setPhase("results");
+      setPhase("email");
       setTimeout(() => topRef.current?.scrollIntoView({ behavior: "smooth" }), 100);
     } catch {
       setErrMsg("Erreur d'analyse. Vérifiez votre connexion et réessayez.");
       setPhase("error");
+    }
+  };
+
+  const handleUnlock = async (prenom: string, email: string) => {
+    try {
+      await fetch("/api/audit-lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          tool: "analyse-reseaux",
+          prenom,
+          email,
+          summary: { nom_artiste: form.nomArtiste, score_global: analysis?.score_global },
+        }),
+      });
+    } catch {
+      // Ne bloque jamais l'affichage des resultats
+    } finally {
+      setPhase("results");
     }
   };
 
@@ -567,6 +587,18 @@ export default function AnalyseReseauxClient() {
                   </motion.div>
                 ))}
               </div>
+            </motion.div>
+          )}
+
+          {/* ── EMAIL ── */}
+          {phase === "email" && (
+            <motion.div key="email" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+              <AuditEmailGate
+                accent={ACCENT}
+                title="Ton analyse est prête"
+                subtitle="Indique où l'envoyer pour voir tes résultats complets."
+                onUnlock={handleUnlock}
+              />
             </motion.div>
           )}
 

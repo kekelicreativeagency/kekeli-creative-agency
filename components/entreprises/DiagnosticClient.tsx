@@ -3,6 +3,9 @@
 import { useState } from "react";
 import { Map, Loader2, ArrowRight, RefreshCw, AlertTriangle, CheckCircle2, TrendingUp } from "lucide-react";
 import Link from "next/link";
+import AuditEmailGate from "@/components/ui/AuditEmailGate";
+
+const ACCENT = "#10B981";
 
 const SECTEURS = ["Commerce / Retail", "Restauration / Food", "Services BtoB", "Formation / Éducation", "Santé / Bien-être", "Mode & Beauté", "Immobilier", "Événementiel", "Tech / Digital", "Autre"];
 const ANCIENNETE = ["Moins d'1 an", "1 à 3 ans", "3 à 5 ans", "Plus de 5 ans"];
@@ -35,9 +38,28 @@ export default function DiagnosticClient() {
     nom: "", secteur: "", anciennete: "", effectif: "",
     presence: [] as string[], problemes: "", objectifs: "",
   });
-  const [step, setStep] = useState<"form" | "loading" | "results">("form");
+  const [step, setStep] = useState<"form" | "loading" | "email" | "results">("form");
   const [results, setResults] = useState<Results | null>(null);
   const [error, setError] = useState("");
+
+  const handleUnlock = async (prenom: string, email: string) => {
+    try {
+      await fetch("/api/audit-lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          tool: "diagnostic",
+          prenom,
+          email,
+          summary: { nom_entreprise: form.nom, secteur: form.secteur, score_maturite_digitale: results?.score_maturite_digitale },
+        }),
+      });
+    } catch {
+      // Ne bloque jamais l'affichage des resultats
+    } finally {
+      setStep("results");
+    }
+  };
 
   const togglePresence = (p: string) =>
     setForm((f) => ({ ...f, presence: f.presence.includes(p) ? f.presence.filter((x) => x !== p) : [...f.presence, p] }));
@@ -56,7 +78,7 @@ export default function DiagnosticClient() {
       });
       if (!res.ok) throw new Error();
       const data = await res.json();
-      setResults(data); setStep("results");
+      setResults(data); setStep("email");
     } catch {
       setError("Une erreur est survenue. Réessayez."); setStep("form");
     }
@@ -71,6 +93,17 @@ export default function DiagnosticClient() {
           <p className="font-body text-white/40">L'IA analyse les lacunes de votre entreprise</p>
         </div>
       </div>
+    );
+  }
+
+  if (step === "email") {
+    return (
+      <AuditEmailGate
+        accent={ACCENT}
+        title="Votre diagnostic est prêt"
+        subtitle="Indiquez où l'envoyer pour voir vos résultats complets."
+        onUnlock={handleUnlock}
+      />
     );
   }
 

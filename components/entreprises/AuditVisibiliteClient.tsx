@@ -3,6 +3,9 @@
 import { useState } from "react";
 import { Search, Loader2, ArrowRight, RefreshCw, Globe, AlertTriangle, CheckCircle2, TrendingUp } from "lucide-react";
 import Link from "next/link";
+import AuditEmailGate from "@/components/ui/AuditEmailGate";
+
+const ACCENT = "#3B82F6";
 
 const SECTEURS = ["Commerce / Retail", "Restauration / Food", "Services BtoB", "Formation / Éducation", "Santé / Bien-être", "Mode & Beauté", "Immobilier", "Événementiel", "Tech / Digital", "Autre"];
 
@@ -24,7 +27,7 @@ const PRIORITE_COLOR: Record<string, string> = { Urgente: "#EF4444", Importante:
 export default function AuditVisibiliteClient() {
   const [nom, setNom] = useState("");
   const [secteur, setSecteur] = useState("");
-  const [step, setStep] = useState<"form" | "loading" | "results">("form");
+  const [step, setStep] = useState<"form" | "loading" | "email" | "results">("form");
   const [results, setResults] = useState<Results | null>(null);
   const [error, setError] = useState("");
 
@@ -39,9 +42,28 @@ export default function AuditVisibiliteClient() {
       });
       if (!res.ok) throw new Error();
       const data = await res.json();
-      setResults(data); setStep("results");
+      setResults(data); setStep("email");
     } catch {
       setError("Une erreur est survenue. Réessayez."); setStep("form");
+    }
+  };
+
+  const handleUnlock = async (prenom: string, email: string) => {
+    try {
+      await fetch("/api/audit-lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          tool: "audit-visibilite",
+          prenom,
+          email,
+          summary: { nom_entreprise: nom, secteur, score_global: results?.score_global },
+        }),
+      });
+    } catch {
+      // Ne bloque jamais l'affichage des resultats
+    } finally {
+      setStep("results");
     }
   };
 
@@ -54,6 +76,17 @@ export default function AuditVisibiliteClient() {
           <p className="font-body text-white/40">Notre IA recherche votre entreprise sur le web</p>
         </div>
       </div>
+    );
+  }
+
+  if (step === "email") {
+    return (
+      <AuditEmailGate
+        accent={ACCENT}
+        title="Votre audit est prêt"
+        subtitle="Indiquez où l'envoyer pour voir vos résultats complets."
+        onUnlock={handleUnlock}
+      />
     );
   }
 

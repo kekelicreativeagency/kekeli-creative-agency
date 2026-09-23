@@ -3,6 +3,9 @@
 import { useState } from "react";
 import { Share2, Loader2, ArrowRight, RefreshCw } from "lucide-react";
 import Link from "next/link";
+import AuditEmailGate from "@/components/ui/AuditEmailGate";
+
+const ACCENT = "#8B5CF6";
 
 const SECTEURS = ["Commerce / Retail", "Restauration / Food", "Services BtoB", "Formation / Éducation", "Santé / Bien-être", "Mode & Beauté", "Immobilier", "Événementiel", "Tech / Digital", "Autre"];
 const OBJECTIFS = ["Notoriété & visibilité", "Ventes & commandes", "Acquisition clients", "Fidélisation", "Recrutement", "Lancement produit"];
@@ -25,7 +28,7 @@ type Results = {
 
 export default function ReseauIdealClient() {
   const [form, setForm] = useState({ nom: "", secteur: "", cible: "", objectifs: [] as string[], budget_pub: "" });
-  const [step, setStep] = useState<"form" | "loading" | "results">("form");
+  const [step, setStep] = useState<"form" | "loading" | "email" | "results">("form");
   const [results, setResults] = useState<Results | null>(null);
   const [error, setError] = useState("");
 
@@ -43,9 +46,28 @@ export default function ReseauIdealClient() {
       });
       if (!res.ok) throw new Error();
       const data = await res.json();
-      setResults(data); setStep("results");
+      setResults(data); setStep("email");
     } catch {
       setError("Une erreur est survenue. Réessayez."); setStep("form");
+    }
+  };
+
+  const handleUnlock = async (prenom: string, email: string) => {
+    try {
+      await fetch("/api/audit-lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          tool: "reseau-ideal",
+          prenom,
+          email,
+          summary: { nom_entreprise: form.nom, secteur: form.secteur, reseau_principal: results?.reseau_principal.nom },
+        }),
+      });
+    } catch {
+      // Ne bloque jamais l'affichage des resultats
+    } finally {
+      setStep("results");
     }
   };
 
@@ -58,6 +80,17 @@ export default function ReseauIdealClient() {
           <p className="font-body text-white/40">L'IA identifie votre réseau idéal</p>
         </div>
       </div>
+    );
+  }
+
+  if (step === "email") {
+    return (
+      <AuditEmailGate
+        accent={ACCENT}
+        title="Votre réseau idéal est identifié"
+        subtitle="Indiquez où l'envoyer pour voir vos résultats complets."
+        onUnlock={handleUnlock}
+      />
     );
   }
 

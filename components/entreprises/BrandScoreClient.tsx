@@ -3,6 +3,9 @@
 import { useState } from "react";
 import { Star, Loader2, ArrowRight, RefreshCw, CheckCircle2, AlertTriangle, TrendingUp } from "lucide-react";
 import Link from "next/link";
+import AuditEmailGate from "@/components/ui/AuditEmailGate";
+
+const ACCENT = "#C8A84B";
 
 const QUESTIONS = [
   { id: "logo", label: "Avez-vous un logo professionnel ?", options: ["Oui, créé par un designer", "Oui, créé moi-même", "Non, pas encore"] },
@@ -46,7 +49,7 @@ const PRIORITE_COLOR: Record<string, string> = {
 };
 
 export default function BrandScoreClient() {
-  const [step, setStep] = useState<"form" | "loading" | "results">("form");
+  const [step, setStep] = useState<"form" | "loading" | "email" | "results">("form");
   const [nom, setNom] = useState("");
   const [secteur, setSecteur] = useState("");
   const [reponses, setReponses] = useState<Record<string, string>>({});
@@ -71,10 +74,29 @@ export default function BrandScoreClient() {
       if (!res.ok) throw new Error();
       const data = await res.json();
       setResults(data);
-      setStep("results");
+      setStep("email");
     } catch {
       setError("Une erreur est survenue. Réessayez.");
       setStep("form");
+    }
+  };
+
+  const handleUnlock = async (prenom: string, email: string) => {
+    try {
+      await fetch("/api/audit-lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          tool: "brand-score",
+          prenom,
+          email,
+          summary: { nom_entreprise: nom, secteur, score_global: results?.score_global },
+        }),
+      });
+    } catch {
+      // Ne bloque jamais l'affichage des resultats
+    } finally {
+      setStep("results");
     }
   };
 
@@ -87,6 +109,17 @@ export default function BrandScoreClient() {
           <p className="font-body text-white/40">Notre IA analyse votre image de marque</p>
         </div>
       </div>
+    );
+  }
+
+  if (step === "email") {
+    return (
+      <AuditEmailGate
+        accent={ACCENT}
+        title="Votre Brand Score est calculé"
+        subtitle="Indiquez où l'envoyer pour voir vos résultats complets."
+        onUnlock={handleUnlock}
+      />
     );
   }
 
