@@ -4,7 +4,7 @@ import NewsletterBanner from "@/components/layout/NewsletterBanner";
 import PageTransition from "@/components/layout/PageTransition";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import BackToTop from "@/components/ui/BackToTop";
-import ChatWidget from "@/components/chat/ChatWidget";
+// import ChatWidget from "@/components/chat/ChatWidget"; // Désactivé temporairement — crédits API Anthropic épuisés, réactiver une fois rechargés
 
 export default function SiteLayout({
   children,
@@ -21,7 +21,7 @@ export default function SiteLayout({
       <Footer />
       <WhatsAppButton />
       <BackToTop />
-      <ChatWidget />
+      {/* <ChatWidget /> */}
     </>
   );
 }
