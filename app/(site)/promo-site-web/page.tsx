@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { Smartphone, MessageCircle, Globe, ShieldCheck, Store, UtensilsCrossed, Scissors, ShoppingBag, Briefcase, Sparkles } from "lucide-react";
 import FadeIn from "@/components/animations/FadeIn";
 import Badge from "@/components/ui/Badge";
+import Card from "@/components/ui/Card";
 import PromoSiteWebForm from "@/components/promo/PromoSiteWebForm";
+import AfficheCard from "@/components/promo/AfficheCard";
 
 const AFFICHES = [
   { src: "/images/promo/affiche-promo-site-web.jpg", alt: "Affiche Promo Site Web 50 000 F CFA — KEKELI Creative Agency" },
@@ -80,9 +81,7 @@ export default function PromoSiteWebPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {AFFICHES.map(({ src, alt }, i) => (
               <FadeIn key={src} direction="up" delay={i * 0.1}>
-                <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-border [box-shadow:var(--shadow-md)]">
-                  <Image src={src} alt={alt} fill sizes="(max-width: 640px) 100vw, 400px" className="object-cover" />
-                </div>
+                <AfficheCard src={src} alt={alt} />
               </FadeIn>
             ))}
           </div>
@@ -100,13 +99,13 @@ export default function PromoSiteWebPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {BENEFITS.map(({ icon: Icon, title, desc }, i) => (
               <FadeIn key={title} direction="up" delay={i * 0.08}>
-                <div className="h-full p-6 rounded-2xl border border-border bg-bg-primary hover:border-gold/40 hover:[box-shadow:var(--shadow-gold)] transition-all">
+                <Card className="h-full">
                   <div className="w-11 h-11 rounded-xl bg-gold-pale flex items-center justify-center mb-4">
                     <Icon size={18} className="text-gold" />
                   </div>
                   <h3 className="font-display text-base text-text-primary mb-1.5">{title}</h3>
                   <p className="font-body text-sm text-text-muted leading-relaxed">{desc}</p>
-                </div>
+                </Card>
               </FadeIn>
             ))}
           </div>
@@ -124,7 +123,7 @@ export default function PromoSiteWebPage() {
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
             {CIBLES.map(({ icon: Icon, label }, i) => (
               <FadeIn key={label} direction="up" delay={i * 0.06}>
-                <div className="flex flex-col items-center text-center gap-2 p-4 rounded-xl bg-white/[0.04] border border-white/10">
+                <div className="flex flex-col items-center text-center gap-2 p-4 rounded-xl bg-white/[0.04] border border-white/10 transition-all duration-200 hover:-translate-y-1 hover:scale-[1.03] hover:border-gold/40 hover:bg-white/[0.07] cursor-default">
                   <Icon size={20} className="text-gold" />
                   <span className="font-body text-xs text-text-on-dark/70">{label}</span>
                 </div>
