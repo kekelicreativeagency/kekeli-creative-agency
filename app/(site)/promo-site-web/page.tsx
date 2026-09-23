@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Smartphone, MessageCircle, Globe, ShieldCheck, Store, UtensilsCrossed, Scissors, ShoppingBag, Briefcase, Sparkles } from "lucide-react";
 import FadeIn from "@/components/animations/FadeIn";
 import Badge from "@/components/ui/Badge";
 import PromoSiteWebForm from "@/components/promo/PromoSiteWebForm";
+
+const AFFICHES = [
+  { src: "/images/promo/affiche-promo-site-web.jpg", alt: "Affiche Promo Site Web 50 000 F CFA — KEKELI Creative Agency" },
+  { src: "/images/promo/affiche-site-ecommerce.png", alt: "Affiche Site E-commerce à partir de 50 000 F CFA — KEKELI Creative Agency" },
+];
 
 export const metadata: Metadata = {
   title: "Promo Site Web à partir de 50 000 F CFA",
@@ -65,6 +71,21 @@ export default function PromoSiteWebPage() {
             </a>
             <p className="font-body text-xs text-white/30 mt-4">⚠️ Places limitées</p>
           </FadeIn>
+        </div>
+      </section>
+
+      {/* AFFICHES */}
+      <section className="py-16 bg-bg-primary">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {AFFICHES.map(({ src, alt }, i) => (
+              <FadeIn key={src} direction="up" delay={i * 0.1}>
+                <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-border [box-shadow:var(--shadow-md)]">
+                  <Image src={src} alt={alt} fill sizes="(max-width: 640px) 100vw, 400px" className="object-cover" />
+                </div>
+              </FadeIn>
+            ))}
+          </div>
         </div>
       </section>
 
