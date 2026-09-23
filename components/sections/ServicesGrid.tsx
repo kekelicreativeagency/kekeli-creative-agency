@@ -14,10 +14,17 @@ const FEATURED = {
     "Sites web, campagnes et couverture d'événements pour PME, ONG et organismes internationaux.",
   tags: ["Site web", "Publicité digitale", "Événementiel"],
   cta: { label: "Voir les services entreprises", href: "/entreprises/branding" },
-  image: "/images/entreprise.jpg",
-  imageAlt: "Dirigeante d'entreprise à son bureau, KEKELI Creative Agency",
+  image: "/images/promo-entreprises-kekelicom.png",
+  imageAlt: "Visuel KEKELI Creative Agency, communication qui inspire confiance",
   accent: "#C8A84B",
   accentText: "#151008",
+};
+
+const PROMO = {
+  subtitle: "Offre limitée · du 22 septembre au 22 octobre",
+  title: "Site web professionnel à 50.000 FCFA",
+  cta: { label: "Profiter de l'offre", href: "/promo-site-web" },
+  image: "/images/promo-site-web-flyer.jpg",
 };
 
 const SECONDARY = [
@@ -28,8 +35,8 @@ const SECONDARY = [
     description:
       "Image digitale et personal branding pour dirigeants et représentants institutionnels.",
     cta: { label: "Voir les services personnalités", href: "/personnalites/personal-branding" },
-    image: "/images/branding.jpg",
-    imageAlt: "Personnalité publique consultant ses statistiques, KEKELI Creative Agency",
+    image: "/images/promo-personnalites-reseaux.png",
+    imageAlt: "Confiez-nous vos réseaux sociaux, KEKELI Creative Agency",
     accent: "#C8A84B",
     accentText: "#151008",
   },
@@ -40,8 +47,8 @@ const SECONDARY = [
     description:
       "Identité visuelle, clips et distribution pour porter votre musique à l'international.",
     cta: { label: "Voir les services artistes", href: "/artistes/branding" },
-    image: "/images/artiste.jpg",
-    imageAlt: "Artiste musicien au piano, KEKELI Creative Agency",
+    image: "/images/promo-artistes-branding.png",
+    imageAlt: "Branding Artiste, KEKELI Creative Agency",
     accent: "#8B5CF6",
     accentText: "#FFFFFF",
   },
@@ -59,6 +66,48 @@ export default function ServicesGrid() {
           className="mb-16"
         />
 
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-14"
+        >
+          <Link
+            href={PROMO.cta.href}
+            className="group relative flex items-center gap-5 sm:gap-6 rounded-2xl overflow-hidden p-5 sm:p-7"
+            style={{ background: "linear-gradient(135deg, #08060F 0%, #130A28 45%, #1C0A40 100%)" }}
+          >
+            <div className="relative shrink-0 w-16 h-16 sm:w-24 sm:h-24 rounded-xl overflow-hidden">
+              <Image
+                src={PROMO.image}
+                alt="Promotion site web KEKELI Creative Agency"
+                fill
+                className="object-cover object-top"
+                sizes="100px"
+              />
+            </div>
+            <div className="flex-1 min-w-0">
+              <p
+                className="font-body text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.1em] mb-1.5"
+                style={{ color: "#C8A84B" }}
+              >
+                {PROMO.subtitle}
+              </p>
+              <h3 className="font-display font-bold text-base sm:text-2xl text-white leading-tight truncate sm:whitespace-normal">
+                {PROMO.title}
+              </h3>
+            </div>
+            <span
+              className="inline-flex items-center gap-1.5 sm:gap-2 font-body text-xs sm:text-sm font-bold px-3.5 py-2 sm:px-5 sm:py-3 rounded-full shrink-0 transition-all duration-200 group-hover:gap-2.5 sm:group-hover:gap-3.5"
+              style={{ background: "linear-gradient(135deg, #C8A84B, #E8C96A)", color: "#151008" }}
+            >
+              <span className="hidden sm:inline">{PROMO.cta.label}</span>
+              <ArrowRight size={14} />
+            </span>
+          </Link>
+        </motion.div>
+
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-8">
           {/* Featured — Entreprises, en tête de priorité */}
           <motion.div
@@ -69,7 +118,7 @@ export default function ServicesGrid() {
             className="lg:col-span-7"
           >
             <Link href={FEATURED.cta.href} className="group block">
-              <div className="relative aspect-[16/11] rounded-2xl overflow-hidden">
+              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden">
                 <Image
                   src={FEATURED.image}
                   alt={FEATURED.imageAlt}
@@ -123,7 +172,7 @@ export default function ServicesGrid() {
                 transition={{ duration: 0.5, delay: 0.15 + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
               >
                 <Link href={block.cta.href} className="group block">
-                  <div className="relative aspect-[16/9] rounded-2xl overflow-hidden">
+                  <div className="relative aspect-[4/5] rounded-2xl overflow-hidden">
                     <Image
                       src={block.image}
                       alt={block.imageAlt}
