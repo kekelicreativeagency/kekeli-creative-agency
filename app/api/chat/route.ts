@@ -134,8 +134,10 @@ ${messages.map((m) => `${m.role === "user" ? "Client" : "KELI"}: ${m.content}`).
           }
         }
       } catch (err) {
-        const msg = err instanceof Error ? err.message : "Erreur inconnue";
-        controller.enqueue(encoder.encode(`Désolé, une erreur s'est produite. (${msg})`));
+        console.error("Chat stream error:", err);
+        controller.enqueue(encoder.encode(
+          "Désolé, je rencontre un souci technique en ce moment. N'hésitez pas à nous écrire directement via le formulaire de contact, on vous répondra rapidement !",
+        ));
       } finally {
         controller.close();
       }
