@@ -13,6 +13,7 @@ const TYPE_LABELS = {
   entreprise:     "🏢 Entreprise",
   projet:         "📋 Projet",
   guide_download: "📥 Téléchargement",
+  promo_site_web: "🔥 Promo Site Web",
 } as const;
 
 const TYPE_COLORS = {
@@ -23,6 +24,7 @@ const TYPE_COLORS = {
   entreprise:     "bg-gold-pale text-gold-dark border-gold/30",
   projet:         "bg-violet-pale text-purple border-violet/30",
   guide_download: "bg-gold-pale text-gold-dark border-gold/30",
+  promo_site_web: "bg-gold-pale text-gold-dark border-gold/30",
 } as const;
 
 const STATUS_COLORS = {

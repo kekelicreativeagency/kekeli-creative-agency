@@ -3,7 +3,7 @@ import { getSupabase } from "@/lib/supabase";
 import { requireAdmin } from "@/lib/auth";
 
 const LEAD_STATUSES = ["new", "read", "archived"] as const;
-const LEAD_TYPES = ["sondage", "contact", "brief", "artiste", "entreprise", "projet", "guide_download"] as const;
+const LEAD_TYPES = ["sondage", "contact", "brief", "artiste", "entreprise", "projet", "guide_download", "promo_site_web"] as const;
 
 export async function GET(request: Request) {
   if (!(await requireAdmin())) return NextResponse.json({ error: "Non autorisé" }, { status: 401 });

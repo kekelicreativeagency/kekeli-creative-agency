@@ -16,7 +16,7 @@ export function getSupabase(): SupabaseClient {
 export interface Lead {
   id: string;
   created_at: string;
-  type: "contact" | "brief" | "sondage" | "artiste" | "entreprise" | "projet" | "guide_download";
+  type: "contact" | "brief" | "sondage" | "artiste" | "entreprise" | "projet" | "guide_download" | "promo_site_web";
   status: "new" | "read" | "archived";
   data: Record<string, unknown>;
 }
