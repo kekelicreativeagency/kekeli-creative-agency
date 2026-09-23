@@ -125,6 +125,13 @@ export default function ServicesGrid() {
                     className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                     sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 30vw"
                   />
+                  <span
+                    className="absolute bottom-4 left-4 right-4 inline-flex items-center justify-center gap-2 font-body text-sm font-bold px-4 py-2.5 rounded-full shadow-lg transition-all duration-200 group-hover:gap-3"
+                    style={{ background: service.accent, color: service.accentText }}
+                  >
+                    {service.cta.label}
+                    <ArrowRight size={14} />
+                  </span>
                 </div>
                 <div className="mt-5">
                   <span
@@ -136,16 +143,9 @@ export default function ServicesGrid() {
                   <h3 className="font-display font-bold text-xl md:text-2xl text-text-primary leading-tight mb-2 transition-colors group-hover:opacity-80">
                     {service.title}
                   </h3>
-                  <p className="font-body text-sm leading-relaxed text-text-muted mb-4">
+                  <p className="font-body text-sm leading-relaxed text-text-muted">
                     {service.description}
                   </p>
-                  <span
-                    className="inline-flex items-center gap-2 font-body text-sm font-bold px-4 py-2.5 rounded-full transition-all duration-200 group-hover:gap-3"
-                    style={{ background: service.accent, color: service.accentText }}
-                  >
-                    {service.cta.label}
-                    <ArrowRight size={14} />
-                  </span>
                 </div>
               </Link>
             </motion.div>
