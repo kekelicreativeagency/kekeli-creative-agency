@@ -4,48 +4,43 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-import { clsx } from "clsx";
 import SectionHeader from "@/components/ui/SectionHeader";
 
-const BLOCKS = [
-  {
-    id: "entreprises",
-    eyebrow: "Entreprises & Institutions",
-    title: "Une communication qui inspire confiance",
-    description:
-      "Sites web, campagnes et couverture d'événements pour PME, ONG et organismes internationaux.",
-    tags: ["Site web", "Publicité digitale", "Événementiel"],
-    cta: { label: "Voir les services entreprises", href: "/entreprises/branding" },
-    image: "/images/entreprise.jpg",
-    imageAlt: "Dirigeante d'entreprise à son bureau — KEKELI Creative Agency",
-    accent: "#C8A84B",
-    chipText: "#000000",
-  },
+const FEATURED = {
+  id: "entreprises",
+  kicker: "Entreprises & Institutions",
+  title: "Une communication qui inspire confiance",
+  description:
+    "Sites web, campagnes et couverture d'événements pour PME, ONG et organismes internationaux.",
+  tags: ["Site web", "Publicité digitale", "Événementiel"],
+  cta: { label: "Voir les services entreprises", href: "/entreprises/branding" },
+  image: "/images/entreprise.jpg",
+  imageAlt: "Dirigeante d'entreprise à son bureau, KEKELI Creative Agency",
+  accent: "#C8A84B",
+};
+
+const SECONDARY = [
   {
     id: "personnalites",
-    eyebrow: "Personnalités Publiques",
+    kicker: "Personnalités Publiques",
     title: "Votre image est votre premier message",
     description:
       "Image digitale et personal branding pour dirigeants et représentants institutionnels.",
-    tags: ["Personal branding", "E-réputation", "Shooting photo"],
     cta: { label: "Voir les services personnalités", href: "/personnalites/personal-branding" },
     image: "/images/branding.jpg",
-    imageAlt: "Personnalité publique consultant ses statistiques — KEKELI Creative Agency",
-    accent: "#0C0B09",
-    chipText: "#FFFFFF",
+    imageAlt: "Personnalité publique consultant ses statistiques, KEKELI Creative Agency",
+    accent: "#C8A84B",
   },
   {
     id: "artistes",
-    eyebrow: "Artistes / Musiciens",
+    kicker: "Artistes / Musiciens",
     title: "Propulsez votre carrière musicale",
     description:
       "Identité visuelle, clips et distribution pour porter votre musique à l'international.",
-    tags: ["Branding", "Clips vidéo", "Distribution"],
     cta: { label: "Voir les services artistes", href: "/artistes/branding" },
     image: "/images/artiste.jpg",
-    imageAlt: "Artiste musicien au piano — KEKELI Creative Agency",
+    imageAlt: "Artiste musicien au piano, KEKELI Creative Agency",
     accent: "#8B5CF6",
-    chipText: "#FFFFFF",
   },
 ] as const;
 
@@ -61,68 +56,103 @@ export default function ServicesGrid() {
           className="mb-16"
         />
 
-        <div className="grid md:grid-cols-3 gap-x-6 gap-y-14 md:gap-y-0">
-          {BLOCKS.map((block, i) => (
-            <motion.div
-              key={block.id}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className={clsx(i === 1 && "md:mt-12")}
-            >
-              {/* Photo */}
-              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden mb-0">
-                <Image
-                  src={block.image}
-                  alt={block.imageAlt}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 90vw, 30vw"
-                />
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-8">
+          {/* Featured — Entreprises, en tête de priorité */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-7 group"
+          >
+            <div className="relative aspect-[16/11] rounded-2xl overflow-hidden">
+              <Image
+                src={FEATURED.image}
+                alt={FEATURED.imageAlt}
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                sizes="(max-width: 1024px) 90vw, 55vw"
+              />
+            </div>
+            <div className="mt-6 max-w-xl">
+              <p
+                className="font-body text-xs font-bold uppercase tracking-[0.16em] mb-3"
+                style={{ color: FEATURED.accent }}
+              >
+                {FEATURED.kicker}
+              </p>
+              <h3 className="font-display font-bold text-3xl md:text-4xl text-text-primary leading-[1.1] tracking-tight mb-3">
+                {FEATURED.title}
+              </h3>
+              <p className="font-body text-base leading-relaxed text-text-muted mb-5 max-w-md">
+                {FEATURED.description}
+              </p>
+              <div className="flex flex-wrap gap-2 mb-6">
+                {FEATURED.tags.map((t) => (
+                  <span
+                    key={t}
+                    className="font-body text-[11px] text-text-secondary border border-border rounded-2xl px-3 py-1"
+                  >
+                    {t}
+                  </span>
+                ))}
               </div>
+              <Link
+                href={FEATURED.cta.href}
+                className="inline-flex items-center gap-2 font-body text-sm font-semibold transition-all duration-200 hover:gap-3.5"
+                style={{ color: FEATURED.accent }}
+              >
+                {FEATURED.cta.label}
+                <ArrowRight size={14} />
+              </Link>
+            </div>
+          </motion.div>
 
-              {/* Overlapping label chip */}
-              <div className="relative px-1">
-                <span
-                  className="relative -top-4 inline-block font-body text-[10px] font-bold uppercase tracking-[0.16em] px-3.5 py-1.5 rounded-full"
-                  style={{ background: block.accent, color: block.chipText }}
-                >
-                  {block.eyebrow}
-                </span>
-              </div>
-
-              {/* Texte */}
-              <div className="px-1 -mt-1">
-                <h3 className="font-display font-bold text-2xl text-text-primary leading-tight mb-2.5">
-                  {block.title}
-                </h3>
-                <p className="font-body text-sm leading-relaxed text-text-muted mb-4">
-                  {block.description}
-                </p>
-
-                <div className="flex flex-wrap gap-x-2 gap-y-1.5 mb-5">
-                  {block.tags.map((t) => (
-                    <span
-                      key={t}
-                      className="font-body text-[11px] text-text-secondary border border-border rounded-full px-2.5 py-1"
-                    >
-                      {t}
-                    </span>
-                  ))}
+          {/* Duo secondaire — Personnalités puis Artistes */}
+          <div className="lg:col-span-5 flex flex-col gap-8 lg:gap-10">
+            {SECONDARY.map((block, i) => (
+              <motion.div
+                key={block.id}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.5, delay: 0.15 + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                className="group flex gap-5"
+              >
+                <div className="relative w-28 sm:w-32 aspect-[3/4] rounded-2xl overflow-hidden shrink-0">
+                  <Image
+                    src={block.image}
+                    alt={block.imageAlt}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.05]"
+                    sizes="130px"
+                  />
                 </div>
-
-                <Link
-                  href={block.cta.href}
-                  className="inline-flex items-center gap-2 font-body text-sm font-semibold transition-all duration-200 hover:gap-3.5"
-                  style={{ color: block.accent }}
-                >
-                  {block.cta.label}
-                  <ArrowRight size={14} />
-                </Link>
-              </div>
-            </motion.div>
-          ))}
+                <div className="flex-1 min-w-0 pt-1">
+                  <p
+                    className="font-body text-[11px] font-bold uppercase tracking-[0.14em] mb-2"
+                    style={{ color: block.accent }}
+                  >
+                    {block.kicker}
+                  </p>
+                  <h3 className="font-display font-bold text-xl text-text-primary leading-tight mb-2">
+                    {block.title}
+                  </h3>
+                  <p className="font-body text-sm leading-relaxed text-text-muted mb-3">
+                    {block.description}
+                  </p>
+                  <Link
+                    href={block.cta.href}
+                    className="inline-flex items-center gap-1.5 font-body text-sm font-semibold transition-all duration-200 hover:gap-2.5"
+                    style={{ color: block.accent }}
+                  >
+                    {block.cta.label}
+                    <ArrowRight size={13} />
+                  </Link>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
