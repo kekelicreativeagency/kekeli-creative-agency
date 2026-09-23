@@ -86,7 +86,7 @@ function KekeliLogo({ isScrolled: _ }: { isScrolled: boolean }) {
       <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
         <div style={{ position: "relative", width: 160, height: 44 }}>
           <Image
-            src="/images/logo-horizontal-light.png"
+            src="/images/logo-horizontal-light-v2.png"
             alt="KEKELI Creative Agency"
             fill
             priority

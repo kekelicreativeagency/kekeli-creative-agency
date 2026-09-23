@@ -68,7 +68,7 @@ export default function Footer() {
             <div className="mb-6">
               <div style={{ position: "relative", width: 150, height: 42 }}>
                 <Image
-                  src="/images/logo-horizontal-dark.png"
+                  src="/images/logo-horizontal-dark-v2.png"
                   alt="KEKELI Creative Agency"
                   fill
                   sizes="150px"

@@ -42,11 +42,11 @@ const jsonLd = {
       url: "https://kekelicreativeagency.com",
       logo: {
         "@type": "ImageObject",
-        url: "https://kekelicreativeagency.com/images/logo-kekeli.png",
+        url: "https://kekelicreativeagency.com/images/logo-kekeli-v2.png",
         width: 512,
         height: 512,
       },
-      image: "https://kekelicreativeagency.com/images/logo-horizontal-dark.png",
+      image: "https://kekelicreativeagency.com/images/logo-horizontal-dark-v2.png",
       email: "contact@kekelicreativeagency.com",
       priceRange: "$$",
       currenciesAccepted: "XOF",

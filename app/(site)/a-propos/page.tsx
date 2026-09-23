@@ -32,7 +32,7 @@ const jsonLd = {
     url: "https://kekelicreativeagency.com",
     logo: {
       "@type": "ImageObject",
-      url: "https://kekelicreativeagency.com/images/logo-kekeli.png",
+      url: "https://kekelicreativeagency.com/images/logo-kekeli-v2.png",
     },
     address: {
       "@type": "PostalAddress",
