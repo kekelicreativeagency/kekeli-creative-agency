@@ -59,7 +59,7 @@ export default function Hero() {
     <section
       ref={sectionRef}
       onMouseMove={handleMouseMove}
-      className="relative h-[calc(100vh-4rem)] md:h-[calc(100vh-5rem)] flex items-center overflow-hidden"
+      className="relative min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)] flex items-center overflow-hidden py-24 md:py-0"
     >
       {/* ── Full-bleed concert background ───────────────── */}
       <div className="absolute inset-0">
