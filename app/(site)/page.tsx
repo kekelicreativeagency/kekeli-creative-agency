@@ -46,7 +46,7 @@ const jsonLd = {
         width: 512,
         height: 512,
       },
-      image: "https://kekelicreativeagency.com/images/logo-horizontal-dark-v2.png",
+      image: "https://kekelicreativeagency.com/images/logo-horizontal-dark-v3.png",
       email: "contact@kekelicreativeagency.com",
       priceRange: "$$",
       currenciesAccepted: "XOF",
