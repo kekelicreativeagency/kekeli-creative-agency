@@ -6,20 +6,6 @@ import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
 
-const FEATURED = {
-  id: "entreprises",
-  kicker: "Entreprises & Institutions",
-  title: "Une communication qui inspire confiance",
-  description:
-    "Sites web, campagnes et couverture d'événements pour PME, ONG et organismes internationaux.",
-  tags: ["Site web", "Publicité digitale", "Événementiel"],
-  cta: { label: "Voir les services entreprises", href: "/entreprises/branding" },
-  image: "/images/promo-entreprises-kekelicom.png",
-  imageAlt: "Visuel KEKELI Creative Agency, communication qui inspire confiance",
-  accent: "#C8A84B",
-  accentText: "#151008",
-};
-
 const PROMO = {
   subtitle: "Offre limitée · du 22 septembre au 22 octobre",
   title: "Site web professionnel à 50.000 FCFA",
@@ -27,7 +13,19 @@ const PROMO = {
   image: "/images/promo-site-web-flyer.jpg",
 };
 
-const SECONDARY = [
+const SERVICES = [
+  {
+    id: "entreprises",
+    kicker: "Entreprises & Institutions",
+    title: "Une communication qui inspire confiance",
+    description:
+      "Sites web, campagnes et couverture d'événements pour PME, ONG et organismes internationaux.",
+    cta: { label: "Voir les services entreprises", href: "/entreprises/branding" },
+    image: "/images/promo-entreprises-kekelicom.png",
+    imageAlt: "Visuel KEKELI Creative Agency, communication qui inspire confiance",
+    accent: "#C8A84B",
+    accentText: "#151008",
+  },
   {
     id: "personnalites",
     kicker: "Personnalités Publiques",
@@ -108,104 +106,50 @@ export default function ServicesGrid() {
           </Link>
         </motion.div>
 
-        <div className="grid lg:grid-cols-12 gap-10 lg:gap-8">
-          {/* Featured — Entreprises, en tête de priorité */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-7"
-          >
-            <Link href={FEATURED.cta.href} className="group block">
-              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden">
-                <Image
-                  src={FEATURED.image}
-                  alt={FEATURED.imageAlt}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                  sizes="(max-width: 1024px) 90vw, 55vw"
-                />
-              </div>
-              <div className="mt-6 max-w-xl">
-                <span
-                  className="inline-block font-body text-xs font-bold uppercase tracking-[0.1em] mb-4 px-3 py-1.5 rounded-full"
-                  style={{ background: FEATURED.accent, color: FEATURED.accentText }}
-                >
-                  {FEATURED.kicker}
-                </span>
-                <h3 className="font-display font-bold text-3xl md:text-[2.75rem] text-text-primary leading-[1.05] tracking-tight mb-3 transition-colors group-hover:opacity-80">
-                  {FEATURED.title}
-                </h3>
-                <p className="font-body text-base leading-relaxed text-text-muted mb-5 max-w-md">
-                  {FEATURED.description}
-                </p>
-                <div className="flex flex-wrap gap-2 mb-7">
-                  {FEATURED.tags.map((t) => (
-                    <span
-                      key={t}
-                      className="font-body text-[11px] font-semibold text-text-secondary border border-border rounded-2xl px-3 py-1"
-                    >
-                      {t}
-                    </span>
-                  ))}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+          {SERVICES.map((service, i) => (
+            <motion.div
+              key={service.id}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.5, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+              className={i === 2 ? "sm:col-span-2 sm:max-w-md sm:mx-auto lg:col-span-1 lg:max-w-none lg:mx-0" : ""}
+            >
+              <Link href={service.cta.href} className="group block">
+                <div className="relative aspect-[4/5] rounded-2xl overflow-hidden">
+                  <Image
+                    src={service.image}
+                    alt={service.imageAlt}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                    sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 30vw"
+                  />
                 </div>
-                <span
-                  className="inline-flex items-center gap-2 font-body text-sm font-bold px-5 py-3 rounded-full transition-all duration-200 group-hover:gap-3.5"
-                  style={{ background: FEATURED.accent, color: FEATURED.accentText }}
-                >
-                  {FEATURED.cta.label}
-                  <ArrowRight size={14} />
-                </span>
-              </div>
-            </Link>
-          </motion.div>
-
-          {/* Duo secondaire — Personnalités puis Artistes, meme gabarit que la carte principale */}
-          <div className="lg:col-span-5 flex flex-col gap-10 lg:gap-8">
-            {SECONDARY.map((block, i) => (
-              <motion.div
-                key={block.id}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.5, delay: 0.15 + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              >
-                <Link href={block.cta.href} className="group block">
-                  <div className="relative aspect-[4/5] rounded-2xl overflow-hidden">
-                    <Image
-                      src={block.image}
-                      alt={block.imageAlt}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-[1.05]"
-                      sizes="(max-width: 1024px) 90vw, 40vw"
-                    />
-                  </div>
-                  <div className="mt-5">
-                    <span
-                      className="inline-block font-body text-[11px] font-bold uppercase tracking-[0.08em] mb-3 px-2.5 py-1 rounded-full"
-                      style={{ background: block.accent, color: block.accentText }}
-                    >
-                      {block.kicker}
-                    </span>
-                    <h3 className="font-display font-bold text-xl text-text-primary leading-tight mb-2 transition-colors group-hover:opacity-80">
-                      {block.title}
-                    </h3>
-                    <p className="font-body text-sm leading-relaxed text-text-muted mb-3">
-                      {block.description}
-                    </p>
-                    <span
-                      className="inline-flex items-center gap-1.5 font-body text-sm font-bold transition-all duration-200 group-hover:gap-2.5"
-                      style={{ color: block.accent }}
-                    >
-                      {block.cta.label}
-                      <ArrowRight size={13} />
-                    </span>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
+                <div className="mt-5">
+                  <span
+                    className="inline-block font-body text-[11px] font-bold uppercase tracking-[0.08em] mb-3 px-2.5 py-1 rounded-full"
+                    style={{ background: service.accent, color: service.accentText }}
+                  >
+                    {service.kicker}
+                  </span>
+                  <h3 className="font-display font-bold text-xl md:text-2xl text-text-primary leading-tight mb-2 transition-colors group-hover:opacity-80">
+                    {service.title}
+                  </h3>
+                  <p className="font-body text-sm leading-relaxed text-text-muted mb-4">
+                    {service.description}
+                  </p>
+                  <span
+                    className="inline-flex items-center gap-2 font-body text-sm font-bold px-4 py-2.5 rounded-full transition-all duration-200 group-hover:gap-3"
+                    style={{ background: service.accent, color: service.accentText }}
+                  >
+                    {service.cta.label}
+                    <ArrowRight size={14} />
+                  </span>
+                </div>
+              </Link>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
