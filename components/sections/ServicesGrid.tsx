@@ -63,53 +63,54 @@ export default function ServicesGrid() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-7 group"
+            className="lg:col-span-7"
           >
-            <div className="relative aspect-[16/11] rounded-2xl overflow-hidden">
-              <Image
-                src={FEATURED.image}
-                alt={FEATURED.imageAlt}
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                sizes="(max-width: 1024px) 90vw, 55vw"
-              />
-            </div>
-            <div className="mt-6 max-w-xl">
-              <p
-                className="font-body text-xs font-bold uppercase tracking-[0.16em] mb-3"
-                style={{ color: FEATURED.accent }}
-              >
-                {FEATURED.kicker}
-              </p>
-              <h3 className="font-display font-bold text-3xl md:text-4xl text-text-primary leading-[1.1] tracking-tight mb-3">
-                {FEATURED.title}
-              </h3>
-              <p className="font-body text-base leading-relaxed text-text-muted mb-5 max-w-md">
-                {FEATURED.description}
-              </p>
-              <div className="flex flex-wrap gap-2 mb-6">
-                {FEATURED.tags.map((t) => (
-                  <span
-                    key={t}
-                    className="font-body text-[11px] text-text-secondary border border-border rounded-2xl px-3 py-1"
-                  >
-                    {t}
-                  </span>
-                ))}
+            <Link href={FEATURED.cta.href} className="group block">
+              <div className="relative aspect-[16/11] rounded-2xl overflow-hidden">
+                <Image
+                  src={FEATURED.image}
+                  alt={FEATURED.imageAlt}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  sizes="(max-width: 1024px) 90vw, 55vw"
+                />
               </div>
-              <Link
-                href={FEATURED.cta.href}
-                className="inline-flex items-center gap-2 font-body text-sm font-semibold transition-all duration-200 hover:gap-3.5"
-                style={{ color: FEATURED.accent }}
-              >
-                {FEATURED.cta.label}
-                <ArrowRight size={14} />
-              </Link>
-            </div>
+              <div className="mt-6 max-w-xl">
+                <p
+                  className="font-body text-xs font-bold uppercase tracking-[0.16em] mb-3"
+                  style={{ color: FEATURED.accent }}
+                >
+                  {FEATURED.kicker}
+                </p>
+                <h3 className="font-display font-bold text-3xl md:text-4xl text-text-primary leading-[1.1] tracking-tight mb-3 transition-colors group-hover:opacity-80">
+                  {FEATURED.title}
+                </h3>
+                <p className="font-body text-base leading-relaxed text-text-muted mb-5 max-w-md">
+                  {FEATURED.description}
+                </p>
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {FEATURED.tags.map((t) => (
+                    <span
+                      key={t}
+                      className="font-body text-[11px] text-text-secondary border border-border rounded-2xl px-3 py-1"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+                <span
+                  className="inline-flex items-center gap-2 font-body text-sm font-semibold transition-all duration-200 group-hover:gap-3.5"
+                  style={{ color: FEATURED.accent }}
+                >
+                  {FEATURED.cta.label}
+                  <ArrowRight size={14} />
+                </span>
+              </div>
+            </Link>
           </motion.div>
 
-          {/* Duo secondaire — Personnalités puis Artistes */}
-          <div className="lg:col-span-5 flex flex-col gap-8 lg:gap-10">
+          {/* Duo secondaire — Personnalités puis Artistes, meme gabarit que la carte principale */}
+          <div className="lg:col-span-5 flex flex-col gap-10 lg:gap-8">
             {SECONDARY.map((block, i) => (
               <motion.div
                 key={block.id}
@@ -117,39 +118,39 @@ export default function ServicesGrid() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.5, delay: 0.15 + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                className="group flex gap-5"
               >
-                <div className="relative w-28 sm:w-32 aspect-[3/4] rounded-2xl overflow-hidden shrink-0">
-                  <Image
-                    src={block.image}
-                    alt={block.imageAlt}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-[1.05]"
-                    sizes="130px"
-                  />
-                </div>
-                <div className="flex-1 min-w-0 pt-1">
-                  <p
-                    className="font-body text-[11px] font-bold uppercase tracking-[0.14em] mb-2"
-                    style={{ color: block.accent }}
-                  >
-                    {block.kicker}
-                  </p>
-                  <h3 className="font-display font-bold text-xl text-text-primary leading-tight mb-2">
-                    {block.title}
-                  </h3>
-                  <p className="font-body text-sm leading-relaxed text-text-muted mb-3">
-                    {block.description}
-                  </p>
-                  <Link
-                    href={block.cta.href}
-                    className="inline-flex items-center gap-1.5 font-body text-sm font-semibold transition-all duration-200 hover:gap-2.5"
-                    style={{ color: block.accent }}
-                  >
-                    {block.cta.label}
-                    <ArrowRight size={13} />
-                  </Link>
-                </div>
+                <Link href={block.cta.href} className="group block">
+                  <div className="relative aspect-[16/9] rounded-2xl overflow-hidden">
+                    <Image
+                      src={block.image}
+                      alt={block.imageAlt}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-[1.05]"
+                      sizes="(max-width: 1024px) 90vw, 40vw"
+                    />
+                  </div>
+                  <div className="mt-5">
+                    <p
+                      className="font-body text-[11px] font-bold uppercase tracking-[0.14em] mb-2"
+                      style={{ color: block.accent }}
+                    >
+                      {block.kicker}
+                    </p>
+                    <h3 className="font-display font-bold text-xl text-text-primary leading-tight mb-2 transition-colors group-hover:opacity-80">
+                      {block.title}
+                    </h3>
+                    <p className="font-body text-sm leading-relaxed text-text-muted mb-3">
+                      {block.description}
+                    </p>
+                    <span
+                      className="inline-flex items-center gap-1.5 font-body text-sm font-semibold transition-all duration-200 group-hover:gap-2.5"
+                      style={{ color: block.accent }}
+                    >
+                      {block.cta.label}
+                      <ArrowRight size={13} />
+                    </span>
+                  </div>
+                </Link>
               </motion.div>
             ))}
           </div>
