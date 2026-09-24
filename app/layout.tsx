@@ -59,6 +59,16 @@ const orgJsonLd = {
   ],
 };
 
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://kekelicreativeagency.com/#website",
+  name: "KEKELI Creative Agency",
+  url: "https://kekelicreativeagency.com",
+  publisher: { "@id": "https://kekelicreativeagency.com/#organization" },
+  inLanguage: "fr-SN",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -68,6 +78,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-SZR10EDWGB" />
         <script dangerouslySetInnerHTML={{ __html: `
